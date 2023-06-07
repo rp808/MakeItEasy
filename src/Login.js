@@ -17,12 +17,14 @@ const Login = () => {
   return (
     <View style={styles.screen}> 
       <StatusBar style="auto" />
-
+    <View style={styles.boxFlex}>
      <View  style={styles.box}>
         <TextInput  style={styles.textInput}
         placeholder="Email."
         ></TextInput>
      </View>
+   
+     
      <View style={styles.box}>
      <TextInput  style={styles.textInput}
        placeholder="Password."></TextInput>
@@ -30,12 +32,17 @@ const Login = () => {
      <View style={styles.loginBtn}>
         <Text>LOGIN</Text>
      </View>
+     </View>
+     
+    <View style={styles.bottomFlex}>
      <View style={styles.hairline} />
      <View style={styles.signUpTxt}> 
      <Text >"Don't have an account?" Sign Up</Text>
      </View>
-
      </View>
+     </View>
+
+    
   )
 }
 const styles = StyleSheet.create({
@@ -48,6 +55,20 @@ screen:{
     alignItems:"center",
     justifyContent:"center",
 },
+boxFlex:{
+    flex:14,
+    width:'100%',
+    backgroundColor:"#fff",
+    alignItems:"center",
+    justifyContent:"center",
+},
+bottomFlex:{
+    flex:2,
+    width:'100%',
+    backgroundColor:"#fff",
+    alignItems:"center",
+    justifyContent:"center",
+},
 box:{
    
     borderRadius: 10,
@@ -55,7 +76,7 @@ box:{
     height:45,
     width:'80%',
     marginBottom: 20,
-
+    
 },
 textInput: {
     height: 50,
