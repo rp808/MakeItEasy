@@ -47,7 +47,7 @@ const Recipe = () => {
 
             <View style={styles.ingreInstruct}>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.buttonOne}>
                         <Text style={styles.buttonText}>Ingredients</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
       },
 
     recipeImg: {
-        flex: 2.5,
+        flex: 3,
         width: '100%',
         backgroundColor: "#000000",
         alignItems: "center",
@@ -190,7 +190,14 @@ const styles = StyleSheet.create({
       
         marginBottom: 10,
     },
-
+    buttonOne: {
+        flex: 1,
+        alignItems: 'center',
+        paddingVertical: 8,
+        backgroundColor: '#D9DDDC',
+        marginHorizontal: 8,
+        borderRadius: 8,
+    },
     image: {
         width: '100%',
         height: '100%',
@@ -258,7 +265,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         paddingVertical: 8,
-        backgroundColor: '#E0E0E0',
+        backgroundColor: '#828282',
         marginHorizontal: 8,
         borderRadius: 8,
     },
