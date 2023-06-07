@@ -65,7 +65,20 @@ export const Home = () => {
 
 
             <View style={styles.buttomNavFlex}>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImg} source={require("./assets/home.png")}/>
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </View>
+                <View style={styles.iconContainer}>
+                    <Image source={require("./assets/home.png")}/>
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </View>
+                <View style={styles.iconContainer}>
+                    <Image source={require("./assets/home.png")}/>
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </View>
 
+                
             </View>
 
 
@@ -94,21 +107,36 @@ const styles = StyleSheet.create({
     },
     cardsFlex: {
         flex: 10,
-        // marginTop:10,
+      
         width: '100%',
         backgroundColor: "#fff",
-        alignItems: "center",
+        alignItems: "right",
         justifyContent: "center",
-        //margin:10,
+      
     },
    
     buttomNavFlex: {
-        flex: 1,
-        width: '100%',
-        backgroundColor: "#fbc",
-        alignItems: "center",
+        flexDirection: 'row',
         justifyContent: "center",
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        height: 54,
+           
+         flex: 0,
+         margin:10,
+        // width: '100%',
+        // backgroundColor: "#fbc",
+        // alignItems: "center",
+        // justifyContent: "center",
     },
+    iconContainer: {
+        alignItems: 'center',
+        marginLeft:35,
+        marginRight:55,
+        marginBottom:15,
+        marginTop:15,
+        
+      },
     logoTxt: {
         fontSize: 22,
         fontWeight: 'bold',
@@ -135,6 +163,13 @@ const styles = StyleSheet.create({
             
         
     },
+    iconImg: {
+       
+        width:40,
+        height: 40,
+      
+        marginBottom: 10,
+    },
     image: {
         marginTop: -80,
         width: 120,
@@ -146,10 +181,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
+        marginRight:"50%",
     },
     rating: {
         fontSize: 14,
         color: '#888888',
+        marginRight:"50%",
     },
     listContainer: {
         paddingHorizontal: 10,
