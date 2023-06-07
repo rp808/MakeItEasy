@@ -5,13 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/SignUp';
 import { Home } from './src/Home';
+import Recipe from './src/Recipe';
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
       {/* {<Login/>} */}
       {/* <SignUp/> */}
-      <Home/>
+      {/* <Home/> */}
+      <Recipe/>
       {/* <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
