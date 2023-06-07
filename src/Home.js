@@ -74,7 +74,7 @@ export const Home = () => {
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
                 <View style={styles.iconContainer}>
-                    <Image source={require("./assets/home.png")}/>
+                    <Image style={styles.iconImg}  source={require("./assets/logout.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
 
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         marginLeft:35,
         marginRight:55,
         marginBottom:15,
-        marginTop:15,
+       // marginTop:15,
         
       },
     logoTxt: {
@@ -165,8 +165,8 @@ const styles = StyleSheet.create({
     },
     iconImg: {
        
-        width:40,
-        height: 40,
+        width:30,
+        height: 30,
       
         marginBottom: 10,
     },
