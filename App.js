@@ -4,13 +4,14 @@ import Login from './src/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/SignUp';
+import { Home } from './src/Home';
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
       {/* {<Login/>} */}
-      <SignUp/>
-
+      {/* <SignUp/> */}
+      <Home/>
       {/* <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen

@@ -19,7 +19,7 @@ const SignUp = () => {
           <StatusBar style="auto" />
         <View style={styles.boxFlex}>
             <View>
-                <Text style={styles.welcomeTxt}>Hello, welcome</Text>
+                <Text style={styles.welcomeTxt}>Hello and welcome</Text>
             </View>
          <View  style={styles.box}>
             <TextInput  style={styles.textInput}
