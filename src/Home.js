@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     appNameFlex: {
         flex: 1.2,
         width: '100%',
-        backgroundColor: "#fbf",
+        backgroundColor: "#fff",
         paddingLeft: 15,
         alignItems: "start",
         justifyContent: "center",
@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        //margin:10,
     },
    
     buttomNavFlex: {
@@ -123,8 +124,10 @@ const styles = StyleSheet.create({
         // paddingRight: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        
-        margin:"5%",
+        marginTop:30,
+        marginRight:"5%",
+        marginLeft:"5%",
+        marginBottom:"5%",
         
         // marginBottom: 10,
         // marginTop:20,
