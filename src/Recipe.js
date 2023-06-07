@@ -11,6 +11,7 @@ import {
     Linking,
     FlatList,
 } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -21,12 +22,22 @@ const Recipe = () => {
 
             <View style={styles.recipeImg}>
 
-            <Image style={styles.image} source={require("./assets/eggs.jpg")}/>
+                <Image style={styles.image} source={require("./assets/eggs.jpg")} />
 
 
             </View>
 
-            <View style={styles.titleRating}></View>
+            <View style={styles.titleRating}>
+
+                <View style={styles.titleContainer}>
+                    <Text style={styles.recipeTitle}>Delicious Recipe</Text>
+                    <View style={styles.ratingContainer}>
+                        <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
+                        <Text style={styles.ratingText}>4.5</Text>
+                    </View>
+                </View>
+
+            </View>
 
 
             <View style={styles.ingreInstruct}></View>
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
     },
 
     recipeImg: {
-        flex:2.5,
+        flex: 2.5,
         width: '100%',
         backgroundColor: "#000000",
         alignItems: "center",
@@ -91,13 +102,36 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         alignItems: "start",
         justifyContent: "center",
-        
+
     },
 
-    image:{
+    image: {
         width: '100%',
         height: '100%',
     },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 16,
+      },
+      recipeTitle: {
+        fontSize: 25,
+       // fontWeight: 'bold',
+       fontFamily:"GillSans-SemiBold",
+        marginRight: 8,
+        alignItems: 'left',
+      },
+      ratingContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+      },
+      starIcon: {
+        marginRight: 4,
+      },
+      ratingText: {
+        fontSize: 25,
+        fontFamily:"GillSans-SemiBold",
+      },
 });
 
 
