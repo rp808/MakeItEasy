@@ -50,6 +50,16 @@ const Recipe = () => {
                         <Text style={styles.buttonText}>Instructions</Text>
                     </TouchableOpacity>
                 </View>
+                <View style={styles.ingredientsContainer}>
+        {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
+        <Text style={styles.ingredientsText}>
+          - Ingredient 1 {'\n'}
+          - Ingredient 2 {'\n'}
+          - Ingredient 3 {'\n'}
+          - Ingredient 4 {'\n'}
+          - Ingredient 5 {'\n'}
+        </Text>
+      </View>
             </View>
 
 
@@ -97,7 +107,7 @@ const styles = StyleSheet.create({
     ingreInstruct: {
         flex: 3,
         width: '100%',
-        backgroundColor: "#fbc",
+        backgroundColor: "#fff",
         // alignItems: "center",
         // justifyContent: "center",
     },
@@ -128,7 +138,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         // alignItems: 'center',
          marginTop: 6,
-         paddingHorizontal: 16,
+        // paddingHorizontal: 16,
         alignItems: 'center',
        // marginTop: -40,
         shadowColor: '#000',
@@ -136,7 +146,7 @@ const styles = StyleSheet.create({
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 4,
         
@@ -157,7 +167,7 @@ const styles = StyleSheet.create({
     recipeTitle: {
         fontSize: 25,
         // fontWeight: 'bold',
-        fontFamily: "GillSans-SemiBold",
+        fontFamily: "GillSans-Light",
         marginLeft: 8,
         // alignItems: 'left',
         
@@ -174,12 +184,12 @@ const styles = StyleSheet.create({
     },
     ratingText: {
         fontSize: 25,
-        fontFamily: "GillSans-SemiBold",
+        fontFamily: "GillSans-Light",
         marginRight: 35,
     },
     buttonContainer: {
         flexDirection: 'row',
-        marginTop: 16,
+        marginTop: 10,
     },
     button: {
         flex: 1,
@@ -190,9 +200,26 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     buttonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 20,
+       
+        fontFamily: "Gill Sans",
     },
+    ingredientsContainer: {
+        marginTop: 16,
+        paddingHorizontal: 16,
+      },
+    //   sectionTitle: {
+    //     fontSize: 20,
+    //     fontWeight: 'bold',
+    //     marginBottom: 8,
+    //   },
+      ingredientsText: {
+        fontSize: 19,
+        marginLeft: 16,
+        marginBottom:12,
+        paddingBottom:10,
+        fontFamily: "Gill Sans",
+      },
 });
 
 
