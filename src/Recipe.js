@@ -77,9 +77,21 @@ const Recipe = () => {
             </View>
 
 
-            <View style={styles.buttomNavFlex}>
-            
+              <View style={styles.buttomNavFlex}>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")}/>
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </View>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImg}  source={require("./assets/filter.png")}/>
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </View>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImg}  source={require("./assets/logout.png")}/>
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </View>
 
+                
             </View>
 
 
@@ -133,14 +145,35 @@ const styles = StyleSheet.create({
         alignItems: "flex-end",
         justifyContent: "center",
     },
+  
     buttomNavFlex: {
-        flex: 0.5,
-        width: '100%',
-        backgroundColor: "#fbc",
-        paddingLeft: 15,
-        alignItems: "start",
+        flexDirection: 'row',
         justifyContent: "center",
-
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        height: 54,
+           
+         flex: 0,
+         margin:10,
+        // width: '100%',
+        // backgroundColor: "#fbc",
+        // alignItems: "center",
+        // justifyContent: "center",
+    },
+    iconContainer: {
+        alignItems: 'center',
+        marginLeft:35,
+        marginRight:55,
+        marginBottom:15,
+       // marginTop:15,
+        
+      },
+      iconImg: {
+       
+        width:30,
+        height: 30,
+      
+        marginBottom: 10,
     },
 
     image: {
