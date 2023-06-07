@@ -21,7 +21,11 @@ const Recipe = () => {
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-
+            <View style={styles.backButtonContainer}>
+        <TouchableOpacity style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color="#000000" />
+        </TouchableOpacity>
+      </View>
                 <Image style={styles.image} source={require("./assets/eggs.jpg")} />
 
 
@@ -112,6 +116,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    backButtonContainer: {
+        position: 'absolute',
+        top: 16,
+        left: 16,
+        zIndex: 1,
+      },
+      backButton: {
+        backgroundColor: '#FFFFFF',
+        padding: 8,
+        borderRadius: 16,
+      },
 
     recipeImg: {
         flex: 2.5,
