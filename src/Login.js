@@ -18,6 +18,9 @@ const Login = () => {
     <View style={styles.screen}> 
       <StatusBar style="auto" />
     <View style={styles.boxFlex}>
+        <View>
+            <Text style={styles.welcomeTxt}>Welcome Back</Text>
+        </View>
      <View  style={styles.box}>
         <TextInput  style={styles.textInput}
         placeholder="Email."
@@ -56,21 +59,27 @@ screen:{
     justifyContent:"center",
 },
 boxFlex:{
-    flex:14,
+    flex:4,
     width:'100%',
     backgroundColor:"#fff",
     alignItems:"center",
-    justifyContent:"center",
+    justifyContent:"flex-end",
 },
 bottomFlex:{
     flex:2,
     width:'100%',
     backgroundColor:"#fff",
     alignItems:"center",
-    justifyContent:"center",
+    justifyContent:"flex-end",
+    paddingBottom:30,
+},
+welcomeTxt:{
+    fontSize: 32,
+    fontWeight: 'bold',
+    paddingBottom:20,
 },
 box:{
-   
+    
     borderRadius: 10,
     borderWidth:1,
     height:45,
