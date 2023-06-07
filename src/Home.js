@@ -70,7 +70,7 @@ export const Home = () => {
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
                 <View style={styles.iconContainer}>
-                    <Image source={require("./assets/home.png")}/>
+                    <Image style={styles.iconImg}  source={require("./assets/filter.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
                 <View style={styles.iconContainer}>
