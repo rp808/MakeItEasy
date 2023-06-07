@@ -51,22 +51,36 @@ const Recipe = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ingredientsContainer}>
-        {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
-        <Text style={styles.ingredientsText}>
-          - Ingredient 1 {'\n'}
-          - Ingredient 2 {'\n'}
-          - Ingredient 3 {'\n'}
-          - Ingredient 4 {'\n'}
-          - Ingredient 5 {'\n'}
-        </Text>
-      </View>
+                    {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
+                    <Text style={styles.ingredientsText}>
+                        - Ingredient 1 {'\n'}
+                        - Ingredient 2 {'\n'}
+                        - Ingredient 3 {'\n'}
+                        - Ingredient 4 {'\n'}
+                        - Ingredient 5 {'\n'}
+                    </Text>
+                </View>
             </View>
 
 
-            <View style={styles.userRating}></View>
+            <View style={styles.userRating}>
+
+                {/* <Text style={styles.sectionTitle}>User Rating:</Text> */}
+                <View style={styles.ratingContainer}>
+                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#D9DDDC" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#D9DDDC" style={styles.starIcon} />
+                </View>
+
+            </View>
 
 
-            <View style={styles.buttomNavFlex}></View>
+            <View style={styles.buttomNavFlex}>
+            
+
+            </View>
 
 
 
@@ -97,7 +111,7 @@ const styles = StyleSheet.create({
     titleRating: {
         flex: 0.5,
         width: '100%',
-        
+
         backgroundColor: "#fff",
         // marginRight: 25,
         // marginLeft:25,
@@ -115,7 +129,8 @@ const styles = StyleSheet.create({
         flex: 0.5,
         width: '100%',
         backgroundColor: "#fff",
-        alignItems: "center",
+        marginRight:45,
+        alignItems: "flex-end",
         justifyContent: "center",
     },
     buttomNavFlex: {
@@ -133,14 +148,14 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     titleContainer: {
-       width: '100%',
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         // alignItems: 'center',
-         marginTop: 6,
+        marginTop: 6,
         // paddingHorizontal: 16,
         alignItems: 'center',
-       // marginTop: -40,
+        // marginTop: -40,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -149,11 +164,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 4,
-        
-        
+
+
     },
     backgroundContainer: {
-      //  margin:6,
+        //  margin:6,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -161,8 +176,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingVertical: 10,
         borderRadius: 8,
-        
-       
+
+
     },
     recipeTitle: {
         fontSize: 25,
@@ -170,13 +185,13 @@ const styles = StyleSheet.create({
         fontFamily: "GillSans-Light",
         marginLeft: 8,
         // alignItems: 'left',
-        
+
     },
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 4,
-        
+
 
     },
     starIcon: {
@@ -201,25 +216,37 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 20,
-       
+
         fontFamily: "Gill Sans",
     },
     ingredientsContainer: {
         marginTop: 16,
         paddingHorizontal: 16,
-      },
+    },
     //   sectionTitle: {
     //     fontSize: 20,
     //     fontWeight: 'bold',
     //     marginBottom: 8,
     //   },
-      ingredientsText: {
+    ingredientsText: {
         fontSize: 19,
         marginLeft: 16,
-        marginBottom:12,
-        paddingBottom:10,
+        marginBottom: 12,
+        paddingBottom: 10,
         fontFamily: "Gill Sans",
-      },
+    },
+    ratingContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 4,
+    },
+    starIcon: {
+        marginRight: 4,
+        marginLeft:5,
+    },
+    ratingText: {
+        fontSize: 16,
+    },
 });
 
 
