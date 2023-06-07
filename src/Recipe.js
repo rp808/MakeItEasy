@@ -19,7 +19,12 @@ const Recipe = () => {
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
 
-            <View style={styles.recipeImg}></View>
+            <View style={styles.recipeImg}>
+
+            <Image style={styles.image} source={require("./assets/eggs.jpg")}/>
+
+
+            </View>
 
             <View style={styles.titleRating}></View>
 
@@ -54,7 +59,7 @@ const styles = StyleSheet.create({
     recipeImg: {
         flex:2.5,
         width: '100%',
-        backgroundColor: "#fbc",
+        backgroundColor: "#000000",
         alignItems: "center",
         justifyContent: "center",
     },
@@ -87,6 +92,11 @@ const styles = StyleSheet.create({
         alignItems: "start",
         justifyContent: "center",
         
+    },
+
+    image:{
+        width: '100%',
+        height: '100%',
     },
 });
 
