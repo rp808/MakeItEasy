@@ -27,6 +27,18 @@ const FilterPage = () => {
             setSelectedItems([...selectedItems, item]);
         }
     };
+    const [selectedLevel, setSelectedLevel] = useState('');
+
+    const handleLevel = (item) => {
+        setSelectedLevel(item);
+    };
+
+    const levels = [
+        { label: 'Beginner Friendly', value: 'beginner' },
+        { label: 'Intermediate', value: 'intermediate' },
+        { label: 'Advanced', value: 'advanced' },
+    ];
+
 
     const options = [
         {
@@ -85,6 +97,21 @@ const FilterPage = () => {
 
                 </View>
                 <View style={styles.levelThree}>
+                    <Text style={styles.label}>Difficulty Level</Text>
+                    <View style={styles.radioContainer}>
+                        {levels.map((levels) => (
+                            <TouchableOpacity
+                                key={levels.value}
+                                style={[
+                                    styles.radio,
+                                    selectedLevel === levels.value && styles.radioSelected,
+                                ]}
+                                onPress={() => handleLevel(levels.value)}
+                            >
+                                <Text style={styles.radioLabel}>{levels.label}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
 
 
                 </View>
@@ -135,7 +162,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     appNameFlex: {
-        flex: 1.2,
+        flex: 0.8,
         width: '100%',
         backgroundColor: "#fff",
         paddingLeft: 15,
@@ -152,19 +179,19 @@ const styles = StyleSheet.create({
 
     },
     levelThree: {
-        flex: 4,
+        flex: 1,
+        backgroundColor: "#F9F9F9",
+        width: "100%",
 
-        width: '100%',
-        backgroundColor: "#000",
-        alignItems: "right",
-        justifyContent: "center",
+        // alignItems: "right",
+        // justifyContent: "center",
     },
     diet: {
 
-        flex: 2,
-        backgroundColor:"#EDEDED",
-        width:"100%",
-        
+        flex: 1,
+        backgroundColor: "#F9F9F9",
+        width: "100%",
+
 
         // width: '100%',
         // backgroundColor: "#fff",
@@ -174,22 +201,47 @@ const styles = StyleSheet.create({
         // justifyContent: 'flex-start',
 
 
+    }, radioContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        margin: 5,
+    },
+    radio: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 10,
+        marginBottom: 10,
+        marginLeft:13,
+        padding: 5,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#9A9A9A',
+        marginTop: 10,
+    },
+    radioSelected: {
+        backgroundColor: '#AEAEAE',
+    },
+    radioLabel: {
+        marginLeft: 2,
+        fontFamily: "GillSans-Light",
+        fontSize: 18,
     },
     container: {
         marginBottom: 20,
     },
     label: {
-        marginTop:20,
+        marginTop: 20,
         fontSize: 22,
-        marginLeft:"20%",
-        fontWeight: 'bold',
+        marginLeft: "30%",
+        // fontWeight: 'bold',GillSans-SemiBold
+        fontFamily: "GillSans-SemiBold",
         marginBottom: 5,
     },
     checkboxContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        margin:10,
-   
+        margin: 10,
+
     },
     checkbox: {
         flexDirection: 'row',
@@ -200,17 +252,17 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#9A9A9A',
-        marginTop:10,
-      },
-      checkboxSelected: {
-        backgroundColor: '#808080',
-      },
-      checkboxLabel: {
+        marginTop: 10,
+    },
+    checkboxSelected: {
+        backgroundColor: '#AEAEAE',
+    },
+    checkboxLabel: {
         marginLeft: 2,
-        fontFamily: "Gill Sans",
+        fontFamily: "GillSans-Light",
         fontSize: 18,
-      },
-    
+    },
+
 
     buttomNavFlex: {
         flexDirection: 'row',
