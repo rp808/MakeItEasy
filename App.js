@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/SignUp';
 import { Home } from './src/Home';
 import Recipe from './src/Recipe';
+import FilterPage from './src/FilterPage';
 import RecipeInstruction from './src/RecipeInstruction';
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -15,7 +16,8 @@ export default function App() {
       {/* <SignUp/> */}
       {/* <Home/> */}
       {/* <Recipe/> */}
-      <RecipeInstruction/>
+      <FilterPage/>
+      {/* <RecipeInstruction/> */}
       {/* <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
