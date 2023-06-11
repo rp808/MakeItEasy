@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
 import Login from "./Login";
 import FilterPage from "./FilterPage";
+import Recipe from "./Recipe";
 import {
     StyleSheet,
     Text,
@@ -49,7 +50,7 @@ export const Home = ({navigation}) => {
             </View>
            
 
-            <View style={styles.cardsFlex}>
+            <TouchableOpacity style={styles.cardsFlex} onPress={() => navigation.navigate('Recipe')}>
                 {/* <View style={styles.cards}>
                     <Image source={require("./assets/eggs.jpg")} style={styles.image}></Image>
                     <Text style={styles.description}>recipe description</Text>
@@ -63,7 +64,7 @@ export const Home = ({navigation}) => {
         contentContainerStyle={styles.listContainer}
       />
 
-            </View>
+            </TouchableOpacity>
 
 
             <View style={styles.buttomNavFlex}>

@@ -35,7 +35,10 @@ export default function App() {
             {
             headerShown:false}
           }   />
-          
+                    <Stack.Screen name="Recipe" component={Recipe}      options={
+            {
+            headerShown:false}
+          }   />
       </Stack.Navigator>
 
       </NavigationContainer>
