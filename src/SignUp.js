@@ -15,7 +15,17 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const SignUp = ({navigation}) => {
+const SignUp = ({ navigation }) => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  const SendToBackend=()=>{
+    // console.log(email);
+  }
+
   return (
     <View style={styles.screen}>
       <StatusBar style="auto" />
@@ -26,32 +36,43 @@ const SignUp = ({navigation}) => {
         <View style={styles.box}>
           <TextInput style={styles.textInput}
             placeholder="First Name"
+            autoCapitalize="none"
+            onChangeText={(firstName) => setFirstname(firstName)}
           ></TextInput>
         </View>
         <View style={styles.box}>
           <TextInput style={styles.textInput}
             placeholder="Last Name"
+            autoCapitalize="none"
+            onChangeText={(lastName) => setLastName(lastName)}
           ></TextInput>
         </View>
         <View style={styles.box}>
           <TextInput style={styles.textInput}
             placeholder="Email"
+            autoCapitalize="none"
+            onChangeText={(email) => setEmail(email)}
           ></TextInput>
         </View>
 
 
         <View style={styles.box}>
           <TextInput style={styles.textInput}
-            placeholder="Password"></TextInput>
+            placeholder="Password"
+            autoCapitalize="none"
+            onChangeText={(password) => setPassword(password)}
+            ></TextInput>
         </View>
         <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.signupTxt}>SIGN UP</Text>
+          <Text onPress={()=>{
+            SendToBackend();
+          }} style={styles.signupTxt}>SIGN UP</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.bottomFlex}>
         <View style={styles.hairline} />
-        <TouchableOpacity style={styles.signUpTxt}  onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.signUpTxt} onPress={() => navigation.navigate('Login')}>
           <Text >"Already have an account" Log In</Text>
         </TouchableOpacity>
       </View>
