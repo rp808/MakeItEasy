@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
+import Login from "./Login";
+import FilterPage from "./FilterPage";
 import {
     StyleSheet,
     Text,
@@ -14,7 +16,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const Home = ({navigator}) => {
+export const Home = ({navigation}) => {
     const data = [
         { id: '1', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
         { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
@@ -40,7 +42,7 @@ export const Home = ({navigator}) => {
             <StatusBar style="auto" />
 
             <View style={styles.appNameFlex}>
-                <View>
+                <View >
                     <Text style={styles.logoTxt}>MakeItEasy</Text>
                 </View>
 
@@ -69,10 +71,10 @@ export const Home = ({navigator}) => {
                     <Image style={styles.iconImg} source={require("./assets/home.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
-                <View style={styles.iconContainer}>
+                <TouchableOpacity style={styles.iconContainer}  onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg}  source={require("./assets/filter.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
-                </View>
+                </TouchableOpacity>
                 <View style={styles.iconContainer}>
                     <Image style={styles.iconImg}  source={require("./assets/logout.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}

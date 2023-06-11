@@ -31,6 +31,11 @@ export default function App() {
             {
             headerShown:false}
           }   />
+                    <Stack.Screen name="FilterPage" component={FilterPage}      options={
+            {
+            headerShown:false}
+          }   />
+          
       </Stack.Navigator>
 
       </NavigationContainer>
