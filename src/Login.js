@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
-import { Home } from "./Home";
+import Home from "./Home";
+import SignUp from "./SignUp";
 import {
     StyleSheet,
     Text,
@@ -40,9 +41,9 @@ const Login = ({navigation}) => {
 
             <View style={styles.bottomFlex}>
                 <View style={styles.hairline} />
-                <View style={styles.signUpTxt}>
+                <TouchableOpacity style={styles.signUpTxt} onPress={() => navigation.navigate('SignUp')}>
                     <Text >"Don't have an account?" Sign Up</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
 
