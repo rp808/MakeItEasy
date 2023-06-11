@@ -219,7 +219,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     imageBackground: {
-        
+      //  height:'100%',
+        resizeMode:'contain',
 
       },
     appNameFlex: {

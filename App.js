@@ -4,29 +4,27 @@ import Login from './src/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/SignUp';
-import { Home } from './src/Home';
+import  Home from './src/Home';
 import Recipe from './src/Recipe';
 import FilterPage from './src/FilterPage';
 import RecipeInstruction from './src/RecipeInstruction';
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* {<Login/>} */}
-      {/* <SignUp/> */}
-      {/* <Home/> */}
-      {/* <Recipe/> */}
-      <FilterPage/>
-      {/* <RecipeInstruction/> */}
-      {/* <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
+  
+      
+      <NavigationContainer>
+      <Stack.Navigator>
+        
+        <Stack.Screen
           name="Login"
-          component={Login}
-          options={{title:'Login'}}/>
-        </Stack.Navigator>
-      </NavigationContainer> */}
-    </View>
+          component={Login}  
+            />
+        <Stack.Screen name="Home" component={Home}      />
+      </Stack.Navigator>
+
+      </NavigationContainer>
+    
   );
 }
 
