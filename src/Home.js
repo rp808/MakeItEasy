@@ -14,7 +14,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const Home = () => {
+export const Home = ({navigator}) => {
     const data = [
         { id: '1', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
         { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },

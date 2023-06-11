@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
+import Home from "./Home";
+import Login from "./Login";
 import {
   StyleSheet,
   Text,
@@ -13,7 +15,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
   return (
     <View style={styles.screen}>
       <StatusBar style="auto" />
@@ -42,16 +44,16 @@ const SignUp = () => {
           <TextInput style={styles.textInput}
             placeholder="Password"></TextInput>
         </View>
-        <View style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Home')}>
           <Text style={styles.signupTxt}>SIGN UP</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.bottomFlex}>
         <View style={styles.hairline} />
-        <View style={styles.signUpTxt}>
+        <TouchableOpacity style={styles.signUpTxt}  onPress={() => navigation.navigate('Login')}>
           <Text >"Already have an account" Log In</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
 
