@@ -92,109 +92,109 @@ const FilterPage = () => {
     return (
         (
             <View style={styles.screen}>
-                 <ImageBackground
-        source={require("./assets/back.jpg")} 
-        style={styles.imageBackground}
-        resizeMode="cover"
-      >
-                <StatusBar style="auto" />
+                <ImageBackground
+                    source={require("./assets/back.jpg")}
+                    style={styles.imageBackground}
+                    resizeMode="cover"
+                >
+                    <StatusBar style="auto" />
 
-                <View style={styles.appNameFlex}>
-                    <View>
-                        <Text style={styles.logoTxt}>MakeItEasy</Text>
-                    </View>
-
-                </View>
-                <View style={styles.diet}>
-                    {/* <View style={styles.container}> */}
-                    <Text style={styles.label}>Dietary Restrictions</Text>
-                    <View style={styles.checkboxContainer}>
-                        {options.map((option) => (
-                            <TouchableOpacity
-                                key={option.value}
-                                style={[
-                                    styles.checkbox,
-                                    selectedItems.includes(option.value) && styles.checkboxSelected,
-                                ]}
-                                onPress={() => handleSelection(option.value)}
-                            >
-                                <Text style={styles.checkboxLabel}>{option.label}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-
-                </View>
-                <View style={styles.levelThree}>
-                    <Text style={styles.label}>Difficulty Level</Text>
-                    <View style={styles.radioContainer}>
-                        {levels.map((levels) => (
-                            <TouchableOpacity
-                                key={levels.value}
-                                style={[
-                                    styles.radio,
-                                    selectedLevel === levels.value && styles.radioSelected,
-                                ]}
-                                onPress={() => handleLevel(levels.value)}
-                            >
-                                <Text style={styles.radioLabel}>{levels.label}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-
-
-                </View>
-
-                <View style={styles.avail}>
-                    <Text style={styles.label}>Available Ingredients</Text>
-                    {ingredients.map((ingredient, index) => (
-                        <View key={index} style={styles.ingredientRow}>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Ingredient Name"
-                                value={ingredient.name}
-                                onChangeText={(value) => handleIngredientChange(index, 'name', value)}
-                            />
-                            <TextInput
-                                style={[styles.input, styles.quantityInput]}
-                                placeholder="Quantity (optional)"
-                                value={ingredient.quantity}
-                                onChangeText={(value) => handleIngredientChange(index, 'quantity', value)}
-                            />
+                    <View style={styles.appNameFlex}>
+                        <View>
+                            <Text style={styles.logoTxt}>MakeItEasy</Text>
                         </View>
-                    ))}
-                    <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
-                        <Ionicons name="add" size={24} color="white" />
-                        <Text style={styles.addButtonText}>Add Ingredient</Text>
-                    </TouchableOpacity>
-                    <View style={styles.buttonRow}>
-                        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-                            <Text style={styles.buttonText}>Submit</Text>
+
+                    </View>
+                    <View style={styles.diet}>
+                        {/* <View style={styles.container}> */}
+                        <Text style={styles.label}>Dietary Restrictions</Text>
+                        <View style={styles.checkboxContainer}>
+                            {options.map((option) => (
+                                <TouchableOpacity
+                                    key={option.value}
+                                    style={[
+                                        styles.checkbox,
+                                        selectedItems.includes(option.value) && styles.checkboxSelected,
+                                    ]}
+                                    onPress={() => handleSelection(option.value)}
+                                >
+                                    <Text style={styles.checkboxLabel}>{option.label}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+
+                    </View>
+                    <View style={styles.levelThree}>
+                        <Text style={styles.label}>Difficulty Level</Text>
+                        <View style={styles.radioContainer}>
+                            {levels.map((levels) => (
+                                <TouchableOpacity
+                                    key={levels.value}
+                                    style={[
+                                        styles.radio,
+                                        selectedLevel === levels.value && styles.radioSelected,
+                                    ]}
+                                    onPress={() => handleLevel(levels.value)}
+                                >
+                                    <Text style={styles.radioLabel}>{levels.label}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+
+
+                    </View>
+
+                    <View style={styles.avail}>
+                        <Text style={styles.label}>Available Ingredients</Text>
+                        {ingredients.map((ingredient, index) => (
+                            <View key={index} style={styles.ingredientRow}>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Ingredient Name"
+                                    value={ingredient.name}
+                                    onChangeText={(value) => handleIngredientChange(index, 'name', value)}
+                                />
+                                <TextInput
+                                    style={[styles.input, styles.quantityInput]}
+                                    placeholder="Quantity (optional)"
+                                    value={ingredient.quantity}
+                                    onChangeText={(value) => handleIngredientChange(index, 'quantity', value)}
+                                />
+                            </View>
+                        ))}
+                        <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
+                            <Ionicons name="add" size={24} color="white" />
+                            <Text style={styles.addButtonText}>Add Ingredient</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-                            <Text style={styles.buttonText}>Reset</Text>
-                        </TouchableOpacity>
+                        <View style={styles.buttonRow}>
+                            <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+                                <Text style={styles.buttonText}>Submit</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
+                                <Text style={styles.buttonText}>Reset</Text>
+                            </TouchableOpacity>
+                        </View>
+
+
                     </View>
 
+                    <View style={styles.btmContainer}>
+                        <View style={styles.buttomNavFlex}>
 
-                </View>
-
-
-                <View style={styles.buttomNavFlex}>
-
-                    <View style={styles.iconContainer}>
-                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
-                        {/* <Text style={styles.ttitle}>Homee</Text> */}
+                            <View style={styles.iconContainer}>
+                                <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+                                {/* <Text style={styles.ttitle}>Homee</Text> */}
+                            </View>
+                            <View style={styles.iconContainer}>
+                                <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
+                                {/* <Text style={styles.ttitle}>Homee</Text> */}
+                            </View>
+                            <View style={styles.iconContainer}>
+                                <Image style={styles.iconImg} source={require("./assets/logout.png")} />
+                                {/* <Text style={styles.ttitle}>Homee</Text> */}
+                            </View>
+                        </View>
                     </View>
-                    <View style={styles.iconContainer}>
-                        <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
-                        {/* <Text style={styles.ttitle}>Homee</Text> */}
-                    </View>
-                    <View style={styles.iconContainer}>
-                        <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                        {/* <Text style={styles.ttitle}>Homee</Text> */}
-                    </View>
-
-                </View>
 
 
 
@@ -219,14 +219,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     imageBackground: {
-      //  height:'100%',
-        resizeMode:'contain',
+        //  height:'100%',
+        resizeMode: 'contain',
 
-      },
+    },
     appNameFlex: {
         flex: 0.8,
         width: '100%',
-       // backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         paddingLeft: 15,
         alignItems: "start",
         justifyContent: "center",
@@ -234,8 +234,8 @@ const styles = StyleSheet.create({
     avail: {
         flex: 4,
 
-     
-      //  backgroundColor: "#F9F9F9",
+
+        //  backgroundColor: "#F9F9F9",
         // alignItems: "right",
         // justifyContent: "center",
 
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     diet: {
 
         flex: 1,
-       // backgroundColor: "#F9F9F9",
+        // backgroundColor: "#F9F9F9",
         width: "100%",
 
 
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     radio: {
-        height:35,
+        height: 35,
         flexDirection: 'row',
         alignItems: 'center',
         marginRight: 10,
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
         borderColor: '#9A9A9A',
         marginTop: 10,
         backgroundColor: '#FFF',
-        height:35,
+        height: 35,
         //width:115,
     },
     checkboxSelected: {
@@ -339,8 +339,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 10,
         marginLeft: 5,
-        marginTop:15,
-        
+        marginTop: 15,
+
     },
     input: {
         flex: 1,
@@ -350,7 +350,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
-        height:35,
+        height: 35,
         backgroundColor: '#FFF',
         fontFamily: "GillSans-SemiBold",
     },
@@ -394,27 +394,40 @@ const styles = StyleSheet.create({
         color: 'white',
         fontFamily: "GillSans-SemiBold",
     },
+    btmContainer: {
+        flex: 1,
+       // height:"100%",
 
+    },
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center',
-       // backgroundColor: '#fff',
-        height: 74,
+        backgroundColor: '#fff',
+        height: 54,
 
-        flex: 1,
-        margin: 10,
-        // width: '100%',
-        // backgroundColor: "#fbc",
-        // alignItems: "center",
-        // justifyContent: "center",
+        flex: 0.5,
+        //margin: 10,
+        width: "100%",
+        //     flexDirection: 'row',
+        //     justifyContent: "center",
+        //     alignItems: 'center',
+        //    // backgroundColor: '#fff',
+        //     height: 74,
+
+        //     flex: 1,
+        //     margin: 10,
+        //     // width: '100%',
+        //     // backgroundColor: "#fbc",
+        //     // alignItems: "center",
+        //     // justifyContent: "center",
     },
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
         marginRight: 55,
-        marginBottom: 15,
-        // marginTop:15,
+       // marginBottom: 15,
+        marginTop: 15,
 
     },
     logoTxt: {

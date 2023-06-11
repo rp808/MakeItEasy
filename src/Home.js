@@ -50,13 +50,13 @@ export const Home = ({navigation}) => {
             </View>
            
 
-            <TouchableOpacity style={styles.cardsFlex} onPress={() => navigation.navigate('Recipe')}>
+            <View style={styles.cardsFlex}>
                 {/* <View style={styles.cards}>
                     <Image source={require("./assets/eggs.jpg")} style={styles.image}></Image>
                     <Text style={styles.description}>recipe description</Text>
                     <Text style={styles.rating}>rating</Text>
                 </View> */}
-                 <FlatList
+                 <FlatList 
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
@@ -64,7 +64,7 @@ export const Home = ({navigation}) => {
         contentContainerStyle={styles.listContainer}
       />
 
-            </TouchableOpacity>
+            </View>
 
 
             <View style={styles.buttomNavFlex}>
@@ -76,10 +76,10 @@ export const Home = ({navigation}) => {
                     <Image style={styles.iconImg}  source={require("./assets/filter.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </TouchableOpacity>
-                <View style={styles.iconContainer}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                     <Image style={styles.iconImg}  source={require("./assets/logout.png")}/>
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
-                </View>
+                </TouchableOpacity>
 
                 
             </View>
