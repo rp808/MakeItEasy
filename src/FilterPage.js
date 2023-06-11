@@ -219,8 +219,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     imageBackground: {
+        
 
-   
       },
     appNameFlex: {
         flex: 0.8,
