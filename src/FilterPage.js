@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
+import Login from "./Login";
+import Home from "./Home";
 import {
     StyleSheet,
     Text,
@@ -18,7 +20,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import CheckBoxForm from 'react-native-checkbox-form';
 
-const FilterPage = () => {
+const FilterPage = ({navigation}) => {
 
     const [selectedItems, setSelectedItems] = useState([]);
 
@@ -181,18 +183,18 @@ const FilterPage = () => {
                     <View style={styles.btmContainer}>
                         <View style={styles.buttomNavFlex}>
 
-                            <View style={styles.iconContainer}>
+                            <TouchableOpacity style={styles.iconContainer}  onPress={() => navigation.navigate('Home')}>
                                 <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
-                            </View>
+                            </TouchableOpacity>
                             <View style={styles.iconContainer}>
                                 <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
                             </View>
-                            <View style={styles.iconContainer}>
+                            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                                 <Image style={styles.iconImg} source={require("./assets/logout.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
 
@@ -396,7 +398,7 @@ const styles = StyleSheet.create({
     },
     btmContainer: {
         flex: 1,
-       // height:"100%",
+        // height:"100%",
 
     },
     buttomNavFlex: {
@@ -426,7 +428,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 35,
         marginRight: 55,
-       // marginBottom: 15,
+        // marginBottom: 15,
         marginTop: 15,
 
     },
