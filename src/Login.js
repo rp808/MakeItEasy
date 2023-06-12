@@ -15,7 +15,41 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
+    const [fdata, setFdata] = useState({
+        email: '',
+        password: ''
+    })
+
+    const [errMsg, setErrMsg] = useState(null);
+    const SendToBackend = () => {
+        if (fdata.firstName == "" || fdata.lastName == "" || fdata.email == "" || fdata.password == "") {
+            setErrMsg("all field are required");
+            return;
+        }
+        else {
+            fetch("http://192.168.40.75:3000/signin", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(fdata)
+            })
+                .then((res) => res.json()).then(
+                    data => {
+                        //console.log(data);
+                        if (data.error) {
+                            setErrMsg(data.error);
+                        }
+                        else {
+                            navigation.navigate('Home');
+                        }
+                    })
+        }
+
+
+        console.log(fdata);
+    };
     return (
         <View style={styles.screen}>
             <StatusBar style="auto" />
@@ -23,18 +57,28 @@ const Login = ({navigation}) => {
                 <View>
                     <Text style={styles.welcomeTxt}>Welcome Back</Text>
                 </View>
+                {
+                    errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
+                }
                 <View style={styles.box}>
                     <TextInput style={styles.textInput}
                         placeholder="Email."
+                        onPressIn={() => setErrMsg(null)}
+                        onChangeText={(text) => setFdata({ ...fdata, email: text })}
                     ></TextInput>
                 </View>
 
 
                 <View style={styles.box}>
                     <TextInput style={styles.textInput}
-                        placeholder="Password."></TextInput>
+                        placeholder="Password."
+
+                        secureTextEntry={true}
+                        onChangeText={(text) => setFdata({ ...fdata, password: text })}
+                        onPressIn={() => setErrMsg(null)}
+                    ></TextInput>
                 </View>
-                <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.loginBtn} onPress={() => SendToBackend()}>
                     <Text>LOGIN</Text>
                 </TouchableOpacity>
             </View>
