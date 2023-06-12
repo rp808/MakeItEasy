@@ -27,19 +27,30 @@ const [fdata, setFdata] = useState({
 
   const [errMsg, setErrMsg] = useState(null);
   const SendToBackend = () => {
-    // if (fdata.firstName == "" || fdata.lastName == "" || fdata.email == "" || fdata.password == ""  ) {
-    //   setErrMsg("all field are required");
-    //   return;
+    if (fdata.firstName == "" || fdata.lastName == "" || fdata.email == "" || fdata.password == ""  ){
+      setErrMsg("all field are required");
+      return;
+   }
+   else{
+    fetch("http://192.168.40.75:3000/signup",{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(fdata)
+    })
+    .then((res) => res.json()).then(
+      data => {
+          //console.log(data);
+          if(data.error){
+            setErrMsg(data.error);
+          }
+          else{
+            navigation.navigate('Home');
+          }
+        })
+   }
 
-    // }
-    //  else {
-    //   fetch("http://10.0.2.2.:3000/signup", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(fdata),
-    //   })
     //     .then((res) => res.json())
     //     .then((data) => {
     //       console.log(data);
@@ -97,10 +108,10 @@ const [fdata, setFdata] = useState({
             onChangeText={(text) => setFdata({ ...fdata, password: text })}
           ></TextInput>
         </View>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Home')}>
-          <Text onPress={() => {
+        <TouchableOpacity style={styles.loginBtn} onPress={() => {
             SendToBackend();
-          }} style={styles.signupTxt}>SIGN UP</Text>
+          }} >
+          <Text style={styles.signupTxt}>SIGN UP</Text>
         </TouchableOpacity>
       </View>
 
