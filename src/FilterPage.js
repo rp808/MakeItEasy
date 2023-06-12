@@ -18,7 +18,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import CheckBoxForm from 'react-native-checkbox-form';
 
 const FilterPage = ({navigation}) => {
 

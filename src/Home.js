@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
-import Login from "./Login";
+import Login from "../src/Login";
 import FilterPage from "./FilterPage";
 import Recipe from "./Recipe";
 import {

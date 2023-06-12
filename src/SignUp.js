@@ -14,17 +14,44 @@ import {
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import codegenNativeCommands from "react-native/Libraries/Utilities/codegenNativeCommands";
 
 const SignUp = ({ navigation }) => {
+const [fdata, setFdata] = useState({
+ firstName:'',
+ lastName:'',
+  email: '',
+  password: '',
+ 
+})
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [errMsg, setErrMsg] = useState(null);
+  const SendToBackend = () => {
+    // if (fdata.firstName == "" || fdata.lastName == "" || fdata.email == "" || fdata.password == ""  ) {
+    //   setErrMsg("all field are required");
+    //   return;
 
-  const SendToBackend=()=>{
-    // console.log(email);
-  }
+    // }
+    //  else {
+    //   fetch("http://10.0.2.2.:3000/signup", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(fdata),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    // }
+    console.log(fdata);  };
+
+
+
 
   return (
     <View style={styles.screen}>
@@ -33,25 +60,31 @@ const SignUp = ({ navigation }) => {
         <View>
           <Text style={styles.welcomeTxt}>Hello and welcome</Text>
         </View>
+        {
+          errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
+        }
         <View style={styles.box}>
           <TextInput style={styles.textInput}
             placeholder="First Name"
             autoCapitalize="none"
-            onChangeText={(firstName) => setFirstname(firstName)}
+            onPressIn={() => setErrMsg(null)}
+            onChangeText={(text) => setFdata({ ...fdata, firstName: text })}
           ></TextInput>
         </View>
         <View style={styles.box}>
           <TextInput style={styles.textInput}
             placeholder="Last Name"
             autoCapitalize="none"
-            onChangeText={(lastName) => setLastName(lastName)}
+            onPressIn={() => setErrMsg(null)}
+            onChangeText={(text) => setFdata({ ...fdata, lastName: text })}
           ></TextInput>
         </View>
         <View style={styles.box}>
           <TextInput style={styles.textInput}
             placeholder="Email"
             autoCapitalize="none"
-            onChangeText={(email) => setEmail(email)}
+            onPressIn={() => setErrMsg(null)}
+            onChangeText={(text) => setFdata({ ...fdata, email: text })}
           ></TextInput>
         </View>
 
@@ -60,11 +93,12 @@ const SignUp = ({ navigation }) => {
           <TextInput style={styles.textInput}
             placeholder="Password"
             autoCapitalize="none"
-            onChangeText={(password) => setPassword(password)}
-            ></TextInput>
+            onPressIn={() => setErrMsg(null)}
+            onChangeText={(text) => setFdata({ ...fdata, password: text })}
+          ></TextInput>
         </View>
         <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Home')}>
-          <Text onPress={()=>{
+          <Text onPress={() => {
             SendToBackend();
           }} style={styles.signupTxt}>SIGN UP</Text>
         </TouchableOpacity>
