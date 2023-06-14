@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 import Home from "./Home";
 import SignUp from "./SignUp";
 import {
@@ -11,6 +13,7 @@ import {
     Button,
     TouchableOpacity,
     Linking,
+    KeyboardAvoidingView,
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -51,7 +54,11 @@ const Login = ({ navigation }) => {
         console.log(fdata);
     };
     return (
-        <View style={styles.screen}>
+        
+        <KeyboardAvoidingView
+        style={styles.screen}
+        behavior="padding"
+      >
             <StatusBar style="auto" />
             <View style={styles.boxFlex}>
                 <View>
@@ -61,6 +68,7 @@ const Login = ({ navigation }) => {
                     errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
                 }
                 <View style={styles.box}>
+                <MaterialIcons name="email" size={24} color="black" />
                     <TextInput style={styles.textInput}
                         placeholder="Email."
                         onPressIn={() => setErrMsg(null)}
@@ -70,6 +78,7 @@ const Login = ({ navigation }) => {
 
 
                 <View style={styles.box}>
+                <Fontisto name="key" size={24} color="black" />
                     <TextInput style={styles.textInput}
                         placeholder="Password."
 
@@ -79,7 +88,7 @@ const Login = ({ navigation }) => {
                     ></TextInput>
                 </View>
                 <TouchableOpacity style={styles.loginBtn} onPress={() => SendToBackend()}>
-                    <Text>LOGIN</Text>
+                    <Text style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
 
@@ -89,7 +98,7 @@ const Login = ({ navigation }) => {
                     <Text >"Don't have an account?" Sign Up</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
 
 
     )
@@ -103,6 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        padding: 5,
     },
     boxFlex: {
         flex: 4,
@@ -125,20 +135,35 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     box: {
-
-        borderRadius: 10,
-        borderWidth: 1,
-        height: 45,
+        flexDirection: 'row',
         width: '80%',
-        marginBottom: 20,
+        marginVertical: 10,
+        // backgroundColor: colors.col1,
+        borderRadius: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        // alignSelf: 'center',
+        borderWidth: 0.8,
+        elevation: 20,
+
+        // borderRadius: 10,
+        // borderWidth: 0.8,
+        // height: 45,
+        // width: '80%',
+        // marginBottom: 20,
+        
 
     },
     textInput: {
-        height: 50,
-        flex: 1,
-        padding: 10,
-        marginLeft: 20,
-        width: "80%",
+        fontSize: 18,
+        marginLeft: 10,
+        width: '80%',
+        // height: 50,
+        // flex: 1,
+        // padding: 10,
+        // marginLeft: 20,
+        // width: "80%",
+    
     },
     loginBtn: {
         width: "60%",
@@ -148,6 +173,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 30,
         backgroundColor: "#8DAA6F",
+        
+    
+    },
+    buttonText: {
+        fontSize: 20,
+  
+        fontFamily: "Gill Sans",
     },
     hairline: {
         marginTop: 40,
@@ -159,7 +191,7 @@ const styles = StyleSheet.create({
     signUpTxt: {
         marginTop: 5,
         height: 30,
-        marginBottom: 30,
+        marginBottom: 10,
 
     },
 
