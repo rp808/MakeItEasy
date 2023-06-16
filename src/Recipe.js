@@ -15,7 +15,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Recipe = () => {
+const Recipe = (props) => {
+    console.log("props",props.route.params)
     return (
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}

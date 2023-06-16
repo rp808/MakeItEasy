@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Login from "../src/Login";
 import FilterPage from "./FilterPage";
 import Recipe from "./Recipe";
@@ -14,29 +14,52 @@ import {
     Linking,
     FlatList,
 } from "react-native";
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export const Home = ({ navigation }) => {
+    
+    useEffect(() => {
+        sendDataToServer();
+      }, []);
     const data = [
         { id: '1', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        { id: '3', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '4', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+         { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+         { id: '3', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+         { id: '4', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+         { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
         { id: '6', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        { id: '7', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '8', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        { id: '9', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '10', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+        // { id: '7', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+        // { id: '8', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+        // { id: '9', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+        // { id: '10', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
         // Add more card data here
     ];
+    
+    const sendDataToServer = async () => {
+        try {
+          const response = await fetch('http://192.168.40.75:3000/cards', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+      
+ 
+        } catch (error) {
+          console.error('An error occurred while sending data:', error);
+        }
+      };
+
+    
     const renderItem = ({ item }) => (
-        <View style={styles.cards}>
+        <TouchableOpacity style={styles.cards} onPress={()=>{navigation.navigate("Recipe",{item})}}>
             <Image source={item.imageSource} style={styles.image} />
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.rating}>{item.rating}</Text>
-        </View>
+        </TouchableOpacity>
     );
     return (
         <View style={styles.screen}>
