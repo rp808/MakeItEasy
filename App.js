@@ -8,6 +8,8 @@ import  Home from './src/Home';
 import Recipe from './src/Recipe';
 import FilterPage from './src/FilterPage';
 import RecipeInstruction from './src/RecipeInstruction';
+import Suggestions from './src/Sugestions';
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
@@ -40,6 +42,10 @@ export default function App() {
             headerShown:false}
           }   />
                      <Stack.Screen name="RecipeInstruction" component={RecipeInstruction}      options={
+            {
+            headerShown:false}
+          }   />
+                        <Stack.Screen name="Suggestions" component={Suggestions}      options={
             {
             headerShown:false}
           }   />
