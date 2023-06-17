@@ -20,6 +20,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const FilterPage = ({navigation}) => {
+    
 
     const [selectedItems, setSelectedItems] = useState([]);
 
@@ -68,25 +69,56 @@ const FilterPage = ({navigation}) => {
         // Add more dietary restrictions here
     ];
 
-    const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }]);
+    const [ingredients, setIngredients] = useState([{ name: '' }]);
 
-    const handleIngredientChange = (index, field, value) => {
+    const handleIngredientChange = (index, value) => {
         const updatedIngredients = [...ingredients];
-        updatedIngredients[index][field] = value;
+        updatedIngredients[index].name = value;
         setIngredients(updatedIngredients);
     };
 
     const addIngredientRow = () => {
-        setIngredients([...ingredients, { name: '', quantity: '' }]);
+        setIngredients([...ingredients, { name:''}]);
     };
 
     const handleSubmit = () => {
-        // Handle submission logic here
-        console.log(ingredients);
-    };
+        // Prepare the data to be sent to the server
+        const data = {
+            ingredients: ingredients.map((ingredient) => ingredient.name),
+        //   selectedItems: selectedItems,
+        //   selectedLevel: selectedLevel
+        };
+      
+        // Make the POST request to the filter endpoint
+        fetch('http://192.168.40.75:3000/filter', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log('Data sent successfully');
+            return response.json();
+          } else {
+            console.error('Error sending data:', response.status);
+            // Handle any errors that occur during the request
+          }
+        })
+        .then(data => {
+          // Process the matched ingredients received from the server
+          console.log('Matched Ingredients:', data);
+        })
+        .catch(error => {
+          console.error('Error sending data:', error);
+          // Handle any errors that occur during the request
+        });
+      };
 
     const handleReset = () => {
-        setIngredients([{ name: '', quantity: '' }]);
+        // setIngredients([{ name: '', quantity: '' }]);
+        setIngredients([{ name: ''}]);
     };
 
 
@@ -153,14 +185,14 @@ const FilterPage = ({navigation}) => {
                                     style={styles.input}
                                     placeholder="Ingredient Name"
                                     value={ingredient.name}
-                                    onChangeText={(value) => handleIngredientChange(index, 'name', value)}
+                                    onChangeText={(value) => handleIngredientChange(index, value)}
                                 />
-                                <TextInput
+                                {/* <TextInput
                                     style={[styles.input, styles.quantityInput]}
                                     placeholder="Quantity (optional)"
                                     value={ingredient.quantity}
                                     onChangeText={(value) => handleIngredientChange(index, 'quantity', value)}
-                                />
+                                /> */}
                             </View>
                         ))}
                         <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
