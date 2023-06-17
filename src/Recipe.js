@@ -12,11 +12,13 @@ import {
     FlatList,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import RecipeInstruction from "./RecipeInstruction";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Recipe = (props) => {
-    console.log("props", props.route.params);
+
+const Recipe = ({navigation, route}) => {
+    console.log("props", route.params);
     return (
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
@@ -36,10 +38,10 @@ const Recipe = (props) => {
 
                 <View style={styles.titleContainer}>
                     <View style={styles.backgroundContainer}>
-                        <Text style={styles.recipeTitle}>{props.route.params.item.description}</Text>
+                        <Text style={styles.recipeTitle}>{route.params.item.description}</Text>
                         <View style={styles.ratingContainer}>
                             <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
-                            <Text style={styles.ratingText}>{props.route.params.item.rating}</Text>
+                            <Text style={styles.ratingText}>{route.params.item.rating}</Text>
                         </View>
                     </View>
                 </View>
@@ -51,14 +53,14 @@ const Recipe = (props) => {
                     <TouchableOpacity style={styles.buttonOne}>
                         <Text style={styles.buttonText}>Ingredients</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RecipeInstruction')}>
                         <Text style={styles.buttonText}>Instructions</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ingredientsContainer}>
                     {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
                     {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
-                    {props.route.params.item.ingredients.map((ingredient, index) => (
+                    {route.params.item.ingredients.map((ingredient, index) => (
         <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
       ))}
 
