@@ -17,8 +17,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const Recipe = ({navigation, route}) => {
+const Recipe = ({ navigation, route }) => {
     console.log("props", route.params);
+    const [activeSection, setActiveSection] = useState('ingredients');
+
+    const toggleSection = (section) => {
+        setActiveSection(section);
+    };
+
     return (
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
@@ -50,21 +56,52 @@ const Recipe = ({navigation, route}) => {
 
             <View style={styles.ingreInstruct}>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.buttonOne}>
-                        <Text style={styles.buttonText}>Ingredients</Text>
+
+
+                    <TouchableOpacity style={[
+                        styles.buttonOne,
+                        activeSection === 'ingredients' ? styles.activeButton : null,
+                    ]} onPress={() => toggleSection('ingredients')}>
+                        <Text style={[
+                            styles.buttonText,
+                          
+                        ]}>Ingredients</Text>
+
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RecipeInstruction')}>
-                        <Text style={styles.buttonText}>Instructions</Text>
+
+                    <TouchableOpacity style={[
+                        styles.buttonOne,
+                        activeSection === 'instructions' ? styles.activeButton : null,
+                    ]}
+                        onPress={() => toggleSection('instructions')}>
+                        <Text style={[
+                            styles.buttonText,
+                            activeSection === 'instructions' && styles.activeButtonText,
+                        ]}>Instructions</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ingredientsContainer}>
                     {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
                     {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
-                    {route.params.item.ingredients.map((ingredient, index) => (
-        <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
-      ))}
+                    {/* {route.params.item.ingredients.map((ingredient, index) => (
+                        <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
+                    ))} */}
 
-                  
+                    {activeSection === 'ingredients' ? (
+                        route.params.item.ingredients.map((ingredient, index) => (
+                            <Text key={index} style={styles.ingredientsText}>
+                                {ingredient}
+                            </Text>
+                        ))
+                    ) : (
+                        route.params.item.instructions.map((instructions, index) => (
+                            <Text key={index} style={styles.ingredientsText}>
+                                {instructions}
+                            </Text>
+                        ))
+                    )}
+
+
                 </View>
             </View>
 
@@ -130,9 +167,9 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         paddingBottom: 5,
         fontFamily: "Gill Sans",
-        
-      //  marginBottom: 5, // Add margin bottom to create space between each ingredient
-      },
+
+        //  marginBottom: 5, // Add margin bottom to create space between each ingredient
+    },
     backButton: {
         backgroundColor: '#FFFFFF',
         padding: 8,
@@ -200,6 +237,12 @@ const styles = StyleSheet.create({
         height: 30,
 
         marginBottom: 10,
+    },
+    activeButton:{
+        backgroundColor: '#828282',
+    },
+    activeButtonInstru:{
+        backgroundColor: '#828282',
     },
     buttonOne: {
         flex: 1,
