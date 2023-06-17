@@ -16,17 +16,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Recipe = (props) => {
-    console.log("props",props.route.params)
+    console.log("props", props.route.params);
     return (
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-            <View style={styles.backButtonContainer}>
-        <TouchableOpacity style={styles.backButton}>
-          <Ionicons name="arrow-back" size={24} color="#000000" />
-        </TouchableOpacity>
-      </View>
+                <View style={styles.backButtonContainer}>
+                    <TouchableOpacity style={styles.backButton}>
+                        <Ionicons name="arrow-back" size={24} color="#000000" />
+                    </TouchableOpacity>
+                </View>
                 <Image style={styles.image} source={require("./assets/eggs.jpg")} />
 
 
@@ -36,10 +36,10 @@ const Recipe = (props) => {
 
                 <View style={styles.titleContainer}>
                     <View style={styles.backgroundContainer}>
-                        <Text style={styles.recipeTitle}>Delicious Recipe</Text>
+                        <Text style={styles.recipeTitle}>{props.route.params.item.description}</Text>
                         <View style={styles.ratingContainer}>
                             <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
-                            <Text style={styles.ratingText}>4.5</Text>
+                            <Text style={styles.ratingText}>{props.route.params.item.rating}</Text>
                         </View>
                     </View>
                 </View>
@@ -57,13 +57,12 @@ const Recipe = (props) => {
                 </View>
                 <View style={styles.ingredientsContainer}>
                     {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
-                    <Text style={styles.ingredientsText}>
-                        - Ingredient 1 {'\n'}
-                        - Ingredient 2 {'\n'}
-                        - Ingredient 3 {'\n'}
-                        - Ingredient 4 {'\n'}
-                        - Ingredient 5 {'\n'}
-                    </Text>
+                    {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
+                    {props.route.params.item.ingredients.map((ingredient, index) => (
+        <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
+      ))}
+
+                  
                 </View>
             </View>
 
@@ -82,21 +81,21 @@ const Recipe = (props) => {
             </View>
 
 
-              <View style={styles.buttomNavFlex}>
+            <View style={styles.buttomNavFlex}>
                 <View style={styles.iconContainer}>
-                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")}/>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
                 <View style={styles.iconContainer}>
-                    <Image style={styles.iconImg}  source={require("./assets/filter.png")}/>
+                    <Image style={styles.iconImg} source={require("./assets/filter.png")} />
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
                 <View style={styles.iconContainer}>
-                    <Image style={styles.iconImg}  source={require("./assets/logout.png")}/>
+                    <Image style={styles.iconImg} source={require("./assets/logout.png")} />
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
                 </View>
 
-                
+
             </View>
 
 
@@ -122,12 +121,21 @@ const styles = StyleSheet.create({
         top: 16,
         left: 16,
         zIndex: 1,
+    },
+    ingredientsText: {
+        fontSize: 19,
+        marginLeft: 16,
+        marginBottom: 12,
+        paddingBottom: 5,
+        fontFamily: "Gill Sans",
+        
+      //  marginBottom: 5, // Add margin bottom to create space between each ingredient
       },
-      backButton: {
+    backButton: {
         backgroundColor: '#FFFFFF',
         padding: 8,
         borderRadius: 16,
-      },
+    },
 
     recipeImg: {
         flex: 3,
@@ -157,20 +165,20 @@ const styles = StyleSheet.create({
         flex: 0.5,
         width: '100%',
         backgroundColor: "#fff",
-        marginRight:45,
+        marginRight: 45,
         alignItems: "flex-end",
         justifyContent: "center",
     },
-  
+
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 54,
-           
-         flex: 0,
-         margin:10,
+
+        flex: 0,
+        margin: 10,
         // width: '100%',
         // backgroundColor: "#fbc",
         // alignItems: "center",
@@ -178,17 +186,17 @@ const styles = StyleSheet.create({
     },
     iconContainer: {
         alignItems: 'center',
-        marginLeft:35,
-        marginRight:55,
-        marginBottom:15,
-       // marginTop:15,
-        
-      },
-      iconImg: {
-       
-        width:30,
+        marginLeft: 35,
+        marginRight: 55,
+        marginBottom: 15,
+        // marginTop:15,
+
+    },
+    iconImg: {
+
+        width: 30,
         height: 30,
-      
+
         marginBottom: 10,
     },
     buttonOne: {
@@ -284,13 +292,13 @@ const styles = StyleSheet.create({
     //     fontWeight: 'bold',
     //     marginBottom: 8,
     //   },
-    ingredientsText: {
-        fontSize: 19,
-        marginLeft: 16,
-        marginBottom: 12,
-        paddingBottom: 10,
-        fontFamily: "Gill Sans",
-    },
+    // ingredientsText: {
+    //     fontSize: 19,
+    //     marginLeft: 16,
+    //     marginBottom: 12,
+    //     paddingBottom: 10,
+    //     fontFamily: "Gill Sans",
+    // },
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -298,7 +306,7 @@ const styles = StyleSheet.create({
     },
     starIcon: {
         marginRight: 4,
-        marginLeft:5,
+        marginLeft: 5,
     },
     ratingText: {
         fontSize: 16,

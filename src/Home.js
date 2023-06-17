@@ -18,7 +18,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const Home = ({ navigation }) => {
+export const Home = ({ navigation }) => { 
     
     useEffect(() => {
         sendDataToServer();
@@ -27,13 +27,13 @@ export const Home = ({ navigation }) => {
         { id: '1', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'] },
          { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'] },
          { id: '3', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5', ingredients: ['ingredient4', 'ingredient5'] },
-         { id: '4', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-         { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '6', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        { id: '7', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '8', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        { id: '9', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        { id: '10', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+        { id: '4', imageSource: require('./assets/broccoli.jpg'), description: 'Card 2', rating: '4.2', ingredients: ['ingredient4', 'ingredient5'] },
+        //  { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+        // { id: '6', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+        // { id: '7', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+        // { id: '8', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
+        // { id: '9', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+        // { id: '10', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
 
     ];
     
