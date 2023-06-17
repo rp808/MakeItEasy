@@ -121,18 +121,18 @@ const Recipe = ({ navigation, route }) => {
 
 
             <View style={styles.buttomNavFlex}>
-                <View style={styles.iconContainer}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                     <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
-                </View>
-                <View style={styles.iconContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
-                </View>
-                <View style={styles.iconContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                     <Image style={styles.iconImg} source={require("./assets/logout.png")} />
                     {/* <Text style={styles.ttitle}>Homee</Text> */}
-                </View>
+                </TouchableOpacity>
 
 
             </View>
