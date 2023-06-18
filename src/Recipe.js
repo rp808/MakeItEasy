@@ -35,7 +35,7 @@ const Recipe = ({ navigation, route }) => {
                         <Ionicons name="arrow-back" size={24} color="#000000" />
                     </TouchableOpacity>
                 </View>
-                <Image style={styles.image} source={require("./assets/eggs.jpg")} />
+                <Image style={styles.image} source={{uri: route.params.item.imageSource}}/>
 
 
             </View>

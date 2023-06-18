@@ -26,7 +26,7 @@ const Suggestions = ({ route }) => {
       </View>
       {matchingCards.map((card) => (
         <View key={card._id} style={styles.cardContainer}>
-          <Image source={{ uri: card.imageSource }} style={styles.image} />
+          <Image source={{uri: card.imageSource}} style={styles.image} />
           <Text style={styles.title}>{card.description}</Text>
           <View style={styles.detailsContainer}>
             <Text style={styles.rating}>Rating: {card.rating}</Text>
