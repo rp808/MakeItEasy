@@ -1,14 +1,148 @@
-import React from 'react';
-import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TextInput,
+    Button,
+    TouchableOpacity,
+    Linking,
+    FlatList,
+} from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import RecipeInstruction from "./RecipeInstruction";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const RecipeFilter = ({ route, navigation }) => {
+
+const RecipeFilter =  ({ navigation, route }) => {
     const { cardData } = route.params;
     console.log(cardData);
+    
+    const [activeSection, setActiveSection] = useState('ingredients');
+
+    const toggleSection = (section) => {
+        setActiveSection(section);
+    };
+
     return (
+        <View style={styles.screen} >
+            {/* <Text>Hello</Text> */}
+
+            <View style={styles.recipeImg}>
+                <View style={styles.backButtonContainer}>
+                    <TouchableOpacity style={styles.backButton}>
+                        <Ionicons name="arrow-back" size={24} color="#000000" />
+                    </TouchableOpacity>
+                </View>
+                <Image style={styles.image} source={{ uri: cardData.imageSource }}/>
 
 
-        <View>
-            <Text>this is filter recipe page</Text>
+            </View>
+
+            <View style={styles.titleRating}>
+
+                <View style={styles.titleContainer}>
+                    <View style={styles.backgroundContainer}>
+                        <Text style={styles.recipeTitle}>{cardData.description}</Text>
+                        <View style={styles.ratingContainer}>
+                            <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
+                            <Text style={styles.ratingText}>{cardData.rating}</Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+
+
+            <View style={styles.ingreInstruct}>
+                <View style={styles.buttonContainer}>
+
+
+                    <TouchableOpacity style={[
+                        styles.buttonOne,
+                        activeSection === 'ingredients' ? styles.activeButton : null,
+                    ]} onPress={() => toggleSection('ingredients')}>
+                        <Text style={[
+                            styles.buttonText,
+                          
+                        ]}>Ingredients</Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={[
+                        styles.buttonOne,
+                        activeSection === 'instructions' ? styles.activeButton : null,
+                    ]}
+                        onPress={() => toggleSection('instructions')}>
+                        <Text style={[
+                            styles.buttonText,
+                            activeSection === 'instructions' ,
+                        ]}>Instructions</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.ingredientsContainer}>
+                    {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
+                    {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
+                    {/* {route.params.item.ingredients.map((ingredient, index) => (
+                        <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
+                    ))} */}
+
+                    {activeSection === 'ingredients' ? (
+                       cardData.ingredients.map((ingredient, index) => (
+                            <Text key={index} style={styles.ingredientsText}>
+                                {ingredient}
+                            </Text>
+                        ))
+                    ) : (
+                        cardData.instructions.map((instruction, index) => (
+                            <Text key={index} style={styles.ingredientsText}>
+                                {instruction}
+                            </Text>
+                        ))
+                    )}
+
+
+                </View>
+            </View>
+
+
+            <View style={styles.userRating}>
+
+                {/* <Text style={styles.sectionTitle}>User Rating:</Text> */}
+                <View style={styles.ratingContainer}>
+                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#D9DDDC" style={styles.starIcon} />
+                    <Ionicons name="star" size={30} color="#D9DDDC" style={styles.starIcon} />
+                </View>
+
+            </View>
+
+
+            <View style={styles.buttomNavFlex}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                    <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
+                    <Image style={styles.iconImg} source={require("./assets/logout.png")} />
+                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                </TouchableOpacity>
+
+
+            </View>
+
+
+
+
+
 
         </View>
     )
