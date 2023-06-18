@@ -109,7 +109,7 @@ const FilterPage = ({navigation}) => {
         .then(data => {
           // Process the matched ingredients received from the server
           console.log('Matched Ingredients:', data);
-          navigation.navigate('Suggestions', { filteredData: data });
+          navigation.navigate('Suggestions', { filteredData : data});
         })
    
 
