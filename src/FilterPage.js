@@ -109,11 +109,9 @@ const FilterPage = ({navigation}) => {
         .then(data => {
           // Process the matched ingredients received from the server
           console.log('Matched Ingredients:', data);
+          navigation.navigate('Suggestions', { filteredData: data });
         })
-        .then(data => {
-            // Navigate to the Suggestions page and pass the filtered data as a parameter
-            navigation.navigate('Suggestions', { filteredData: data });
-          })
+   
 
         .catch(error => {
           console.error('Error sending data:', error);
