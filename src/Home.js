@@ -57,6 +57,7 @@ export const Home = ({ navigation }) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.cards} onPress={()=>{navigation.navigate("Recipe",{item})}}>
             <Image source={{ uri: item.imageSource }} style={styles.image} />
+            
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.rating}>{item.rating}</Text>
         </TouchableOpacity>

@@ -19,8 +19,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const FilterPage = ({navigation}) => {
-    
+const FilterPage = ({ navigation }) => {
+
 
     const [selectedItems, setSelectedItems] = useState([]);
 
@@ -78,50 +78,50 @@ const FilterPage = ({navigation}) => {
     };
 
     const addIngredientRow = () => {
-        setIngredients([...ingredients, { name:''}]);
+        setIngredients([...ingredients, { name: '' }]);
     };
 
     const handleSubmit = () => {
         // Prepare the data to be sent to the server
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
-        //   selectedItems: selectedItems,
-        //   selectedLevel: selectedLevel
+            //   selectedItems: selectedItems,
+            //   selectedLevel: selectedLevel
         };
-      
+
         // Make the POST request to the filter endpoint
         fetch('http://192.168.40.75:3000/filter', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
-        .then(response => {
-          if (response.ok) {
-            console.log('Data sent successfully');
-            return response.json();
-          } else {
-            console.error('Error sending data:', response.status);
-            // Handle any errors that occur during the request
-          }
-        })
-        .then(data => {
-          // Process the matched ingredients received from the server
-          console.log('Matched Ingredients:', data);
-          navigation.navigate('Suggestions', { filteredData : data});
-        })
-   
+            .then(response => {
+                if (response.ok) {
+                    console.log('Data sent successfully');
+                    return response.json();
+                } else {
+                    console.error('Error sending data:', response.status);
+                    // Handle any errors that occur during the request
+                }
+            })
+            .then(data => {
+                // Process the matched ingredients received from the server
+                console.log('Matched Ingredients:', data);
+                navigation.navigate('Suggestions', { filteredData: data });
+            })
 
-        .catch(error => {
-          console.error('Error sending data:', error);
-          // Handle any errors that occur during the request
-        });
-      };
+
+            .catch(error => {
+                console.error('Error sending data:', error);
+                // Handle any errors that occur during the request
+            });
+    };
 
     const handleReset = () => {
         // setIngredients([{ name: '', quantity: '' }]);
-        setIngredients([{ name: ''}]);
+        setIngredients([{ name: '' }]);
     };
 
 
@@ -217,7 +217,7 @@ const FilterPage = ({navigation}) => {
                     <View style={styles.btmContainer}>
                         <View style={styles.buttomNavFlex}>
 
-                            <TouchableOpacity style={styles.iconContainer}  onPress={() => navigation.navigate('Home')}>
+                            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                                 <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
                             </TouchableOpacity>
