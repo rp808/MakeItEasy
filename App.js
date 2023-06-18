@@ -10,23 +10,27 @@ import FilterPage from './src/FilterPage';
 import RecipeInstruction from './src/RecipeInstruction';
 import Suggestions from './src/Sugestions';
 import RecipeFilter from './src/RecipeFilter';
-
+import {useState} from "react"
 const Stack = createNativeStackNavigator();
 export default function App() {
-  return (
 
-
-    <NavigationContainer>
+  const [token,setToken]=useState(null)
+  return( <NavigationContainer>
       <Stack.Navigator>
 
         <Stack.Screen
           name="Login"
-          component={Login}
+          // component={Login}
           options={
             {
               headerShown: false
             }
-          } />
+          } >
+
+{(props) => {
+                return <Login setToken={setToken} props={props}/>
+              }}
+            </Stack.Screen>
         <Stack.Screen name="Home" component={Home} options={
           {
             headerShown: false
@@ -42,11 +46,16 @@ export default function App() {
             headerShown: false
           }
         } />
-        <Stack.Screen name="Recipe" component={Recipe} options={
+        <Stack.Screen name="Recipe"  options={
           {
             headerShown: false
           }
-        } />
+        } >
+          
+{(props) => {
+                return <Recipe token={token} props={props}/>
+              }}
+            </Stack.Screen>
         <Stack.Screen name="RecipeInstruction" component={RecipeInstruction} options={
           {
             headerShown: false

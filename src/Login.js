@@ -18,7 +18,8 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Login = ({ navigation }) => {
+const Login = ({props,setToken}) => {
+    const navigation=props.navigation
     const [fdata, setFdata] = useState({
         email: '',
         password: ''
@@ -40,6 +41,7 @@ const Login = ({ navigation }) => {
             })
                 .then((res) => res.json()).then(
                     data => {
+                        setToken(data.token)
                         //console.log(data);
                         if (data.error) {
                             setErrMsg(data.error);

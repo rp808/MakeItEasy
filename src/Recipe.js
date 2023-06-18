@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
     StyleSheet,
     Text,
@@ -17,41 +17,82 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const Recipe = ({ navigation, route }) => {
-    console.log("props", route.params);
+const Recipe = ({props,token}) => {
+    const { navigation, route }=props
+    console.log("props", token);
     const [activeSection, setActiveSection] = useState('ingredients');
-    const [rating, setRating] = useState(0);
-
+    const [ratingsArray,setRatingsArray]=useState([])
     const toggleSection = (section) => {
         setActiveSection(section);
     };
-    const handleRating = (selectedRating) => {
+    const [rating, setRating] = useState(ratingsArray.length!=0 ?ratingsArray[ratingsArray.length-1].ratingValue : 0);
+    console.log("rating",rating)
+    const getRatings=async()=>{
+        fetch(`http://192.168.40.75:3000/card/${route.params.item.id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization':"Bearer "+token
+            },
+           
+        })
+            .then(async(response) => {
+ 
+                if (response.ok) {
+                    console.log('Get Ratings  successfully');
+                    setRatingsArray(await response.json())
+                  
+                }
+                else {
+                    throw new Error('Failed to save the rating');
+                }
+            })
+            .catch((error) => {
+                console.error('Error saving the rating:', error);
+        
+            });
+    }
+useEffect(()=>{
+    getRatings()
 
+//  if(ratingsArray.length!=0)
+//  {
+//     console.log("vav",ratingsArray[ratingsArray.length-1].ratingValue)
+//     setRating(ratingsArray[ratingsArray.length-1].ratingValue)
+//  }
+},[])
+   
+
+    const handleRating = (selectedRating) => {
         setRating(selectedRating);
 
         fetch(`http://192.168.40.75:3000/cards/rate/${route.params.item.id}`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                'authorization':"Bearer "+token
             },
-            body: JSON.stringify({ rating: selectedRating }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log('Rating saved successfully');
-              // Handle the response data if needed
+            body: JSON.stringify({ ratingValue: selectedRating }), 
+        })
+            .then((response) => {
+                console.log("response",response)
+                if (response.ok) {
+                    console.log('Rating saved successfully');
+
+                }
+                else {
+                    throw new Error('Failed to save the rating');
+                }
             })
             .catch((error) => {
-              console.error('Error saving the rating:', error);
-              // Handle the error if needed
+                console.error('Error saving the rating:', error);
+               
             });
+    };
 
-
-      };
-    
     return (
         <View style={styles.screen} >
-            {/* <Text>Hello</Text> */}
+          
 
             <View style={styles.recipeImg}>
                 <View style={styles.backButtonContainer}>
@@ -59,7 +100,7 @@ const Recipe = ({ navigation, route }) => {
                         <Ionicons name="arrow-back" size={24} color="#000000" />
                     </TouchableOpacity>
                 </View>
-                <Image style={styles.image} source={{uri: route.params.item.imageSource}}/>
+                <Image style={styles.image} source={{ uri: route.params.item.imageSource }} />
 
 
             </View>
@@ -88,7 +129,7 @@ const Recipe = ({ navigation, route }) => {
                     ]} onPress={() => toggleSection('ingredients')}>
                         <Text style={[
                             styles.buttonText,
-                          
+
                         ]}>Ingredients</Text>
 
                     </TouchableOpacity>
@@ -100,16 +141,12 @@ const Recipe = ({ navigation, route }) => {
                         onPress={() => toggleSection('instructions')}>
                         <Text style={[
                             styles.buttonText,
-                            activeSection === 'instructions' ,
+                            activeSection === 'instructions',
                         ]}>Instructions</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ingredientsContainer}>
-                    {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
-                    {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
-                    {/* {route.params.item.ingredients.map((ingredient, index) => (
-                        <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
-                    ))} */}
+  
 
                     {activeSection === 'ingredients' ? (
                         route.params.item.ingredients.map((ingredient, index) => (
@@ -132,21 +169,21 @@ const Recipe = ({ navigation, route }) => {
 
             <View style={styles.userRating}>
 
-            <View style={styles.ratingContainer}>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <TouchableOpacity
-              key={star}
-              onPress={() => handleRating(star)}
-            >
-              <Ionicons
-                name={star <= rating ? 'star' : 'star-outline'}
-                size={30}
-                color="#000000"
-                style={styles.starIcon}
-              />
-            </TouchableOpacity>
-          ))}
-        </View>
+                <View style={styles.ratingContainer}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <TouchableOpacity
+                            key={star}
+                            onPress={() => handleRating(star)}
+                        >
+                            <Ionicons
+                                name={star <= rating ? 'star' : 'star-outline'}
+                                size={30}
+                                color="#000000"
+                                style={styles.starIcon}
+                            />
+                        </TouchableOpacity>
+                    ))}
+                </View>
 
             </View>
 
@@ -154,15 +191,15 @@ const Recipe = ({ navigation, route }) => {
             <View style={styles.buttomNavFlex}>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                     <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
-                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+      
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
-                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                 
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                     <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                 
                 </TouchableOpacity>
 
 
@@ -199,7 +236,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         fontFamily: "Gill Sans",
 
-        //  marginBottom: 5, // Add margin bottom to create space between each ingredient
+
     },
     backButton: {
         backgroundColor: '#FFFFFF',
@@ -269,10 +306,10 @@ const styles = StyleSheet.create({
 
         marginBottom: 10,
     },
-    activeButton:{
+    activeButton: {
         backgroundColor: '#828282',
     },
-    activeButtonInstru:{
+    activeButtonInstru: {
         backgroundColor: '#828282',
     },
     buttonOne: {
