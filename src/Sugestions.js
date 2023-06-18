@@ -25,7 +25,7 @@ const Suggestions = ({ route, navigation }) => {
 
             <ScrollView style={styles.scrollContainer}>
                 {matchingCards.map((card) => (
-                    <View key={card._id} style={styles.cardContainer}>
+                    <TouchableOpacity key={card._id} style={styles.cardContainer}>
                         <Image source={{ uri: card.imageSource }} style={styles.image} />
                         <Text style={styles.title}>{card.description}</Text>
                         <View style={styles.detailsContainer}>
@@ -37,7 +37,7 @@ const Suggestions = ({ route, navigation }) => {
                                 Instructions: {card.instructions.join(', ')}
                             </Text> */}
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         // marginTop:15,
 
     },
-     iconImg: {
+    iconImg: {
         width: 30,
         height: 30,
         marginBottom: 10,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-     margin:20,
+        margin: 20,
     },
     detailsContainer: {
         paddingHorizontal: 10,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     rating: {
         fontSize: 16,
         marginBottom: 5,
-        marginLeft:20,
+        marginLeft: 20,
     },
     ingredients: {
         fontSize: 16,
