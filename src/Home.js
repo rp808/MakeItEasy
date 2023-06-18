@@ -24,11 +24,11 @@ export const Home = ({ navigation }) => {
         sendDataToServer();
       }, []);
     const data = [
-        { id: '1', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'], instructions: ['instru1', 'instru2', 'instru3']  },
-         { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'], instructions: ['instru1', 'instru2', 'instru3'] },
-         { id: '3', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5', ingredients: ['ingredient4', 'ingredient5'] , instructions: ['instru1', 'instru2', 'instru3']},
-        { id: '4', imageSource: require('./assets/broccoli.jpg'), description: 'Card 2', rating: '4.2', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'] },
-        //  { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
+        { id: '1', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/1.jpg', description: 'Card 1', rating: '4.5', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'], instructions: ['instru1', 'instru2', 'instru3']  },
+        //  { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'], instructions: ['instru1', 'instru2', 'instru3'] },
+        //  { id: '3', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5', ingredients: ['ingredient4', 'ingredient5'] , instructions: ['instru1', 'instru2', 'instru3']},
+        { id: '4', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/2.jpg', description: 'Card 2', rating: '4.2', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'] },
+        // //  { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
         // { id: '6', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
         // { id: '7', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
         // { id: '8', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
@@ -56,7 +56,7 @@ export const Home = ({ navigation }) => {
     
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.cards} onPress={()=>{navigation.navigate("Recipe",{item})}}>
-            <Image source={item.imageSource} style={styles.image} />
+            <Image source={{ uri: item.imageSource }} style={styles.image} />
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.rating}>{item.rating}</Text>
         </TouchableOpacity>
