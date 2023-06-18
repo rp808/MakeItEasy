@@ -41,6 +41,7 @@ const Login = ({props,setToken}) => {
             })
                 .then((res) => res.json()).then(
                     data => {
+
                         setToken(data.token)
                         //console.log(data);
                         if (data.error) {

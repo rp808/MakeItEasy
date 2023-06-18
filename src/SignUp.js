@@ -11,6 +11,7 @@ import {
   Button,
   TouchableOpacity,
   Linking,
+  KeyboardAvoidingView,
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -65,7 +66,10 @@ const [fdata, setFdata] = useState({
 
 
   return (
-    <View style={styles.screen}>
+    <KeyboardAvoidingView
+    style={styles.screen}
+    behavior="padding"
+  >
       <StatusBar style="auto" />
       <View style={styles.boxFlex}>
         <View>
@@ -121,7 +125,7 @@ const [fdata, setFdata] = useState({
           <Text >"Already have an account" Log In</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
 
 
   )
