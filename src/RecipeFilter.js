@@ -1,9 +1,9 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View ,Text} from 'react-native'
 
 const RecipeFilter = () => {
   return (
-    
+
     <View>
 <Text>this is filter recipe page</Text>
 

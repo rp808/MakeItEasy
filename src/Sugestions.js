@@ -25,8 +25,8 @@ const Suggestions = ({ route, navigation }) => {
 
             <ScrollView style={styles.scrollContainer}>
                 {matchingCards.map((card) => (
-                    <TouchableOpacity key={card._id} style={styles.cardContainer}>
-                        <Image source={{ uri: card.imageSource }} style={styles.image} />
+                    <TouchableOpacity key={card._id} style={styles.cardContainer}  onPress={() => navigation.navigate('RecipeFilter', { cardData: card })}>
+                        <Image source={{ uri: card.imageSource }} style={styles.image}  />
                         <Text style={styles.title}>{card.description}</Text>
                         <View style={styles.detailsContainer}>
                             <Text style={styles.rating}>Rating: {card.rating}</Text>
