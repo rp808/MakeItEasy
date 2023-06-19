@@ -3,6 +3,7 @@ import React, { useState ,useEffect} from 'react';
 import Login from "../src/Login";
 import FilterPage from "./FilterPage";
 import Recipe from "./Recipe";
+import { data } from "./data";
 import {
     StyleSheet,
     Text,
@@ -23,19 +24,7 @@ export const Home = ({ navigation }) => {
     useEffect(() => {
         sendDataToServer();
       }, []);
-    const data = [
-        { id: '1', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/1.jpg', description: 'Card 1',  ingredients: ['ingredient1', 'ingredient2', 'ingredient3'], instructions: ['instru1', 'instru2', 'instru3'] ,  ratings: [], },
-        //  { id: '2', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2', ingredients: ['ingredient1', 'ingredient2', 'ingredient3'], instructions: ['instru1', 'instru2', 'instru3'] },
-        //  { id: '3', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5', ingredients: ['ingredient4', 'ingredient5'] , instructions: ['instru1', 'instru2', 'instru3']},
-        { id: '4', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/2.jpg', description: 'Card 2',  ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'] ,  ratings: [],},
-        // //  { id: '5', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        // { id: '6', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        // { id: '7', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        // { id: '8', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
-        // { id: '9', imageSource: require('./assets/eggs.jpg'), description: 'Card 1', rating: '4.5' },
-        // { id: '10', imageSource: require('./assets/eggs.jpg'), description: 'Card 2', rating: '4.2' },
 
-    ];
     
     const sendDataToServer = async () => {
         try {
@@ -208,7 +197,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
-        marginRight: "50%",
+      //  marginRight: "10%",
+        width:"90%"
     },
     rating: {
         fontSize: 14,

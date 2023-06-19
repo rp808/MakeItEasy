@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     Linking,
     FlatList,
+    ScrollView,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import RecipeInstruction from "./RecipeInstruction";
@@ -145,25 +146,27 @@ useEffect(()=>{
                         ]}>Instructions</Text>
                     </TouchableOpacity>
                 </View>
+                <ScrollView>
                 <View style={styles.ingredientsContainer}>
   
 
                     {activeSection === 'ingredients' ? (
                         route.params.item.ingredients.map((ingredient, index) => (
                             <Text key={index} style={styles.ingredientsText}>
-                                {ingredient}
+                                - {ingredient}
                             </Text>
                         ))
                     ) : (
                         route.params.item.instructions.map((instructions, index) => (
                             <Text key={index} style={styles.ingredientsText}>
-                                {instructions}
+                                -  {instructions}
                             </Text>
                         ))
                     )}
 
 
                 </View>
+                </ScrollView>
             </View>
 
 

@@ -73,7 +73,7 @@ const FilterPage = ({ navigation }) => {
 
     const handleIngredientChange = (index, value) => {
         const updatedIngredients = [...ingredients];
-        updatedIngredients[index].name = value;
+        updatedIngredients[index] = { name: value };
         setIngredients(updatedIngredients);
     };
 
