@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     Linking,
     FlatList,
+    ScrollView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import RecipeInstruction from "./RecipeInstruction";
@@ -17,10 +18,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const RecipeFilter =  ({ navigation, route }) => {
+const RecipeFilter = ({ navigation, route }) => {
     const { cardData } = route.params;
     console.log(cardData);
-    
+
     const [activeSection, setActiveSection] = useState('ingredients');
 
     const toggleSection = (section) => {
@@ -37,7 +38,7 @@ const RecipeFilter =  ({ navigation, route }) => {
                         <Ionicons name="arrow-back" size={24} color="#000000" />
                     </TouchableOpacity>
                 </View>
-                <Image style={styles.image} source={{ uri: cardData.imageSource }}/>
+                <Image style={styles.image} source={{ uri: cardData.imageSource }} />
 
 
             </View>
@@ -66,7 +67,7 @@ const RecipeFilter =  ({ navigation, route }) => {
                     ]} onPress={() => toggleSection('ingredients')}>
                         <Text style={[
                             styles.buttonText,
-                          
+
                         ]}>Ingredients</Text>
 
                     </TouchableOpacity>
@@ -78,33 +79,35 @@ const RecipeFilter =  ({ navigation, route }) => {
                         onPress={() => toggleSection('instructions')}>
                         <Text style={[
                             styles.buttonText,
-                            activeSection === 'instructions' ,
+                            activeSection === 'instructions',
                         ]}>Instructions</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.ingredientsContainer}>
-                    {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
-                    {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
-                    {/* {route.params.item.ingredients.map((ingredient, index) => (
+                <  ScrollView>
+                    <View style={styles.ingredientsContainer}>
+                        {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
+                        {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
+                        {/* {route.params.item.ingredients.map((ingredient, index) => (
                         <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
                     ))} */}
 
-                    {activeSection === 'ingredients' ? (
-                       cardData.ingredients.map((ingredient, index) => (
-                            <Text key={index} style={styles.ingredientsText}>
-                                {ingredient}
-                            </Text>
-                        ))
-                    ) : (
-                        cardData.instructions.map((instruction, index) => (
-                            <Text key={index} style={styles.ingredientsText}>
-                                {instruction}
-                            </Text>
-                        ))
-                    )}
+                        {activeSection === 'ingredients' ? (
+                            cardData.ingredients.map((ingredient, index) => (
+                                <Text key={index} style={styles.ingredientsText}>
+                                    {ingredient}
+                                </Text>
+                            ))
+                        ) : (
+                            cardData.instructions.map((instruction, index) => (
+                                <Text key={index} style={styles.ingredientsText}>
+                                    {instruction}
+                                </Text>
+                            ))
+                        )}
 
 
-                </View>
+                    </View>
+                </ScrollView>
             </View>
 
 
@@ -242,10 +245,10 @@ const styles = StyleSheet.create({
 
         marginBottom: 10,
     },
-    activeButton:{
+    activeButton: {
         backgroundColor: '#828282',
     },
-    activeButtonInstru:{
+    activeButtonInstru: {
         backgroundColor: '#828282',
     },
     buttonOne: {
