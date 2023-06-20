@@ -14,6 +14,7 @@ import {
     TouchableOpacity,
     Linking,
     KeyboardAvoidingView,
+    ImageBackground
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -63,6 +64,12 @@ const Login = ({props,setToken}) => {
         behavior="padding"
       >
             <StatusBar style="auto" />
+            <ImageBackground
+                    source={require("./assets/lbg.jpg")}
+                    style={styles.imageBackground}
+                    resizeMode="cover"
+                >
+
             <View style={styles.boxFlex}>
                 <View>
                     <Text style={styles.welcomeTxt}>Welcome Back</Text>
@@ -101,6 +108,7 @@ const Login = ({props,setToken}) => {
                     <Text >"Don't have an account?" Sign Up</Text>
                 </TouchableOpacity>
             </View>
+            </ImageBackground>
         </KeyboardAvoidingView>
 
 
@@ -117,17 +125,24 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         padding: 5,
     },
+    imageBackground: {
+
+        height: '100%',
+        width: '100%',
+        //   opacity: 0.5,
+
+    },
     boxFlex: {
         flex: 4,
         width: '100%',
-        backgroundColor: "#fff",
+      // backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "flex-end",
     },
     bottomFlex: {
         flex: 2,
         width: '100%',
-        backgroundColor: "#fff",
+       // backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "flex-end",
         paddingBottom: 30,
@@ -148,6 +163,7 @@ const styles = StyleSheet.create({
         // alignSelf: 'center',
         borderWidth: 0.8,
         elevation: 20,
+        backgroundColor: "#fff"
 
         // borderRadius: 10,
         // borderWidth: 0.8,
@@ -161,6 +177,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginLeft: 10,
         width: '80%',
+        
         // height: 50,
         // flex: 1,
         // padding: 10,
@@ -169,20 +186,21 @@ const styles = StyleSheet.create({
     
     },
     loginBtn: {
-        width: "60%",
+        width: "50%",
         borderRadius: 25,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 30,
-        backgroundColor: "#8DAA6F",
+        backgroundColor: "#4F7942",
         
     
     },
     buttonText: {
-        fontSize: 20,
-  
-        fontFamily: "Gill Sans",
+        fontSize: 25,
+        color: "white", 
+        fontFamily: "GillSans-SemiBold",
+        letterSpacing: 2,
     },
     hairline: {
         marginTop: 40,
