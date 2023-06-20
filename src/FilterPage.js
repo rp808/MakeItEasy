@@ -13,6 +13,7 @@ import {
     Linking,
     FlatList,
     ImageBackground,
+    KeyboardAvoidingView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -61,10 +62,10 @@ const FilterPage = ({ navigation }) => {
             label: 'Non-Veg',
             value: 'non-vegetarian',
         },
-        {
-            label: 'All',
-            value: 'all',
-        },
+        // {
+        //     label: 'All',
+        //     value: 'all',
+        // },
 
         // Add more dietary restrictions here
     ];
@@ -85,8 +86,8 @@ const FilterPage = ({ navigation }) => {
         // Prepare the data to be sent to the server
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
-              selectedItems: selectedItems,
-              selectedLevel: selectedLevel
+            selectedItems: selectedItems,
+            selectedLevel: selectedLevel
         };
 
         // Make the POST request to the filter endpoint
@@ -116,6 +117,7 @@ const FilterPage = ({ navigation }) => {
             .catch(error => {
                 console.error('Error sending data:', error);
                 // Handle any errors that occur during the request
+                
             });
     };
 
@@ -131,7 +133,7 @@ const FilterPage = ({ navigation }) => {
                 <ImageBackground
                     source={require("./assets/bg.jpg")}
                     style={styles.imageBackground}
-                    resizeMode="cover"  
+                    resizeMode="cover"
                 >
                     <StatusBar style="auto" />
 
@@ -180,8 +182,14 @@ const FilterPage = ({ navigation }) => {
 
                     </View>
 
-                    <View style={styles.avail}>
-                        <Text style={styles.label}>Available Ingredients</Text>
+                    <KeyboardAvoidingView style={styles.avail} behavior="padding">
+                        <View style={styles.headerRow}>
+                            <Text style={styles.label}>Available Ingredients</Text>
+                            <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
+                                <Ionicons name="add" size={24} color="white" />
+                                <Text style={styles.addButtonText}>Add Ingredient</Text>
+                            </TouchableOpacity>
+                        </View>
                         {ingredients.map((ingredient, index) => (
                             <View key={index} style={styles.ingredientRow}>
                                 <TextInput
@@ -198,10 +206,10 @@ const FilterPage = ({ navigation }) => {
                                 /> */}
                             </View>
                         ))}
-                        <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
+                        {/* <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
                             <Ionicons name="add" size={24} color="white" />
                             <Text style={styles.addButtonText}>Add Ingredient</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <View style={styles.buttonRow}>
                             <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                                 <Text style={styles.buttonText}>Submit</Text>
@@ -212,7 +220,7 @@ const FilterPage = ({ navigation }) => {
                         </View>
 
 
-                    </View>
+                    </KeyboardAvoidingView>
 
                     <View style={styles.btmContainer}>
                         <View style={styles.buttomNavFlex}>
@@ -255,11 +263,17 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     imageBackground: {
-        
-          height:'100%',
-          width:'100%',
+
+        height: '100%',
+        width: '100%',
         //   opacity: 0.5,
 
+    },
+    headerRow: {
+        flexDirection: 'row',
+        // alignItems: 'center',
+        //   justifyContent: 'space-between',
+        marginBottom: 10,
     },
     appNameFlex: {
         flex: 0.8,
@@ -269,39 +283,51 @@ const styles = StyleSheet.create({
         alignItems: "start",
         justifyContent: "center",
     },
-    avail: {
-        flex: 4,
+    // avail: {
+    //     flex: 4,
 
 
-        //  backgroundColor: "#F9F9F9",
-        // alignItems: "right",
-        // justifyContent: "center",
+    //     backgroundColor: "#F9F9F9",
+    //     // alignItems: "right",
+    //     // justifyContent: "center",
+
+    // },
+
+    diet: {
+        flex: 1,
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        padding: 20,
+        marginBottom: 20,
+        //width: '100%',
+
 
     },
     levelThree: {
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        borderRadius: 8,
+        padding: 20,
+        marginBottom: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
         flex: 1,
-        //backgroundColor: "#F9F9F9",
-        width: "100%",
-
-        // alignItems: "right",
-        // justifyContent: "center",
     },
-    diet: {
 
-        flex: 1,
-        // backgroundColor: "#F9F9F9",
-        width: "100%",
-
-
-        // width: '100%',
-        // backgroundColor: "#fff",
-        // // alignItems: "right",
-        // // justifyContent: "center",
-        // alignItems: 'flex-start',
-        // justifyContent: 'flex-start',
-
-
-    }, radioContainer: {
+    radioContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         margin: 5,
@@ -321,7 +347,19 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     radioSelected: {
-        backgroundColor: '#AEAEAE',
+        backgroundColor: '#8DAA6F',
+        transform: [{ scale: 1.1 }], // Scale up the selected radio button
+        borderWidth: 0,
+        borderColor: '#000',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+
     },
     radioLabel: {
         marginLeft: 2,
@@ -332,13 +370,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     label: {
-        marginTop: 20,
         fontSize: 22,
-        marginLeft: 5,
-        // marginLeft: "30%",
-        // fontWeight: 'bold',GillSans-SemiBold
         fontFamily: "GillSans-SemiBold",
-        //marginBottom: 1,
+        marginBottom: 10,
     },
     checkboxContainer: {
         flexDirection: 'row',
@@ -358,10 +392,21 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: '#FFF',
         height: 35,
-        //width:115,
     },
+
     checkboxSelected: {
-        backgroundColor: '#AEAEAE',
+        backgroundColor: '#8DAA6F',
+        transform: [{ scale: 1.1 }], // Scale up the selected checkbox
+        borderWidth: 0,
+        borderColor: '#000',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     checkboxLabel: {
         marginLeft: 2,
@@ -373,6 +418,24 @@ const styles = StyleSheet.create({
     //     fontWeight: 'bold',
     //     marginBottom: 10,
     // },
+
+
+
+    avail: {
+        flex: 4,
+        backgroundColor: "rgba(255, 255, 255, .93)",
+        borderRadius: 8,
+        padding: 20,
+        marginBottom: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
     ingredientRow: {
         flexDirection: 'row',
         marginBottom: 10,
@@ -382,13 +445,14 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        marginRight: 10,
+        marginRight: 30,
+        // marginLeft:30,
         paddingVertical: 5,
         paddingHorizontal: 10,
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
-        height: 35,
+        height: 45,
         backgroundColor: '#FFF',
         fontFamily: "GillSans-SemiBold",
     },
@@ -398,13 +462,14 @@ const styles = StyleSheet.create({
     addButton: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'black',
+        backgroundColor: "#71797E",
         paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 5,
-        marginBottom: 10,
-        width: "40%",
-        marginLeft: 120,
+        // marginBottom: 10,
+        // width: "40%",
+        marginLeft: 20,
+        height:40,
     },
     addButtonText: {
         color: 'white',
@@ -414,6 +479,7 @@ const styles = StyleSheet.create({
     buttonRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginTop:20,
     },
     submitButton: {
         backgroundColor: 'black',
