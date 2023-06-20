@@ -25,8 +25,8 @@ const Suggestions = ({ route, navigation }) => {
 
             <ScrollView style={styles.scrollContainer}>
                 {matchingCards.map((card) => (
-                    <TouchableOpacity key={card._id} style={styles.cardContainer}  onPress={() => navigation.navigate('RecipeFilter', { cardData: card })}>
-                        <Image source={{ uri: card.imageSource }} style={styles.image}  />
+                    <TouchableOpacity key={card._id} style={styles.cardContainer} onPress={() => navigation.navigate('RecipeFilter', { cardData: card })}>
+                        <Image source={{ uri: card.imageSource }} style={styles.image} />
                         <Text style={styles.title}>{card.description}</Text>
                         <View style={styles.detailsContainer}>
                             <Text style={styles.rating}>Rating: {card.rating}</Text>
@@ -49,12 +49,10 @@ const Suggestions = ({ route, navigation }) => {
                     >
                         <Image style={styles.iconImg} source={require('./assets/homeNF.png')} />
                     </TouchableOpacity>
-                    <View style={styles.iconContainer}>
-                        <Image
-                            style={styles.iconImg}
-                            source={require('./assets/filterFilled.png')}
-                        />
-                    </View>
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                        <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
+                        {/* <Text style={styles.ttitle}>Homee</Text> */}
+                    </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.iconContainer}
                         onPress={() => navigation.navigate('Login')}

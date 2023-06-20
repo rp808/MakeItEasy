@@ -131,7 +131,7 @@ const FilterPage = ({ navigation }) => {
         (
             <View style={styles.screen}>
                 <ImageBackground
-                    source={require("./assets/bg.jpg")}
+                    source={require("./assets/lbg1.jpg")}
                     style={styles.imageBackground}
                     resizeMode="cover"
                 >
@@ -229,10 +229,10 @@ const FilterPage = ({ navigation }) => {
                                 <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
                             </TouchableOpacity>
-                            <View style={styles.iconContainer}>
-                                <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
+                            <TouchableOpacity style={styles.iconContainer}  onPress={() => navigation.navigate('FilterPage')}>
+                                <Image style={styles.iconImg} source={require("./assets/filterFilled.png")}   />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
-                            </View>
+                            </TouchableOpacity>
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                                 <Image style={styles.iconImg} source={require("./assets/logout.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
 
     diet: {
         flex: 1,
-        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        backgroundColor: "rgba(255, 255, 255,1)",
         borderRadius: 8,
         shadowColor: "#000",
         shadowOffset: {
@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
 
     },
     levelThree: {
-        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        backgroundColor: "rgba(255, 255, 255,1)",
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
@@ -423,7 +423,7 @@ const styles = StyleSheet.create({
 
     avail: {
         flex: 4,
-        backgroundColor: "rgba(255, 255, 255, .93)",
+        backgroundColor: "rgba(255, 255, 255, 1)",
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
