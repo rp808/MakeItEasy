@@ -85,8 +85,8 @@ const FilterPage = ({ navigation }) => {
         // Prepare the data to be sent to the server
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
-            //   selectedItems: selectedItems,
-            //   selectedLevel: selectedLevel
+              selectedItems: selectedItems,
+              selectedLevel: selectedLevel
         };
 
         // Make the POST request to the filter endpoint
@@ -129,9 +129,9 @@ const FilterPage = ({ navigation }) => {
         (
             <View style={styles.screen}>
                 <ImageBackground
-                    source={require("./assets/back.jpg")}
+                    source={require("./assets/bg.jpg")}
                     style={styles.imageBackground}
-                    resizeMode="cover"
+                    resizeMode="cover"  
                 >
                     <StatusBar style="auto" />
 
@@ -255,8 +255,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     imageBackground: {
-        //  height:'100%',
-        resizeMode: 'contain',
+        
+          height:'100%',
+          width:'100%',
+        //   opacity: 0.5,
 
     },
     appNameFlex: {
