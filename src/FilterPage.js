@@ -24,6 +24,9 @@ const FilterPage = ({ navigation }) => {
 
 
     const [selectedItems, setSelectedItems] = useState([]);
+    const [errorMsg, setErrorMsg] = useState('');
+    const [selectedLevel, setSelectedLevel] = useState('');
+    const [ingredients, setIngredients] = useState([{ name: '' }]);
 
     const handleSelection = (item) => {
         if (selectedItems.includes(item)) {
@@ -32,7 +35,7 @@ const FilterPage = ({ navigation }) => {
             setSelectedItems([...selectedItems, item]);
         }
     };
-    const [selectedLevel, setSelectedLevel] = useState('');
+
 
     const handleLevel = (item) => {
         setSelectedLevel(item);
@@ -70,7 +73,7 @@ const FilterPage = ({ navigation }) => {
         // Add more dietary restrictions here
     ];
 
-    const [ingredients, setIngredients] = useState([{ name: '' }]);
+
 
     const handleIngredientChange = (index, value) => {
         const updatedIngredients = [...ingredients];
@@ -83,6 +86,12 @@ const FilterPage = ({ navigation }) => {
     };
 
     const handleSubmit = () => {
+
+        if (ingredients.some((ingredient) => ingredient.name === '')) {
+            setErrorMsg('Please enter ingredients');
+            return;
+          }
+
         // Prepare the data to be sent to the server
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
@@ -116,7 +125,7 @@ const FilterPage = ({ navigation }) => {
 
             .catch(error => {
                 console.error('Error sending data:', error);
-                // Handle any errors that occur during the request
+            setErrorMsg('hard to hand recipe , kindly recheck the enetered ingredient');
                 
             });
     };
@@ -190,6 +199,7 @@ const FilterPage = ({ navigation }) => {
                                 <Text style={styles.addButtonText}>Add Ingredient</Text>
                             </TouchableOpacity>
                         </View>
+                        {errorMsg ? <Text style={styles.errorMsg}>{errorMsg}</Text> : null}
                         {ingredients.map((ingredient, index) => (
                             <View key={index} style={styles.ingredientRow}>
                                 <TextInput
@@ -262,6 +272,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    errorMsg: {
+        color: 'red',
+        fontSize: 16,
+        marginTop: 8,
+      },
     imageBackground: {
 
         height: '100%',

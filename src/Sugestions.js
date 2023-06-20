@@ -3,6 +3,7 @@ import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'rea
 
 const Suggestions = ({ route, navigation }) => {
     const { filteredData, selectedIngredients } = route.params;
+   
 
     if (!filteredData || !filteredData.matchingCards) {
         return null; // Or display a loading indicator, error message, or fallback UI
@@ -20,7 +21,9 @@ const Suggestions = ({ route, navigation }) => {
 
             <View style={styles.header}>
                 <Text style={styles.selectedIngredients}>Selected Ingredients:</Text>
+   
                 <Text style={styles.title}>Suggestions</Text>
+
             </View>
 
             <ScrollView style={styles.scrollContainer}>
