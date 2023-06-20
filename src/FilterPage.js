@@ -45,6 +45,7 @@ const FilterPage = ({ navigation }) => {
         { label: 'Beginner Friendly', value: 'beginner' },
         { label: 'Intermediate', value: 'intermediate' },
         { label: 'Advanced', value: 'advanced' },
+        { label: 'Any', value: 'any' },
     ];
 
 
@@ -65,10 +66,10 @@ const FilterPage = ({ navigation }) => {
             label: 'Non-Veg',
             value: 'non-vegetarian',
         },
-        // {
-        //     label: 'All',
-        //     value: 'all',
-        // },
+        {
+            label: 'All',
+            value: 'all',
+        },
 
         // Add more dietary restrictions here
     ];
@@ -99,7 +100,15 @@ const FilterPage = ({ navigation }) => {
             selectedLevel: selectedLevel
         };
 
-        
+          if (selectedItems.length === 0 && selectedLevel === '') {
+    const filteredData = {
+      matchingCards: [],
+      ingredients: data.ingredients, // Include the ingredient names only
+    };
+    navigation.navigate('Suggestions', { filteredData });
+    return;
+  }
+
 
         // Make the POST request to the filter endpoint
         fetch('http://192.168.40.75:3000/filter', {
@@ -398,13 +407,13 @@ const styles = StyleSheet.create({
     checkboxContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        margin: 10,
+        margin: 1,
 
     },
     checkbox: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: 10,
+        marginRight: 7,
         marginBottom: 10,
         padding: 5,
         borderRadius: 5,
