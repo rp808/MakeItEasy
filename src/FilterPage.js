@@ -100,14 +100,14 @@ const FilterPage = ({ navigation }) => {
             selectedLevel: selectedLevel
         };
 
-          if (selectedItems.length === 0 && selectedLevel === '') {
-    const filteredData = {
-      matchingCards: [],
-      ingredients: data.ingredients, // Include the ingredient names only
-    };
-    navigation.navigate('Suggestions', { filteredData });
-    return;
-  }
+//           if (selectedItems.length === 0 && selectedLevel === '') {
+//     const filteredData = {
+//       matchingCards: [],
+//       ingredients: data.ingredients, // Include the ingredient names only
+//     };
+//     navigation.navigate('Suggestions', { filteredData });
+//     return;
+//   }
 
 
         // Make the POST request to the filter endpoint
