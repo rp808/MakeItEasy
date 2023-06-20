@@ -86,7 +86,7 @@ const FilterPage = ({ navigation }) => {
     };
 
     const handleSubmit = () => {
-
+        setErrorMsg(''); 
         if (ingredients.some((ingredient) => ingredient.name === '')) {
             setErrorMsg('Please enter ingredients');
             return;
@@ -98,6 +98,8 @@ const FilterPage = ({ navigation }) => {
             selectedItems: selectedItems,
             selectedLevel: selectedLevel
         };
+
+        
 
         // Make the POST request to the filter endpoint
         fetch('http://192.168.40.75:3000/filter', {
@@ -117,15 +119,19 @@ const FilterPage = ({ navigation }) => {
                 }
             })
             .then(data => {
-                // Process the matched ingredients received from the server
-                console.log('Matched Ingredients:', data);
-                navigation.navigate('Suggestions', { filteredData: data });
+                if (data.matchingCards.length === 0) {
+                    setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
+                  } else {
+                    // Process the matched ingredients received from the server
+                    console.log('Matched Ingredients:', data);
+                    navigation.navigate('Suggestions', { filteredData: data });
+                  }
             })
 
 
             .catch(error => {
                 console.error('Error sending data:', error);
-            setErrorMsg('hard to hand recipe , kindly recheck the enetered ingredient');
+            setErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
                 
             });
     };
