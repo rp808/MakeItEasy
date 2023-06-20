@@ -192,15 +192,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 30,
-        backgroundColor: "#4F7942",
+        backgroundColor: "#8DAA6F",
         
     
     },
     buttonText: {
-        fontSize: 25,
-        color: "white", 
-        fontFamily: "GillSans-SemiBold",
-        letterSpacing: 2,
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     hairline: {
         marginTop: 40,

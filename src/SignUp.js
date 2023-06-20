@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   Linking,
   KeyboardAvoidingView,
+  ImageBackground
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -71,6 +72,11 @@ const [fdata, setFdata] = useState({
     behavior="padding"
   >
       <StatusBar style="auto" />
+      <ImageBackground
+                    source={require("./assets/lbg.jpg")}
+                    style={styles.imageBackground}
+                    resizeMode="cover"
+                >
       <View style={styles.boxFlex}>
         <View>
           <Text style={styles.welcomeTxt}>Hello and welcome</Text>
@@ -125,6 +131,7 @@ const [fdata, setFdata] = useState({
           <Text >"Already have an account" Log In</Text>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     </KeyboardAvoidingView>
 
 
@@ -143,14 +150,14 @@ const styles = StyleSheet.create({
   boxFlex: {
     flex: 7,
     width: '100%',
-    backgroundColor: "#fff",
+   // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-end",
   },
   bottomFlex: {
     flex: 2,
     width: '100%',
-    backgroundColor: "#fff",
+   // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-end",
     paddingBottom: 30,
@@ -161,9 +168,16 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   signupTxt: {
-    fontSize: 17,
+    fontSize: 20,
     fontWeight: 'bold',
   },
+  imageBackground: {
+
+    height: '100%',
+    width: '100%',
+    //   opacity: 0.5,
+
+},
   box: {
 
     borderRadius: 10,
@@ -171,6 +185,7 @@ const styles = StyleSheet.create({
     height: 45,
     width: '80%',
     marginBottom: 20,
+    backgroundColor: "#fff"
 
   },
   textInput: {
