@@ -5,7 +5,13 @@ export const data = [
         instructions: ['Chop the broccoli and broccolini into large florets (about 6 cups florets total). Chop the red onion into bite sized squares. Dice the pepper into bite sized squares', 'Remove the stems from the portobellos (if necessary), slice them into strips, then cut the larger pieces in half. Place all of the vegetables in a large bowl', 'Mince the garlic. Peel the ginger and grate it. Place them together in a small bowl.', 'Stir together the mirin, rice vinegar, soy sauce, and Sriracha in a small bowl.', 'In a large skillet over high heat, and heat the oil. Add the broccoli, broccolini (if using), red onion, bell pepper, and mushrooms and cook 6 to 7 minutes until just starting to brown on edges, stirring occasionally.', 'Add the garlic and ginger cook for 1 minute more, until broccoli is crisp tender but still bright green.', 'Turn off the heat and add the sauce, stirring until combined. Taste and add additional pinches salt as necessary. Serve immediately. Garnish with sesame seeds and green onion (optional).'],
         ratings: [],
         dietaryRestrictions: ['vegetarian'],
-        difficultyLevel: 'intermediate'
+        difficultyLevel: 'intermediate',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     {
         id: '2', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/2.jpg',
@@ -14,7 +20,13 @@ export const data = [
         instructions: ['Slice bell pepper (or 4 in different colors) horizontally to make four 1/2-inch-thick rings and remove inner white flesh and seeds.', 'In 12-inch nonstick skillet, heat vegetable oil on medium. Cook peppers 2 minutes. Turn peppers over; crack 1 egg into center of each ring. Cook, covered, until eggs have reached desired doneness. Season with 1/4 teaspoon each salt and pepper.', 'To serve, garnish with chopped parsle'],
         ratings: [],
         dietaryRestrictions: ['vegetarian', 'vegan'],
-        difficultyLevel: 'beginner'
+        difficultyLevel: 'beginner',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     {
         id: '3',
@@ -25,7 +37,13 @@ export const data = [
         instructions: ['To a large non-stick skillet or wok, add the oils, chicken, and cook over medium-high heat for about 3 to 5 minutes, flipping intermittently so all sides cook evenly.', ' Cooking time will vary based on thickness of chicken breasts and sizes of pieces.', 'Remove chicken with a slotted spoon (allow oils and cooking juices from chicken to remain in skillet) and place chicken on a plate; set aside.', 'Add the peas, carrots, green onions, and cook for about 2 minutes, or until vegetables begin to soften, stir intermittently.', 'Add the garlic and cook for 1 minute, stir intermittently.', 'Push vegetables to one side of the skillet, add the eggs to the other side, and cook to scramble, stirring as necessary.'],
         ratings: [],
         dietaryRestrictions: ['non-vegetarian'],
-        difficultyLevel: 'advanced'
+        difficultyLevel: 'advanced',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     {
         id: '4', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/4.jpg',
@@ -34,7 +52,13 @@ export const data = [
         instructions: ['Smooth gently with a rice paddle.', 'Layer salmon, cream cheese, and avocado on the rice, and roll it up tightly.', 'Slice with a sharp knife, and enjoy right away with soy sauce.'],
         ratings: [],
         dietaryRestrictions: ['non-vegetarian'],
-        difficultyLevel: 'advanced'
+        difficultyLevel: 'advanced',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     {
         id: '5',
@@ -44,7 +68,13 @@ export const data = [
         instructions: ['instru1', 'instru2', 'instru3'],
         ratings: [],
         dietaryRestrictions: ['non-vegetarian'],
-        difficultyLevel: 'advanced'
+        difficultyLevel: 'advanced',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
 
     {
@@ -55,7 +85,13 @@ export const data = [
          instructions: ['instru1', 'instru2', 'instru3'],
           ratings: [],
           dietaryRestrictions: ['non-vegetarian'],
-          difficultyLevel: 'advanced'
+          difficultyLevel: 'advanced',
+          nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     { id: '7', 
     imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
@@ -64,7 +100,13 @@ export const data = [
      instructions: ['instru1', 'instru2', 'instru3'], 
      ratings: [],
      dietaryRestrictions: ['non-vegetarian'],
-     difficultyLevel: 'advanced'
+     difficultyLevel: 'advanced',
+     nutrition: {
+        totalCalories: 670,
+        proteinPercentage: 41,
+        carbsPercentage: 52,
+        fatPercentage: 7,
+      },
      },
     { id: '8',
      imageSource: 'https://storage.googleapis.com/makeiteasyrp808/4.jpg',
@@ -73,7 +115,13 @@ export const data = [
         instructions: ['instru1', 'instru2', 'instru3'], 
         ratings: [],
         dietaryRestrictions: ['non-vegetarian'],
-        difficultyLevel: 'advanced'
+        difficultyLevel: 'advanced',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     { id: '9', 
     imageSource: 'https://storage.googleapis.com/makeiteasyrp808/1.jpg', 
@@ -91,7 +139,13 @@ export const data = [
       instructions: ['instru1', 'instru2', 'instru3'], 
       ratings: [] ,
       dietaryRestrictions: ['non-vegetarian'],
-        difficultyLevel: 'advanced'
+        difficultyLevel: 'advanced',
+        nutrition: {
+            totalCalories: 670,
+            proteinPercentage: 41,
+            carbsPercentage: 52,
+            fatPercentage: 7,
+          },
     },
     // { id: '11', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg', description: 'Card 3', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'], ratings: [] },
     // { id: '12', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/4.jpg', description: 'Card 2', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'], ratings: [] },
