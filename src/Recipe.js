@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -18,31 +18,31 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const Recipe = ({props,token}) => {
-    const { navigation, route }=props
+const Recipe = ({ props, token }) => {
+    const { navigation, route,totalCalories } = props
     console.log("props", token);
     const [activeSection, setActiveSection] = useState('ingredients');
-    const [ratingsArray,setRatingsArray]=useState([])
+    const [ratingsArray, setRatingsArray] = useState([])
     const toggleSection = (section) => {
         setActiveSection(section);
     };
-    const [rating, setRating] = useState(ratingsArray.length!=0 ?ratingsArray[ratingsArray.length-1].ratingValue : 0);
-    console.log("rating",rating)
-    const getRatings=async()=>{
+    const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
+    console.log("rating", rating)
+    const getRatings = async () => {
         fetch(`http://192.168.40.75:3000/card/${route.params.item.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'authorization':"Bearer "+token
+                'authorization': "Bearer " + token
             },
-           
+
         })
-            .then(async(response) => {
- 
+            .then(async (response) => {
+
                 if (response.ok) {
                     console.log('Get Ratings  successfully');
                     setRatingsArray(await response.json())
-                  
+
                 }
                 else {
                     throw new Error('Failed to save the rating');
@@ -50,19 +50,19 @@ const Recipe = ({props,token}) => {
             })
             .catch((error) => {
                 console.error('Error saving the rating:', error);
-        
+
             });
     }
-useEffect(()=>{
-    getRatings()
+    useEffect(() => {
+        getRatings()
 
-//  if(ratingsArray.length!=0)
-//  {
-//     console.log("vav",ratingsArray[ratingsArray.length-1].ratingValue)
-//     setRating(ratingsArray[ratingsArray.length-1].ratingValue)
-//  }
-},[])
-   
+        //  if(ratingsArray.length!=0)
+        //  {
+        //     console.log("vav",ratingsArray[ratingsArray.length-1].ratingValue)
+        //     setRating(ratingsArray[ratingsArray.length-1].ratingValue)
+        //  }
+    }, [])
+
 
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
@@ -71,12 +71,12 @@ useEffect(()=>{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'authorization':"Bearer "+token
+                'authorization': "Bearer " + token
             },
-            body: JSON.stringify({ ratingValue: selectedRating }), 
+            body: JSON.stringify({ ratingValue: selectedRating }),
         })
             .then((response) => {
-                console.log("response",response)
+                console.log("response", response)
                 if (response.ok) {
                     console.log('Rating saved successfully');
 
@@ -87,13 +87,13 @@ useEffect(()=>{
             })
             .catch((error) => {
                 console.error('Error saving the rating:', error);
-               
+
             });
     };
 
     return (
         <View style={styles.screen} >
-          
+
 
             <View style={styles.recipeImg}>
                 <View style={styles.backButtonContainer}>
@@ -145,27 +145,44 @@ useEffect(()=>{
                             activeSection === 'instructions',
                         ]}>Instructions</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[
+                            styles.buttonOne,
+                            activeSection === 'nutrition' ? styles.activeButton : null,
+                        ]}
+                        onPress={() => toggleSection('nutrition')}
+                    >
+                        <Text style={styles.buttonText}>Nutrition</Text>
+                    </TouchableOpacity>
+
+
                 </View>
                 <ScrollView>
-                <View style={styles.ingredientsContainer}>
-  
-
                     {activeSection === 'ingredients' ? (
-                        route.params.item.ingredients.map((ingredient, index) => (
-                            <Text key={index} style={styles.ingredientsText}>
-                                - {ingredient}
+                        <View style={styles.ingredientsContainer}>
+                            {route.params.item.ingredients.map((ingredient, index) => (
+                                <Text key={index} style={styles.ingredientsText}>
+                                    - {ingredient}
+                                </Text>
+                            ))}
+                        </View>
+                    ) : activeSection === 'instructions' ? (
+                        <View style={styles.ingredientsContainer}>
+                            {route.params.item.instructions.map((instruction, index) => (
+                                <Text key={index} style={styles.ingredientsText}>
+                                    - {instruction}
+                                </Text>
+                            ))}
+                        </View>
+                    ) : activeSection === 'nutrition' ? (
+                        <View style={styles.nutritionContainer}>
+                            <Text style={styles.totalCalories}>
+                                Total Calories: {route.params.totalCalories}
                             </Text>
-                        ))
-                    ) : (
-                        route.params.item.instructions.map((instructions, index) => (
-                            <Text key={index} style={styles.ingredientsText}>
-                                -  {instructions}
-                            </Text>
-                        ))
-                    )}
-
-
-                </View>
+                            {/* Render additional nutrition information here */}
+                        </View>
+                    ) : null}
                 </ScrollView>
             </View>
 
@@ -194,15 +211,15 @@ useEffect(()=>{
             <View style={styles.buttomNavFlex}>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                     <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
-      
+
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
-                 
+
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                     <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                 
+
                 </TouchableOpacity>
 
 

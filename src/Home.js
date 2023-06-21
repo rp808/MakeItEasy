@@ -47,12 +47,12 @@ export const Home = ({ navigation }) => {
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition[0].split(':')[1].trim();
         return(
-        <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item }) }}>
+        <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item , totalCalories }) }}>
             <Image source={{ uri: item.imageSource }} style={styles.image} />
           
             <Text style={styles.description}>{item.description}</Text>
             <View style={styles.nutritionContainer}>
-            <Ionicons name="ios-flame" size={24} color="black" /> 
+            <Ionicons name="ios-flame" size={20} color="black" /> 
             <Text style={styles.nutritionText}>{totalCalories}</Text>
             </View>
 
