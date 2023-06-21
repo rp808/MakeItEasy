@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Login from "../src/Login";
 import FilterPage from "./FilterPage";
 import Recipe from "./Recipe";
@@ -15,42 +15,52 @@ import {
     Linking,
     FlatList,
 } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const Home = ({ navigation }) => { 
-    
+export const Home = ({ navigation }) => {
+
     useEffect(() => {
         sendDataToServer();
-      }, []);
+    }, []);
 
-    
+
     const sendDataToServer = async () => {
         try {
-          const response = await fetch('http://192.168.40.75:3000/cards', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          });
-      
- 
+            const response = await fetch('http://192.168.40.75:3000/cards', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+
         } catch (error) {
-          console.error('An error occurred while sending data:', error);
+            console.error('An error occurred while sending data:', error);
         }
-      };
+    };
 
-    
-    const renderItem = ({ item }) => (
-        <TouchableOpacity style={styles.cards} onPress={()=>{navigation.navigate("Recipe",{item})}}>
+
+    const renderItem = ({ item }) => {
+        const totalCalories = item.nutrition[0].split(':')[1].trim();
+        return(
+        <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item }) }}>
             <Image source={{ uri: item.imageSource }} style={styles.image} />
-
+          
             <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.rating}>{item.rating}</Text>
+            <View style={styles.nutritionContainer}>
+            <Ionicons name="ios-flame" size={24} color="black" /> 
+            <Text style={styles.nutritionText}>{totalCalories}</Text>
+            </View>
+
+
+
         </TouchableOpacity>
-    );
+        );
+        };
     return (
         <View style={styles.screen}>
             <StatusBar style="auto" />
@@ -105,7 +115,20 @@ export const Home = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
 
+    nutritionContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft:-90,
+        marginTop: 10,
 
+      },
+      nutritionIcon: {
+        marginRight: 2,
+      },
+      nutritionText: {
+        fontSize: 18,
+        marginLeft: 5,
+      },
     screen: {
         flex: 1,
         width: '100%',
@@ -190,15 +213,15 @@ const styles = StyleSheet.create({
         marginTop: -80,
         width: 120,
         height: 120,
-       borderRadius: 60,
+        borderRadius: 60,
         marginBottom: 10,
     },
     description: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
-      //  marginRight: "10%",
-        width:"90%"
+        //  marginRight: "10%",
+        width: "90%"
     },
     rating: {
         fontSize: 14,
