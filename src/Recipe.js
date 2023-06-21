@@ -19,7 +19,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const Recipe = ({ props, token }) => {
-    const { navigation, route,totalCalories } = props
+    const { navigation, route, totalCalories } = props
     console.log("props", token);
     const [activeSection, setActiveSection] = useState('ingredients');
     const [ratingsArray, setRatingsArray] = useState([])
@@ -176,11 +176,48 @@ const Recipe = ({ props, token }) => {
                             ))}
                         </View>
                     ) : activeSection === 'nutrition' ? (
-                        <View style={styles.nutritionContainer}>
-                            <Text style={styles.totalCalories}>
+                        <View style={styles.ingredientsContainer}>
+                            {/* <Text style={styles.totalCalories}>
                                 Total Calories: {route.params.totalCalories}
-                            </Text>
-                            {/* Render additional nutrition information here */}
+                            </Text> */}
+                         {route.params.item.nutrition.map((nutritionItem, index) => {
+      const [key, value] = nutritionItem.split(':').map((item) => item.trim());
+
+      let name = null;
+      let textStyle = null;
+      switch (key) {
+        case 'totalCalories':
+          name = 'Total Calories';
+          textStyle = styles.totalCaloriesText;
+          break;
+        case 'proteinPercentage':
+          name = 'Protein';
+          textStyle = styles.proteinText;
+          break;
+        case 'carbsPercentage':
+          name = 'Carbohydrates';
+          textStyle = styles.carbsText;
+          break;
+        case 'fatPercentage':
+          name = 'Fat';
+          textStyle = styles.fatText;
+          break;
+        default:
+          name = key;
+          textStyle = styles.defaultText;
+      }
+
+      let formattedValue = value;
+      if (key === 'proteinPercentage' || key === 'carbsPercentage' || key === 'fatPercentage') {
+        formattedValue = value + '%';
+      }
+
+      return (
+        <Text key={index} style={[styles.nutritionText, textStyle]}>
+          {name}: {formattedValue}
+        </Text>
+      );
+    })}
                         </View>
                     ) : null}
                 </ScrollView>
@@ -296,7 +333,28 @@ const styles = StyleSheet.create({
         alignItems: "flex-end",
         justifyContent: "center",
     },
+    totalCaloriesText: {
+        color: 'red',
+       
+      },
+      proteinText: {
+        color: 'green',
+   
+      },
+      carbsText: {
+        color: 'blue',
 
+      },
+      fatText: {
+        color: 'purple',
+       
+      },
+      defaultText: {
+        // ...your existing styles for defaultText...
+      },
+      nutritionText: {
+        // ...your existing styles for nutritionText...
+      },
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
