@@ -82,14 +82,20 @@ const RecipeFilter = ({ navigation, route }) => {
                             activeSection === 'instructions',
                         ]}>Instructions</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[
+                            styles.buttonOne,
+                            activeSection === 'nutrition' ? styles.activeButton : null,
+                        ]}
+                        onPress={() => toggleSection('nutrition')}
+                    >
+                        <Text style={styles.buttonText}>Nutrition</Text>
+                    </TouchableOpacity>
                 </View>
                 <  ScrollView>
                     <View style={styles.ingredientsContainer}>
-                        {/* <Text style={styles.sectionTitle}>Ingredients:</Text> */}
-                        {/* <Text style={styles.ingredientsText}> abcd  </Text> */}
-                        {/* {route.params.item.ingredients.map((ingredient, index) => (
-                        <Text key={index} style={styles.ingredientsText}>{ingredient}</Text>
-                    ))} */}
+               
 
                         {activeSection === 'ingredients' ? (
                             cardData.ingredients.map((ingredient, index) => (
