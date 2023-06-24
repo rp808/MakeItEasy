@@ -214,6 +214,22 @@ const styles = StyleSheet.create({
         left: 16,
         zIndex: 1,
     },
+    totalCaloriesText: {
+        color: 'red',
+
+    },
+    proteinText: {
+        color: 'green',
+
+    },
+    carbsText: {
+        color: 'blue',
+
+    },
+    fatText: {
+        color: 'purple',
+
+    },
     ingredientsText: {
         fontSize: 19,
         marginLeft: 16,
