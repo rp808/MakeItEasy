@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Suggestions = ({ route, navigation }) => {
     const { filteredData, selectedIngredients } = route.params;
@@ -31,14 +32,10 @@ const Suggestions = ({ route, navigation }) => {
                     <TouchableOpacity key={card._id} style={styles.cardContainer} onPress={() => navigation.navigate('RecipeFilter', { cardData: card })}>
                         <Image source={{ uri: card.imageSource }} style={styles.image} />
                         <Text style={styles.title}>{card.description}</Text>
-                        <View style={styles.detailsContainer}>
-                            <Text style={styles.rating}>Rating: {card.rating}</Text>
-                            {/* <Text style={styles.ingredients}>
-                                Ingredients: {card.ingredients.join(', ')}
-                            </Text>
-                            <Text style={styles.instructions}>
-                                Instructions: {card.instructions.join(', ')}
-                            </Text> */}
+                        <View style={styles.nutritionContainer}>
+                        <Ionicons name="ios-flame" size={20} color="black" /> 
+                            <Text  style={styles.nutritionText}> {card.nutrition.totalCalories}</Text>
+                     
                         </View>
                     </TouchableOpacity>
                 ))}
@@ -74,6 +71,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F6F6F6',
     },
+    nutritionContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+       marginLeft:20,
+       marginBottom:20,
+       // marginTop: 10,
+
+      },
+      nutritionIcon: {
+        marginRight: 2,
+      },
+      nutritionText: {
+        fontSize: 18,
+        marginLeft: 5,
+      },
     scrollContainer: {
         flex: 1,
         width: '100%',
