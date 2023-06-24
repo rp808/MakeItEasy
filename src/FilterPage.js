@@ -25,7 +25,7 @@ const FilterPage = ({ navigation }) => {
 
     const [selectedItems, setSelectedItems] = useState([]);
     const [errorMsg, setErrorMsg] = useState('');
-    const [selectedLevel, setSelectedLevel] = useState('');
+    // const [selectedLevel, setSelectedLevel] = useState('');
     const [ingredients, setIngredients] = useState([{ name: '' }]);
 
     const handleSelection = (item) => {
@@ -37,16 +37,16 @@ const FilterPage = ({ navigation }) => {
     };
 
 
-    const handleLevel = (item) => {
-        setSelectedLevel(item);
-    };
+    // const handleLevel = (item) => {
+    //     setSelectedLevel(item);
+    // };
 
-    const levels = [
-        { label: 'Beginner Friendly', value: 'beginner' },
-        { label: 'Intermediate', value: 'intermediate' },
-        { label: 'Advanced', value: 'advanced' },
-        { label: 'Any', value: 'any' },
-    ];
+    // const levels = [
+    //     { label: 'Beginner Friendly', value: 'beginner' },
+    //     { label: 'Intermediate', value: 'intermediate' },
+    //     { label: 'Advanced', value: 'advanced' },
+    //     { label: 'Any', value: 'any' },
+    // ];
 
 
     const options = [
@@ -97,7 +97,7 @@ const FilterPage = ({ navigation }) => {
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
             selectedItems: selectedItems,
-            selectedLevel: selectedLevel
+            // selectedLevel: selectedLevel
         };
 
 //           if (selectedItems.length === 0 && selectedLevel === '') {
@@ -186,7 +186,7 @@ const FilterPage = ({ navigation }) => {
                         </View>
 
                     </View>
-                    <View style={styles.levelThree}>
+                    {/* <View style={styles.levelThree}>
                         <Text style={styles.label}>Difficulty Level</Text>
                         <View style={styles.radioContainer}>
                             {levels.map((levels) => (
@@ -204,7 +204,7 @@ const FilterPage = ({ navigation }) => {
                         </View>
 
 
-                    </View>
+                    </View> */}
 
                     <KeyboardAvoidingView style={styles.avail} behavior="padding">
                         <View style={styles.headerRow}>
