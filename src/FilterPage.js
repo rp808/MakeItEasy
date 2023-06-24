@@ -157,7 +157,7 @@ const FilterPage = ({ navigation }) => {
         (
             <View style={styles.screen}>
                 <ImageBackground
-                    source={require("./assets/lbg1.jpg")}
+                    source={require("./assets/elena-joland-mjeQon0Mh_Q-unsplash.jpg")}
                     style={styles.imageBackground}
                     resizeMode="cover"
                 >
@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
 
     diet: {
         flex: 1,
-        backgroundColor: "rgba(255, 255, 255,1)",
+        backgroundColor: "rgba(255, 255, 255,0.9)",
         borderRadius: 8,
         shadowColor: "#000",
         shadowOffset: {
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
 
     },
     levelThree: {
-        backgroundColor: "rgba(255, 255, 255,1)",
+        backgroundColor: "rgba(255, 255, 255,0.9)",
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
@@ -371,45 +371,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    radioContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        margin: 5,
-    },
-    radio: {
-        height: 35,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginRight: 10,
-        marginBottom: 10,
-        marginLeft: 5,
-        padding: 5,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#9A9A9A',
-        backgroundColor: '#FFF',
-        marginTop: 10,
-    },
-    radioSelected: {
-        backgroundColor: '#8DAA6F',
-        transform: [{ scale: 1.1 }], // Scale up the selected radio button
-        borderWidth: 0,
-        borderColor: '#000',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
 
-    },
-    radioLabel: {
-        marginLeft: 2,
-        fontFamily: "GillSans-Light",
-        fontSize: 18,
-    },
+
+
     container: {
         marginBottom: 20,
     },
@@ -467,7 +431,7 @@ const styles = StyleSheet.create({
 
     avail: {
         flex: 4,
-        backgroundColor: "rgba(255, 255, 255, 1)",
+        backgroundColor: "rgba(255, 255, 255,0.9)",
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
@@ -526,20 +490,21 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     submitButton: {
-        backgroundColor: 'black',
+        backgroundColor: '#8DAA6F',
         paddingVertical: 10,
         paddingHorizontal: 15,
         marginLeft: 5,
         borderRadius: 5,
     },
     resetButton: {
-        backgroundColor: 'black',
+        backgroundColor: '#ff5c5c',
         paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 5,
     },
     buttonText: {
-        color: 'white',
+        color: 'black',
+        fontSize: 20,
         fontFamily: "GillSans-SemiBold",
     },
     btmContainer: {

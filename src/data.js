@@ -30,7 +30,8 @@ export const data = [
     },
     {
         id: '3',
-        imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg', description: 'Chicken fried rice',
+        imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
+         description: 'Chicken fried rice',
         ingredients: ['2 tablespoons sesame oil',
             '2 tablespoons canola or vegetable oil', '3/4 to 1 pound boneless skinless chicken breasts', 'diced into 1/2-inch pieces', '1/2 cups frozen peas and diced carrots blend ', '3 green onions, trimmed and sliced into thin rounds', ' 2 to 3 garlic cloves, finely minced', '3 large eggs, lightly beaten', '4 cups cooked rice (I use white, long-grain or brown may be substituted. To save time use two 8.8-ounce pouches cooked and ready-to-serve rice)', '3 to 4 tablespoons low-sodium soy sauce',
             'salt and pepper, optional and to taste',],
@@ -39,7 +40,7 @@ export const data = [
         dietaryRestrictions: ['non-vegetarian'],
         difficultyLevel: 'advanced',
         nutrition:  {
-            totalCalories: 670,
+            totalCalories: 870,
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,

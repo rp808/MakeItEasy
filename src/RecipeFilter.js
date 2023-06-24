@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
         color: 'purple',
 
     },
+    
     ingredientsText: {
         fontSize: 19,
         marginLeft: 16,
