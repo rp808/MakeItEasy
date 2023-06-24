@@ -497,7 +497,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     resetButton: {
-        backgroundColor: '#ff5c5c',
+        backgroundColor: '#8DAA6F',
         paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 5,

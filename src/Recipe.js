@@ -96,11 +96,12 @@ const Recipe = ({ props, token }) => {
 
 
             <View style={styles.recipeImg}>
-                <View style={styles.backButtonContainer}>
-                    <TouchableOpacity style={styles.backButton}>
+
+                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Home')}>
+                    <View style={styles.backButton} >
                         <Ionicons name="arrow-back" size={24} color="#000000" />
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
                 <Image style={styles.image} source={{ uri: route.params.item.imageSource }} />
 
 
@@ -111,10 +112,10 @@ const Recipe = ({ props, token }) => {
                 <View style={styles.titleContainer}>
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{route.params.item.description}</Text>
-                        <View style={styles.ratingContainer}>
+                        {/* <View style={styles.ratingContainer}>
                             <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
                             <Text style={styles.ratingText}>{route.params.item.rating}</Text>
-                        </View>
+                        </View> */}
                     </View>
                 </View>
             </View>
