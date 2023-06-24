@@ -27,6 +27,7 @@ const FilterPage = ({ navigation }) => {
     const [errorMsg, setErrorMsg] = useState('');
     // const [selectedLevel, setSelectedLevel] = useState('');
     const [ingredients, setIngredients] = useState([{ name: '' }]);
+    const [totalCalories, setTotalCalories] = useState('');
 
     const handleSelection = (item) => {
         if (selectedItems.includes(item)) {
@@ -87,27 +88,28 @@ const FilterPage = ({ navigation }) => {
     };
 
     const handleSubmit = () => {
-        setErrorMsg(''); 
+        setErrorMsg('');
         if (ingredients.some((ingredient) => ingredient.name === '')) {
             setErrorMsg('Please enter ingredients');
             return;
-          }
+        }
 
         // Prepare the data to be sent to the server
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
             selectedItems: selectedItems,
+            totalCalories: totalCalories, 
             // selectedLevel: selectedLevel
         };
 
-//           if (selectedItems.length === 0 && selectedLevel === '') {
-//     const filteredData = {
-//       matchingCards: [],
-//       ingredients: data.ingredients, // Include the ingredient names only
-//     };
-//     navigation.navigate('Suggestions', { filteredData });
-//     return;
-//   }
+        //           if (selectedItems.length === 0 && selectedLevel === '') {
+        //     const filteredData = {
+        //       matchingCards: [],
+        //       ingredients: data.ingredients, // Include the ingredient names only
+        //     };
+        //     navigation.navigate('Suggestions', { filteredData });
+        //     return;
+        //   }
 
 
         // Make the POST request to the filter endpoint
@@ -130,18 +132,18 @@ const FilterPage = ({ navigation }) => {
             .then(data => {
                 if (data.matchingCards.length === 0) {
                     setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
-                  } else {
+                } else {
                     // Process the matched ingredients received from the server
                     console.log('Matched Ingredients:', data);
                     navigation.navigate('Suggestions', { filteredData: data });
-                  }
+                }
             })
 
 
             .catch(error => {
                 console.error('Error sending data:', error);
-            setErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
-                
+                setErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
+
             });
     };
 
@@ -186,6 +188,18 @@ const FilterPage = ({ navigation }) => {
                         </View>
 
                     </View>
+                    <View style={styles.levelThree}>
+                        <Text style={styles.label}>Total Calories</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Enter Total Calories"
+                            value={totalCalories}
+                            onChangeText={(value) => setTotalCalories(value)}
+                            keyboardType="numeric"
+                        />
+                    </View>
+
+
                     {/* <View style={styles.levelThree}>
                         <Text style={styles.label}>Difficulty Level</Text>
                         <View style={styles.radioContainer}>
@@ -254,8 +268,8 @@ const FilterPage = ({ navigation }) => {
                                 <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.iconContainer}  onPress={() => navigation.navigate('FilterPage')}>
-                                <Image style={styles.iconImg} source={require("./assets/filterFilled.png")}   />
+                            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                                <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
                                 {/* <Text style={styles.ttitle}>Homee</Text> */}
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
@@ -291,7 +305,7 @@ const styles = StyleSheet.create({
         color: 'red',
         fontSize: 16,
         marginTop: 8,
-      },
+    },
     imageBackground: {
 
         height: '100%',
@@ -499,7 +513,7 @@ const styles = StyleSheet.create({
         // marginBottom: 10,
         // width: "40%",
         marginLeft: 20,
-        height:40,
+        height: 40,
     },
     addButtonText: {
         color: 'white',
@@ -509,7 +523,7 @@ const styles = StyleSheet.create({
     buttonRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop:20,
+        marginTop: 20,
     },
     submitButton: {
         backgroundColor: 'black',

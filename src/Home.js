@@ -45,7 +45,7 @@ export const Home = ({ navigation }) => {
 
 
     const renderItem = ({ item }) => {
-        const totalCalories = item.nutrition[0].split(':')[1].trim();
+        const totalCalories = item.nutrition.totalCalories;
         return(
         <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item , totalCalories }) }}>
             <Image source={{ uri: item.imageSource }} style={styles.image} />

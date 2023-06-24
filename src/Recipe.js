@@ -180,11 +180,9 @@ const Recipe = ({ props, token }) => {
                             {/* <Text style={styles.totalCalories}>
                                 Total Calories: {route.params.totalCalories}
                             </Text> */}
-                         {route.params.item.nutrition.map((nutritionItem, index) => {
-      const [key, value] = nutritionItem.split(':').map((item) => item.trim());
-
-      let name = null;
-      let textStyle = null;
+  {Object.entries(route.params.item.nutrition).map(([key, value]) => {
+    let name = null;
+    let textStyle = null;
       switch (key) {
         case 'totalCalories':
           name = 'Total Calories';
@@ -213,7 +211,7 @@ const Recipe = ({ props, token }) => {
       }
 
       return (
-        <Text key={index} style={[styles.nutritionText, textStyle]}>
+        <Text key={key} style={[styles.nutritionText, textStyle]}>
           {name}: {formattedValue}
         </Text>
       );
