@@ -180,42 +180,42 @@ const Recipe = ({ props, token }) => {
                             {/* <Text style={styles.totalCalories}>
                                 Total Calories: {route.params.totalCalories}
                             </Text> */}
-  {Object.entries(route.params.item.nutrition).map(([key, value]) => {
-    let name = null;
-    let textStyle = null;
-      switch (key) {
-        case 'totalCalories':
-          name = 'Total Calories';
-          textStyle = styles.totalCaloriesText;
-          break;
-        case 'proteinPercentage':
-          name = 'Protein';
-          textStyle = styles.proteinText;
-          break;
-        case 'carbsPercentage':
-          name = 'Carbohydrates';
-          textStyle = styles.carbsText;
-          break;
-        case 'fatPercentage':
-          name = 'Fat';
-          textStyle = styles.fatText;
-          break;
-        default:
-          name = key;
-          textStyle = styles.defaultText;
-      }
+                            {Object.entries(route.params.item.nutrition).map(([key, value]) => {
+                                let name = null;
+                                let textStyle = null;
+                                switch (key) {
+                                    case 'totalCalories':
+                                        name = 'Total Calories';
+                                        textStyle = styles.totalCaloriesText;
+                                        break;
+                                    case 'proteinPercentage':
+                                        name = 'Protein';
+                                        textStyle = styles.proteinText;
+                                        break;
+                                    case 'carbsPercentage':
+                                        name = 'Carbohydrates';
+                                        textStyle = styles.carbsText;
+                                        break;
+                                    case 'fatPercentage':
+                                        name = 'Fat';
+                                        textStyle = styles.fatText;
+                                        break;
+                                    default:
+                                        name = key;
+                                        textStyle = styles.defaultText;
+                                }
 
-      let formattedValue = value;
-      if (key === 'proteinPercentage' || key === 'carbsPercentage' || key === 'fatPercentage') {
-        formattedValue = value + '%';
-      }
+                                let formattedValue = value;
+                                if (key === 'proteinPercentage' || key === 'carbsPercentage' || key === 'fatPercentage') {
+                                    formattedValue = value + '%';
+                                }
 
-      return (
-        <Text key={key} style={[styles.nutritionText, textStyle]}>
-          {name}: {formattedValue}
-        </Text>
-      );
-    })}
+                                return (
+                                    <Text key={key} style={[styles.nutritionText, textStyle]}>
+                                        {name}: {formattedValue}
+                                    </Text>
+                                );
+                            })}
                         </View>
                     ) : null}
                 </ScrollView>
@@ -333,26 +333,26 @@ const styles = StyleSheet.create({
     },
     totalCaloriesText: {
         color: 'red',
-       
-      },
-      proteinText: {
+
+    },
+    proteinText: {
         color: 'green',
-   
-      },
-      carbsText: {
+
+    },
+    carbsText: {
         color: 'blue',
 
-      },
-      fatText: {
+    },
+    fatText: {
         color: 'purple',
-       
-      },
-      defaultText: {
+
+    },
+    defaultText: {
         // ...your existing styles for defaultText...
-      },
-      nutritionText: {
+    },
+    nutritionText: {
         // ...your existing styles for nutritionText...
-      },
+    },
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",

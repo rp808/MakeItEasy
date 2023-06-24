@@ -93,26 +93,66 @@ const RecipeFilter = ({ navigation, route }) => {
                         <Text style={styles.buttonText}>Nutrition</Text>
                     </TouchableOpacity>
                 </View>
-                <  ScrollView>
-                    <View style={styles.ingredientsContainer}>
-               
-
-                        {activeSection === 'ingredients' ? (
-                            cardData.ingredients.map((ingredient, index) => (
+                <ScrollView>
+                    {activeSection === 'ingredients' ? (
+                        <View style={styles.ingredientsContainer}>
+                            { cardData.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    {ingredient}
+                                    - {ingredient}
                                 </Text>
-                            ))
-                        ) : (
-                            cardData.instructions.map((instruction, index) => (
+                            ))}
+                        </View>
+                    ) : activeSection === 'instructions' ? (
+                        <View style={styles.ingredientsContainer}>
+                            {cardData.instructions.map((instruction, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    {instruction}
+                                    - {instruction}
                                 </Text>
-                            ))
-                        )}
+                            ))}
+                        </View>
+                    ) : activeSection === 'nutrition' ? (
+                        <View style={styles.ingredientsContainer}>
+                            {/* <Text style={styles.totalCalories}>
+                                Total Calories: {route.params.totalCalories}
+                            </Text> */}
+                            {Object.entries(cardData.nutrition).map(([key, value]) => {
+                                let name = null;
+                                let textStyle = null;
+                                switch (key) {
+                                    case 'totalCalories':
+                                        name = 'Total Calories';
+                                        textStyle = styles.totalCaloriesText;
+                                        break;
+                                    case 'proteinPercentage':
+                                        name = 'Protein';
+                                        textStyle = styles.proteinText;
+                                        break;
+                                    case 'carbsPercentage':
+                                        name = 'Carbohydrates';
+                                        textStyle = styles.carbsText;
+                                        break;
+                                    case 'fatPercentage':
+                                        name = 'Fat';
+                                        textStyle = styles.fatText;
+                                        break;
+                                    default:
+                                        name = key;
+                                        textStyle = styles.defaultText;
+                                }
 
+                                let formattedValue = value;
+                                if (key === 'proteinPercentage' || key === 'carbsPercentage' || key === 'fatPercentage') {
+                                    formattedValue = value + '%';
+                                }
 
-                    </View>
+                                return (
+                                    <Text key={key} style={[styles.nutritionText, textStyle]}>
+                                        {name}: {formattedValue}
+                                    </Text>
+                                );
+                            })}
+                        </View>
+                    ) : null}
                 </ScrollView>
             </View>
 
