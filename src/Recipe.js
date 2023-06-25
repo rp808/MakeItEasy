@@ -112,14 +112,18 @@ const Recipe = ({ props, token }) => {
                 <View style={styles.titleContainer}>
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{route.params.item.description}</Text>
-                    
+                        <View style={styles.timerContainer}>
+                            <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
+                            <Text style={styles.timerValue}>{route.params.item.time} mins</Text>
+                        </View>
+
                     </View>
                 </View>
             </View>
 
 
             <View style={styles.ingreInstruct}>
-                
+
                 <View style={styles.buttonContainer}>
 
 
@@ -153,7 +157,7 @@ const Recipe = ({ props, token }) => {
                         ]}
                         onPress={() => toggleSection('nutrition')}
                     >
-                         <Text style={[
+                        <Text style={[
                             styles.buttonText,
                             activeSection === 'nutrition',
                             activeSection === 'nutrition' ? styles.activeText : null,
@@ -188,6 +192,7 @@ const Recipe = ({ props, token }) => {
                             {Object.entries(route.params.item.nutrition).map(([key, value]) => {
                                 let name = null;
                                 let textStyle = null;
+                                let boxStyle = null;
                                 switch (key) {
                                     case 'totalCalories':
                                         name = 'Total Calories';
@@ -196,18 +201,22 @@ const Recipe = ({ props, token }) => {
                                     case 'proteinPercentage':
                                         name = 'Protein';
                                         textStyle = styles.proteinText;
+                                        boxStyle = styles.proteinBox;
                                         break;
                                     case 'carbsPercentage':
                                         name = 'Carbohydrates';
                                         textStyle = styles.carbsText;
+                                        boxStyle = styles.carbsBox;
                                         break;
                                     case 'fatPercentage':
                                         name = 'Fat';
                                         textStyle = styles.fatText;
+                                        boxStyle = styles.fatBox;
                                         break;
                                     default:
                                         name = key;
                                         textStyle = styles.defaultText;
+
                                 }
 
                                 let formattedValue = value;
@@ -216,11 +225,26 @@ const Recipe = ({ props, token }) => {
                                 }
 
                                 return (
-                                    <Text key={key} style={[styles.nutritionText, textStyle]}>
-                                        {name}: {formattedValue}
-                                    </Text>
+                                    <View key={key}>
+                                        <View style={styles.nutritionRow}>
+                                            <View style={[styles.nutritionBox, boxStyle]}></View>
+                                            <View style={styles.nutritionTextContainer}>
+                                                <Text style={[styles.nutritionText, styles.nutritionName, textStyle]}>
+                                                    {name}:
+                                                </Text>
+                                                <Text style={[styles.nutritionText, styles.nutritionValue, textStyle]}>
+                                                    {formattedValue}
+                                                </Text>
+                                            </View>
+                                        </View>
+                                        <View style={styles.nutritionSeparator}></View>
+                                    </View>
                                 );
                             })}
+                            <View style={styles.servingContainer}>
+                                <Text style={styles.servingText}>Total Servings: {route.params.item.serving}</Text>
+                                <Text style={styles.perServingText}>Values are per serving</Text>
+                            </View>
                         </View>
                     ) : null}
                 </ScrollView>
@@ -274,23 +298,99 @@ const Recipe = ({ props, token }) => {
     )
 };
 const styles = StyleSheet.create({
+    timerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        // marginTop: 5,
+    },
+    timerIcon: {
+        marginRight: 5,
+    },
+    timerValue: {
+        fontSize: 25,
+        marginLeft: 4,
+        marginRight: 20,
+        fontFamily: 'GillSans-SemiBold',
+        color: '#05595b',
+    },
+    nutritionName: {
+        flex: 1,
+        // textAlign: 'right',
+    },
+    nutritionValue: {
+        flex: 1,
+        textAlign: 'left',
+    },
+    nutritionRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    servingContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+    perServingText: {
+        marginTop: 10,
+        textAlign: 'right',
+        fontStyle: 'italic',
+        color: 'gray',
+    },
+    servingText: {
+        marginTop: 10,
+        textAlign: 'right',
+        fontStyle: 'italic',
+        color: 'gray',
+    },
+    nutritionBox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        borderWidth: 0.5,
+        borderColor: 'gray',
+        marginRight: 15,
+    },
+    proteinBox: {
+        backgroundColor: '#05595b',
+    },
+    carbsBox: {
+        backgroundColor: '#FB7B14',
+    },
+    fatBox: {
+        backgroundColor: 'black',
+    },
+    nutritionTextContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    nutritionText: {
+        marginLeft: 5,
+    },
+    nutritionSeparator: {
+        borderBottomWidth: 0.3,
+        borderBottomColor: 'gray',
+        marginTop: 5,
+        marginBottom: 10,
+    },
+
     cardContent: {
         backgroundColor: '#f5f5f5',
-      
+
         borderRadius: 10,
-       // padding: 20,
+        // padding: 20,
         margin: 10,
         shadowColor: '#333',
         shadowOpacity: 0.3,
         shadowRadius: 2,
         shadowOffset: {
-          width: 1,
-          height: 2,
+            width: 1,
+            height: 2,
         },
         elevation: 3,
         borderWidth: 1,
         borderColor: '#ccc',
-      },
+    },
 
 
     screen: {
@@ -312,8 +412,8 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         paddingBottom: 5,
         fontFamily: "Gill Sans",
-        
-     
+
+
 
 
     },
@@ -343,10 +443,10 @@ const styles = StyleSheet.create({
     ingreInstruct: {
         flex: 3,
         width: '100%',
-        
+
         //backgroundColor: "#fff",
-        
-   
+
+
         // alignItems: "center",
         // justifyContent: "center",
     },
@@ -363,15 +463,15 @@ const styles = StyleSheet.create({
 
     },
     proteinText: {
-        color: 'green',
+        color: '#05595b',
 
     },
     carbsText: {
-        color: 'blue',
+        color: '#FB7B14',
 
     },
     fatText: {
-        color: 'purple',
+        color: '#000000',
 
     },
     defaultText: {
@@ -420,8 +520,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#828282',
         // backgroundColor: '#828282',
     },
-    activeText:{
-        color:'#05595b',
+    activeText: {
+        color: '#05595b',
 
     },
     buttonOne: {
@@ -452,7 +552,7 @@ const styles = StyleSheet.create({
         fontSize: 23,
         //color: 'white',
         fontFamily: "Gill Sans",
-        letterSpacing:'1',
+        letterSpacing: '1',
     },
     image: {
         width: '100%',
@@ -493,7 +593,7 @@ const styles = StyleSheet.create({
     recipeTitle: {
         fontSize: 25,
         // fontWeight: 'bold',
-       
+
         marginLeft: 8,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
@@ -512,19 +612,19 @@ const styles = StyleSheet.create({
     ratingText: {
         fontSize: 25,
         fontFamily: "GillSans-Light",
-        marginRight: 35,
+        //marginRight: 35,
     },
-   
+
     ingredientsContainer: {
         marginTop: 16,
         paddingHorizontal: 16,
         // backgroundColor:'#333',
-    alignContent:'center',
-    
-    // marginLeft:'5%',
-    //     width:'90%'
-        
-        
+        alignContent: 'center',
+
+        // marginLeft:'5%',
+        //     width:'90%'
+
+
     },
     //   sectionTitle: {
     //     fontSize: 20,
@@ -542,7 +642,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 4,
-        paddingRight:30,
+        paddingRight: 30,
     },
     starIcon: {
         marginRight: 4,
