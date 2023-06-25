@@ -275,7 +275,7 @@ const Recipe = ({ props, token }) => {
 };
 const styles = StyleSheet.create({
     cardContent: {
-        backgroundColor: '#fff',
+        backgroundColor: '#f5f5f5',
       
         borderRadius: 10,
        // padding: 20,
@@ -307,11 +307,13 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     ingredientsText: {
-        fontSize: 19,
+        fontSize: 21,
         marginLeft: 16,
         marginBottom: 12,
         paddingBottom: 5,
         fontFamily: "Gill Sans",
+        
+     
 
 
     },
@@ -322,7 +324,7 @@ const styles = StyleSheet.create({
     },
 
     recipeImg: {
-        flex: 3,
+        flex: 2.5,
         width: '100%',
         backgroundColor: "#000000",
         alignItems: "center",
@@ -411,7 +413,7 @@ const styles = StyleSheet.create({
         // backgroundColor: '#05595B',
         backgroundColor: '#fff',
         borderBottomWidth: 4,
-        borderBottomColor: '#1da756',
+        borderBottomColor: '#05595b',
 
     },
     activeButtonInstru: {
@@ -419,7 +421,8 @@ const styles = StyleSheet.create({
         // backgroundColor: '#828282',
     },
     activeText:{
-        color:'#1da756',
+        color:'#05595b',
+
     },
     buttonOne: {
         flex: 1,
@@ -427,12 +430,15 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         backgroundColor: '#fff',
         marginHorizontal: 8,
-        borderRadius: 8,
+        //borderRadius: 8,
     },
 
     buttonContainer: {
         flexDirection: 'row',
         marginTop: 10,
+        borderBottomWidth: 0.2,
+        borderBottomColor: '#ccc',
+
     },
     button: {
         flex: 1,
@@ -443,7 +449,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     buttonText: {
-        fontSize: 20,
+        fontSize: 23,
         //color: 'white',
         fontFamily: "Gill Sans",
         letterSpacing:'1',
@@ -487,9 +493,10 @@ const styles = StyleSheet.create({
     recipeTitle: {
         fontSize: 25,
         // fontWeight: 'bold',
-        fontFamily: "GillSans-Light",
+       
         marginLeft: 8,
-        // alignItems: 'left',
+        fontFamily: 'GillSans-SemiBold',
+        color: '#05595b',
 
     },
     ratingContainer: {

@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
 
     },
     logoTxt: {
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: 'bold',
         paddingTop: 35,
         color: '#062c30',
