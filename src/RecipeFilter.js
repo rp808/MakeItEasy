@@ -34,7 +34,7 @@ const RecipeFilter = ({ navigation, route }) => {
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-            <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Suggestions')}>
+                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Suggestions')}>
                     <View style={styles.backButton} >
                         <Ionicons name="arrow-back" size={24} color="#000000" />
                     </View>
@@ -49,10 +49,11 @@ const RecipeFilter = ({ navigation, route }) => {
                 <View style={styles.titleContainer}>
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{cardData.description}</Text>
-                        {/* <View style={styles.ratingContainer}>
-                            <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
-                            <Text style={styles.ratingText}>{cardData.rating}</Text>
-                        </View> */}
+                        <View style={styles.timerContainer}>
+                            <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
+                            <Text style={styles.timerValue}>{cardData.time} mins</Text>
+                        </View>
+
                     </View>
                 </View>
             </View>
@@ -92,7 +93,7 @@ const RecipeFilter = ({ navigation, route }) => {
                         ]}
                         onPress={() => toggleSection('nutrition')}
                     >
-                         <Text style={[
+                        <Text style={[
                             styles.buttonText,
                             activeSection === 'nutrition',
                             activeSection === 'nutrition' ? styles.activeText : null,
@@ -102,7 +103,7 @@ const RecipeFilter = ({ navigation, route }) => {
                 <ScrollView style={styles.cardContent}>
                     {activeSection === 'ingredients' ? (
                         <View style={styles.ingredientsContainer}>
-                            { cardData.ingredients.map((ingredient, index) => (
+                            {cardData.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
                                     - {ingredient}
                                 </Text>
@@ -124,6 +125,7 @@ const RecipeFilter = ({ navigation, route }) => {
                             {Object.entries(cardData.nutrition).map(([key, value]) => {
                                 let name = null;
                                 let textStyle = null;
+                                let boxStyle = null;
                                 switch (key) {
                                     case 'totalCalories':
                                         name = 'Total Calories';
@@ -132,18 +134,22 @@ const RecipeFilter = ({ navigation, route }) => {
                                     case 'proteinPercentage':
                                         name = 'Protein';
                                         textStyle = styles.proteinText;
+                                        boxStyle = styles.proteinBox;
                                         break;
                                     case 'carbsPercentage':
                                         name = 'Carbohydrates';
                                         textStyle = styles.carbsText;
+                                        boxStyle = styles.carbsBox;
                                         break;
                                     case 'fatPercentage':
                                         name = 'Fat';
                                         textStyle = styles.fatText;
+                                        boxStyle = styles.fatBox;
                                         break;
                                     default:
                                         name = key;
                                         textStyle = styles.defaultText;
+
                                 }
 
                                 let formattedValue = value;
@@ -152,11 +158,30 @@ const RecipeFilter = ({ navigation, route }) => {
                                 }
 
                                 return (
-                                    <Text key={key} style={[styles.nutritionText, textStyle]}>
-                                        {name}: {formattedValue}
-                                    </Text>
+                                    <View key={key}>
+                                        <View style={styles.nutritionRow}>
+                                            <View style={[styles.nutritionBox, boxStyle]}></View>
+                                            <View style={styles.nutritionTextContainer}>
+                                                <Text style={[styles.nutritionText, styles.nutritionName, textStyle]}>
+                                                    {name}:
+                                                </Text>
+                                                <Text style={[styles.nutritionText, styles.nutritionValue, textStyle]}>
+                                                    {formattedValue}
+                                                </Text>
+                                                
+                                                
+                                            </View>
+                                            
+                                        </View>
+                                        {/* <View style={styles.nutritionSeparator}></View> */}
+                                    </View>
                                 );
                             })}
+                            <View style={styles.nutritionSeparator}></View>
+                            <View style={styles.servingContainer}>
+                                <Text style={styles.servingText}>Total Servings: {cardData.serving}</Text>
+                                <Text style={styles.perServingText}>Values are per serving</Text>
+                            </View>
                         </View>
                     ) : null}
                 </ScrollView>
@@ -205,23 +230,102 @@ const RecipeFilter = ({ navigation, route }) => {
 
 
 const styles = StyleSheet.create({
+    timerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        // marginTop: 5,
+    },
+    timerIcon: {
+        marginRight: 5,
+    },
+    timerValue: {
+        fontSize: 24,
+        marginLeft: 4,
+        marginRight: 20,
+        fontFamily: 'GillSans-SemiBold',
+        color: '#05595b',
+    },
+    nutritionName: {
+        flex: 1,
+        // textAlign: 'right',
+    },
+    nutritionValue: {
+        flex: 1,
+        textAlign: 'left',
+    },
+    nutritionRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    servingContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+    perServingText: {
+        marginTop: 10,
+        textAlign: 'right',
+        fontStyle: 'italic',
+        color: 'gray',
+    },
+    servingText: {
+        marginTop: 10,
+        textAlign: 'right',
+        fontStyle: 'italic',
+        color: 'gray',
+    },
+    nutritionBox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        borderWidth: 0.5,
+        borderColor: 'gray',
+        marginRight: 15,
+    },
+    proteinBox: {
+        backgroundColor: '#05595b',
+
+    },
+    carbsBox: {
+        backgroundColor: '#FB7B14',
+    },
+    fatBox: {
+        backgroundColor: 'black',
+    },
+    nutritionTextContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    nutritionText: {
+        marginLeft: 5,
+    },
+    nutritionSeparator: {
+        // borderTopWidth:0.3,
+        // borderTopColor:'gray',
+        borderBottomWidth: 0.3,
+        borderBottomColor: 'gray',
+        marginTop: 5,
+        marginBottom: 10,
+    },
     cardContent: {
-        backgroundColor: '#fff',
-      
+        backgroundColor: '#f5f5f5',
+
         borderRadius: 10,
-       // padding: 20,
+        // padding: 20,
         margin: 10,
         shadowColor: '#333',
         shadowOpacity: 0.3,
         shadowRadius: 2,
         shadowOffset: {
-          width: 1,
-          height: 2,
+            width: 1,
+            height: 2,
         },
         elevation: 3,
         borderWidth: 1,
         borderColor: '#ccc',
-      },
+    },
 
 
 
@@ -240,20 +344,27 @@ const styles = StyleSheet.create({
     },
     totalCaloriesText: {
         color: 'red',
-
+        fontFamily: "Gill Sans",
     },
     proteinText: {
-        color: 'green',
-
+        color: '#05595b',
+        fontFamily: "Gill Sans",
     },
     carbsText: {
-        color: 'blue',
+        color: '#FB7B14',
+        fontFamily: "Gill Sans",
 
     },
     fatText: {
-        color: 'purple',
-
+        color: '#000000',
+        fontFamily: "Gill Sans",
     },
+    defaultText: {
+        // ...your existing styles for defaultText...
+    },
+    // nutritionText: {
+    //     // ...your existing styles for nutritionText...
+    // },
 
     ingredientsText: {
         fontSize: 19,
@@ -317,6 +428,7 @@ const styles = StyleSheet.create({
         // alignItems: "center",
         // justifyContent: "center",
     },
+
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
@@ -336,14 +448,16 @@ const styles = StyleSheet.create({
         // backgroundColor: '#05595B',
         backgroundColor: '#fff',
         borderBottomWidth: 4,
-        borderBottomColor: '#1da756',
+        borderBottomColor: '#05595b',
 
     },
     activeButtonInstru: {
         backgroundColor: '#828282',
+        // backgroundColor: '#828282',
     },
-    activeText:{
-        color:'#1da756',
+    activeText: {
+        color: '#05595b',
+
     },
     buttonOne: {
         flex: 1,
@@ -351,7 +465,29 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         backgroundColor: '#fff',
         marginHorizontal: 8,
+        //borderRadius: 8,
+    },
+
+    buttonContainer: {
+        flexDirection: 'row',
+        marginTop: 10,
+        borderBottomWidth: 0.2,
+        borderBottomColor: '#ccc',
+
+    },
+    button: {
+        flex: 1,
+        alignItems: 'center',
+        paddingVertical: 8,
+        backgroundColor: '#05595B',
+        marginHorizontal: 8,
         borderRadius: 8,
+    },
+    buttonText: {
+        fontSize: 22,
+        //color: 'white',
+        fontFamily: "Gill Sans",
+        letterSpacing: '1',
     },
     image: {
         width: '100%',
@@ -382,7 +518,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        backgroundColor: 'rgba(255, 255, 255,1)',
         paddingHorizontal: 5,
         paddingVertical: 10,
         borderRadius: 8,
@@ -390,11 +526,12 @@ const styles = StyleSheet.create({
 
     },
     recipeTitle: {
-        fontSize: 25,
+        fontSize: 24,
         // fontWeight: 'bold',
-        fontFamily: "GillSans-Light",
+
         marginLeft: 8,
-        // alignItems: 'left',
+        fontFamily: 'GillSans-SemiBold',
+        color: '#05595b',
 
     },
     ratingContainer: {
@@ -408,30 +545,21 @@ const styles = StyleSheet.create({
         marginRight: 4,
     },
     ratingText: {
-        fontSize: 25,
+        fontSize: 24,
         fontFamily: "GillSans-Light",
-        marginRight: 35,
+        //marginRight: 35,
     },
-    buttonContainer: {
-        flexDirection: 'row',
-        marginTop: 10,
-    },
-    button: {
-        flex: 1,
-        alignItems: 'center',
-        paddingVertical: 8,
-        backgroundColor: '#828282',
-        marginHorizontal: 8,
-        borderRadius: 8,
-    },
-    buttonText: {
-        fontSize: 20,
 
-        fontFamily: "Gill Sans",
-    },
     ingredientsContainer: {
         marginTop: 16,
         paddingHorizontal: 16,
+        // backgroundColor:'#333',
+        alignContent: 'center',
+
+        // marginLeft:'5%',
+        //     width:'90%'
+
+
     },
     //   sectionTitle: {
     //     fontSize: 20,
@@ -449,6 +577,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 4,
+        paddingRight: 30,
     },
     starIcon: {
         marginRight: 4,

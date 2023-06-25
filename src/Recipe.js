@@ -226,16 +226,21 @@ const Recipe = ({ props, token }) => {
 
                                 return (
                                     <View key={key}>
+                                        
                                         <View style={styles.nutritionRow}>
+                                            
                                             <View style={[styles.nutritionBox, boxStyle]}></View>
                                             <View style={styles.nutritionTextContainer}>
+                                                
                                                 <Text style={[styles.nutritionText, styles.nutritionName, textStyle]}>
                                                     {name}:
                                                 </Text>
+                                                
                                                 <Text style={[styles.nutritionText, styles.nutritionValue, textStyle]}>
                                                     {formattedValue}
                                                 </Text>
                                             </View>
+                                            
                                         </View>
                                         <View style={styles.nutritionSeparator}></View>
                                     </View>
@@ -307,7 +312,7 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     timerValue: {
-        fontSize: 25,
+        fontSize: 24,
         marginLeft: 4,
         marginRight: 20,
         fontFamily: 'GillSans-SemiBold',
@@ -407,7 +412,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     ingredientsText: {
-        fontSize: 21,
+        fontSize: 19,
         marginLeft: 16,
         marginBottom: 12,
         paddingBottom: 5,
@@ -549,7 +554,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     buttonText: {
-        fontSize: 23,
+        fontSize: 22,
         //color: 'white',
         fontFamily: "Gill Sans",
         letterSpacing: '1',
@@ -591,7 +596,7 @@ const styles = StyleSheet.create({
 
     },
     recipeTitle: {
-        fontSize: 25,
+        fontSize: 24,
         // fontWeight: 'bold',
 
         marginLeft: 8,
@@ -610,7 +615,7 @@ const styles = StyleSheet.create({
         marginRight: 4,
     },
     ratingText: {
-        fontSize: 25,
+        fontSize: 24,
         fontFamily: "GillSans-Light",
         //marginRight: 35,
     },
