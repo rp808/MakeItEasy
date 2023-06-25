@@ -46,21 +46,21 @@ export const Home = ({ navigation }) => {
 
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition.totalCalories;
-        return(
-        <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item , totalCalories }) }}>
-            <Image source={{ uri: item.imageSource }} style={styles.image} />
-          
-            <Text style={styles.description}>{item.description}</Text>
-            <View style={styles.nutritionContainer}>
-            <Ionicons name="ios-flame" size={20} color="black" /> 
-            <Text style={styles.nutritionText}>{totalCalories}</Text>
-            </View>
+        return (
+            <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item, totalCalories }) }}>
+                <Image source={{ uri: item.imageSource }} style={styles.image} />
+
+                <Text style={styles.description}>{item.description}</Text>
+                <View style={styles.nutritionContainer}>
+                    <Ionicons name="ios-flame" size={20} color="#062c30" />
+                    <Text style={styles.nutritionText}>{totalCalories}</Text>
+                </View>
 
 
 
-        </TouchableOpacity>
+            </TouchableOpacity>
         );
-        };
+    };
     return (
         <View style={styles.screen}>
             <StatusBar style="auto" />
@@ -118,17 +118,22 @@ const styles = StyleSheet.create({
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft:-90,
+        marginLeft: -90,
         marginTop: 10,
 
-      },
-      nutritionIcon: {
+    },
+    nutritionIcon: {
         marginRight: 2,
-      },
-      nutritionText: {
+    },
+    nutritionText: {
         fontSize: 18,
         marginLeft: 5,
-      },
+        fontSize: 17,
+
+        fontFamily: 'GillSans-SemiBold',
+        color: '#062c30',
+
+    },
     screen: {
         flex: 1,
         width: '100%',
@@ -180,18 +185,19 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         paddingTop: 35,
+        color: '#062c30',
         fontFamily: 'GillSans-SemiBoldItalic',
     },
     cards: {
 
         width: "40%",
         height: 200,
-        backgroundColor: '#CFD4D2',
+        backgroundColor: '#D1D8D5',
         borderRadius: 8,
         // paddingRight: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 30,
+        marginTop: 35,
         marginRight: "5%",
         marginLeft: "5%",
         marginBottom: "5%",
@@ -217,11 +223,13 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     description: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 17,
+        fontFamily: 'GillSans-SemiBold',
         marginBottom: 5,
         //  marginRight: "10%",
-        width: "90%"
+        width: "90%",
+        color: '#062c30',
+
     },
     rating: {
         fontSize: 14,

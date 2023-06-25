@@ -239,7 +239,7 @@ const FilterPage = ({ navigation }) => {
                                     placeholder="Ingredient Name"
                                     value={ingredient.name}
                                     onChangeText={(value) => handleIngredientChange(index, value)}
-                                />
+                                />   
                                 {/* <TextInput
                                     style={[styles.input, styles.quantityInput]}
                                     placeholder="Quantity (optional)"

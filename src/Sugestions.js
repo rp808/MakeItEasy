@@ -20,8 +20,7 @@ const Suggestions = ({ route, navigation }) => {
 
             </View>
 
-            <View style={styles.header}>
-                <Text style={styles.selectedIngredients}>Selected Ingredients:</Text>
+            <View style={styles.header}>             
    
                 <Text style={styles.title}>Suggestions</Text>
 
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         paddingHorizontal: 10,
-        paddingTop: 20,
+      //  paddingTop: 10,
         paddingBottom: 30,
     },
     cardContainer: {
@@ -156,8 +155,8 @@ const styles = StyleSheet.create({
         fontFamily: 'GillSans-SemiBoldItalic',
     },
     header: {
-        marginTop: 20,
-        marginBottom: 10,
+       // marginTop: 10,
+       // marginBottom: 10,
         alignItems: 'center',
     },
     selectedIngredients: {
