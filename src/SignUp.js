@@ -170,6 +170,8 @@ const styles = StyleSheet.create({
   signupTxt: {
     fontSize: 20,
     fontWeight: 'bold',
+    color:"white",
+        letterSpacing:2,
   },
   imageBackground: {
 
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 30,
-    backgroundColor: "#8DAA6F",
+    backgroundColor: "#05595b",
   },
   hairline: {
     marginTop: 40,

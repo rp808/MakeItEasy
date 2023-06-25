@@ -122,6 +122,7 @@ const Recipe = ({ props, token }) => {
 
 
             <View style={styles.ingreInstruct}>
+                
                 <View style={styles.buttonContainer}>
 
 
@@ -131,7 +132,7 @@ const Recipe = ({ props, token }) => {
                     ]} onPress={() => toggleSection('ingredients')}>
                         <Text style={[
                             styles.buttonText,
-
+                            activeSection === 'ingredients' ? styles.activeText : null,
                         ]}>Ingredients</Text>
 
                     </TouchableOpacity>
@@ -144,6 +145,7 @@ const Recipe = ({ props, token }) => {
                         <Text style={[
                             styles.buttonText,
                             activeSection === 'instructions',
+                            activeSection === 'instructions' ? styles.activeText : null,
                         ]}>Instructions</Text>
                     </TouchableOpacity>
 
@@ -154,12 +156,17 @@ const Recipe = ({ props, token }) => {
                         ]}
                         onPress={() => toggleSection('nutrition')}
                     >
-                        <Text style={styles.buttonText}>Nutrition</Text>
+                         <Text style={[
+                            styles.buttonText,
+                            activeSection === 'nutrition',
+                            activeSection === 'nutrition' ? styles.activeText : null,
+                        ]}>Nutrition</Text>
                     </TouchableOpacity>
 
 
                 </View>
-                <ScrollView>
+                <ScrollView style={styles.cardContent}>
+
                     {activeSection === 'ingredients' ? (
                         <View style={styles.ingredientsContainer}>
                             {route.params.item.ingredients.map((ingredient, index) => (
@@ -270,6 +277,23 @@ const Recipe = ({ props, token }) => {
     )
 };
 const styles = StyleSheet.create({
+    cardContent: {
+        backgroundColor: '#fff',
+      
+        borderRadius: 10,
+       // padding: 20,
+        margin: 10,
+        shadowColor: '#333',
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        shadowOffset: {
+          width: 1,
+          height: 2,
+        },
+        elevation: 3,
+        borderWidth: 1,
+        borderColor: '#ccc',
+      },
 
 
     screen: {
@@ -320,7 +344,10 @@ const styles = StyleSheet.create({
     ingreInstruct: {
         flex: 3,
         width: '100%',
-        backgroundColor: "#fff",
+        
+        //backgroundColor: "#fff",
+        
+   
         // alignItems: "center",
         // justifyContent: "center",
     },
@@ -328,7 +355,7 @@ const styles = StyleSheet.create({
         flex: 0.5,
         width: '100%',
         backgroundColor: "#fff",
-        marginRight: 45,
+        //marginRight: 45,
         alignItems: "flex-end",
         justifyContent: "center",
     },
@@ -384,18 +411,45 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     activeButton: {
-        backgroundColor: '#828282',
+        // backgroundColor: '#05595B',
+        backgroundColor: '#fff',
+        borderBottomWidth: 4,
+        borderBottomColor: '#1da756',
+
     },
     activeButtonInstru: {
         backgroundColor: '#828282',
+        // backgroundColor: '#828282',
+    },
+    activeText:{
+        color:'#1da756',
     },
     buttonOne: {
         flex: 1,
         alignItems: 'center',
         paddingVertical: 8,
-        backgroundColor: '#D9DDDC',
+        backgroundColor: '#fff',
         marginHorizontal: 8,
         borderRadius: 8,
+    },
+
+    buttonContainer: {
+        flexDirection: 'row',
+        marginTop: 10,
+    },
+    button: {
+        flex: 1,
+        alignItems: 'center',
+        paddingVertical: 8,
+        backgroundColor: '#05595B',
+        marginHorizontal: 8,
+        borderRadius: 8,
+    },
+    buttonText: {
+        fontSize: 20,
+        //color: 'white',
+        fontFamily: "Gill Sans",
+        letterSpacing:'1',
     },
     image: {
         width: '100%',
@@ -456,26 +510,17 @@ const styles = StyleSheet.create({
         fontFamily: "GillSans-Light",
         marginRight: 35,
     },
-    buttonContainer: {
-        flexDirection: 'row',
-        marginTop: 10,
-    },
-    button: {
-        flex: 1,
-        alignItems: 'center',
-        paddingVertical: 8,
-        backgroundColor: '#828282',
-        marginHorizontal: 8,
-        borderRadius: 8,
-    },
-    buttonText: {
-        fontSize: 20,
-
-        fontFamily: "Gill Sans",
-    },
+   
     ingredientsContainer: {
         marginTop: 16,
         paddingHorizontal: 16,
+        // backgroundColor:'#333',
+    alignContent:'center',
+    
+    // marginLeft:'5%',
+    //     width:'90%'
+        
+        
     },
     //   sectionTitle: {
     //     fontSize: 20,
@@ -493,6 +538,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 4,
+        paddingRight:30,
     },
     starIcon: {
         marginRight: 4,
