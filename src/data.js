@@ -11,7 +11,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+        serving:5,
+        time : 35
     },
     {
         id: '2', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/2.jpg',
@@ -26,7 +28,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
     {
         id: '3',
@@ -44,7 +48,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
     {
         id: '4', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/4.jpg',
@@ -59,7 +65,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
     {
         id: '5',
@@ -75,7 +83,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
 
     {
@@ -92,7 +102,9 @@ export const data = [
         proteinPercentage: 41,
         carbsPercentage: 52,
         fatPercentage: 7,
-      }
+      },
+      serving:5,
+      time : 35
     },
     {
         id: '7',
@@ -108,7 +120,9 @@ export const data = [
         proteinPercentage: 41,
         carbsPercentage: 52,
         fatPercentage: 7,
-      }
+      },
+      serving:5,
+      time : 35
     },
     {
         id: '8',
@@ -124,7 +138,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
     {
         id: '9',
@@ -140,7 +156,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
     {
         id: '10',
@@ -156,7 +174,9 @@ export const data = [
             proteinPercentage: 41,
             carbsPercentage: 52,
             fatPercentage: 7,
-          }
+          },
+          serving:5,
+          time : 35
     },
     // { id: '11', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg', description: 'Card 3', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'], ratings: [] },
     // { id: '12', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/4.jpg', description: 'Card 2', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'], ratings: [] },
