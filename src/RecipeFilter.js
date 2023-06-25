@@ -16,6 +16,7 @@ import { Ionicons } from '@expo/vector-icons';
 import RecipeInstruction from "./RecipeInstruction";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Suggestions from "./Sugestions";
 
 
 const RecipeFilter = ({ navigation, route }) => {
@@ -33,11 +34,11 @@ const RecipeFilter = ({ navigation, route }) => {
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-                <View style={styles.backButtonContainer}>
-                    <TouchableOpacity style={styles.backButton}>
+            <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Suggestions')}>
+                    <View style={styles.backButton} >
                         <Ionicons name="arrow-back" size={24} color="#000000" />
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
                 <Image style={styles.image} source={{ uri: cardData.imageSource }} />
 
 
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
         color: 'purple',
 
     },
-    
+
     ingredientsText: {
         fontSize: 19,
         marginLeft: 16,
