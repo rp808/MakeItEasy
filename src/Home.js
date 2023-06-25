@@ -51,16 +51,27 @@ export const Home = ({ navigation }) => {
                 <Image source={{ uri: item.imageSource }} style={styles.image} />
 
                 <Text style={styles.description}>{item.description}</Text>
+                <View style={styles.nutritionContainerLeft}>
+                <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
+
+                </View>
                 <View style={styles.nutritionContainer}>
+
+                    {/* <View style={styles.leftItem}>
+
+                        <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
+                    </View> */}
+                    <View style={styles.leftItem}>
                     <Ionicons name="ios-flame" size={20} color="#062c30" />
                     <Text style={styles.nutritionText}>{totalCalories}</Text>
-                    <Ionicons name="md-restaurant" size={20} color="#062c30" />
-                    <Text style={styles.nutritionText}>{item.serving}</Text>
-                    <Ionicons name="md-timer" size={20} color="#062c30" />
-                    <Text style={styles.nutritionText}>{item.time}</Text>
+                    </View>
+
+                    <View style={styles.rightItem}>
+                        <Ionicons name="md-timer" size={20} color="#062c30" />
+                        <Text style={styles.nutritionText}>{item.time}</Text>
+                    </View>
                 </View>
-
-
+              
 
 
             </TouchableOpacity>
@@ -119,16 +130,37 @@ const styles = StyleSheet.create({
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: -90,
+        marginLeft: 10,
         marginTop: 10,
+        justifyContent: 'space-between',
 
     },
+    nutritionContainerLeft:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: -60,
+       marginTop: 10,
+ 
+    },
+    leftItem: {
+        flexDirection: 'row',
+        marginLeft:5,
+        marginRight:5
+      //  alignItems: 'center',
+      },
+      rightItem: {
+        flexDirection: 'row',
+        marginLeft:30,
+        marginRight:5
+        //alignItems: 'center',
+      },
     nutritionIcon: {
         marginRight: 2,
     },
     nutritionText: {
         fontSize: 18,
         marginLeft: 5,
+        marginRight: 15,
         fontSize: 17,
 
         fontFamily: 'GillSans-SemiBold',
@@ -195,7 +227,7 @@ const styles = StyleSheet.create({
 
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 35,
+        marginTop: 45,
         marginRight: "5%",
         marginLeft: "5%",
         marginBottom: "5%",
