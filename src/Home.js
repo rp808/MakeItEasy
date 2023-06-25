@@ -54,6 +54,8 @@ export const Home = ({ navigation }) => {
                 <View style={styles.nutritionContainer}>
                     <Ionicons name="ios-flame" size={20} color="#062c30" />
                     <Text style={styles.nutritionText}>{totalCalories}</Text>
+                    <Ionicons name="md-restaurant" size={20} color="#062c30" />
+                    <Text style={styles.servingText}>{item.serving}</Text>
                 </View>
 
 
@@ -74,7 +76,7 @@ export const Home = ({ navigation }) => {
 
 
             <View style={styles.cardsFlex}>
-              
+
                 <FlatList
                     data={data}
                     renderItem={renderItem}
@@ -89,15 +91,15 @@ export const Home = ({ navigation }) => {
             <View style={styles.buttomNavFlex}>
                 <View style={styles.iconContainer}>
                     <Image style={styles.iconImg} source={require("./assets/home.png")} />
-              
+
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
-          
+
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                     <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                
+
                 </TouchableOpacity>
 
 
@@ -164,14 +166,14 @@ const styles = StyleSheet.create({
 
         flex: 0,
         margin: 10,
-  
+
     },
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
         marginRight: 55,
         marginBottom: 15,
-      
+
 
     },
     logoTxt: {
@@ -187,13 +189,13 @@ const styles = StyleSheet.create({
         height: 200,
         backgroundColor: '#D1D8D5',
         borderRadius: 8,
-       
+
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 35,
         marginRight: "5%",
         marginLeft: "5%",
-        marginBottom: "5%",    
+        marginBottom: "5%",
 
     },
     iconImg: {
@@ -214,7 +216,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontFamily: 'GillSans-SemiBold',
         marginBottom: 5,
-      
+
         width: "90%",
         color: '#062c30',
 
