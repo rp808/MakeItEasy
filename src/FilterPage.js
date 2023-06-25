@@ -98,7 +98,7 @@ const FilterPage = ({ navigation }) => {
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
             selectedItems: selectedItems,
-            totalCalories: totalCalories, 
+            totalCalories: totalCalories,
             // selectedLevel: selectedLevel
         };
 
@@ -182,7 +182,10 @@ const FilterPage = ({ navigation }) => {
                                     ]}
                                     onPress={() => handleSelection(option.value)}
                                 >
-                                    <Text style={styles.checkboxLabel}>{option.label}</Text>
+                                    <Text style={[
+                                        styles.checkboxLabel,
+                                        selectedItems.includes(option.value) ? styles.selectedCheckboxLabel : null,
+                                    ]}>{option.label}</Text>
                                 </TouchableOpacity>
                             ))}
                         </View>
@@ -191,7 +194,7 @@ const FilterPage = ({ navigation }) => {
                     <View style={styles.levelThree}>
                         <Text style={styles.label}>Total Calories</Text>
                         <TextInput
-                            style={styles.input}
+                            style={styles.inputCal}
                             placeholder="Enter Total Calories"
                             value={totalCalories}
                             onChangeText={(value) => setTotalCalories(value)}
@@ -224,7 +227,7 @@ const FilterPage = ({ navigation }) => {
                         <View style={styles.headerRow}>
                             <Text style={styles.label}>Available Ingredients</Text>
                             <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
-                                <Ionicons name="add" size={24} color="white" />
+                                <Ionicons name="add" size={26} color="black" />
                                 <Text style={styles.addButtonText}>Add Ingredient</Text>
                             </TouchableOpacity>
                         </View>
@@ -292,7 +295,16 @@ const FilterPage = ({ navigation }) => {
     );
 };
 const styles = StyleSheet.create({
+    checkboxLabel: {
 
+        color: 'black',
+
+    },
+    selectedCheckboxLabel: {
+
+        color: 'white',
+
+    },
 
     screen: {
         flex: 1,
@@ -349,7 +361,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        padding: 20,
+        padding: 15,
+      //  margin:10,
         marginBottom: 20,
         //width: '100%',
 
@@ -391,9 +404,9 @@ const styles = StyleSheet.create({
     checkbox: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: 7,
+       marginRight: 13,
         marginBottom: 10,
-        padding: 5,
+       padding: 3,
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#9A9A9A',
@@ -403,7 +416,8 @@ const styles = StyleSheet.create({
     },
 
     checkboxSelected: {
-        backgroundColor: '#8DAA6F',
+        backgroundColor: '#05595b',
+        // color:'white',
         transform: [{ scale: 1.1 }], // Scale up the selected checkbox
         borderWidth: 0,
         borderColor: '#000',
@@ -464,13 +478,26 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         fontFamily: "GillSans-SemiBold",
     },
+    inputCal:{
+        marginRight: 30,
+        // marginLeft:30,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        height: 45,
+        backgroundColor: '#FFF',
+        fontFamily: "GillSans-SemiBold",
+
+    },
     quantityInput: {
         flex: 0.6,
     },
     addButton: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: "#71797E",
+        backgroundColor: "#e2d784",
         paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 5,
@@ -480,9 +507,10 @@ const styles = StyleSheet.create({
         height: 40,
     },
     addButtonText: {
-        color: 'white',
+        color: 'black',
         marginLeft: 5,
         fontFamily: "GillSans-SemiBold",
+        fontSize:18
     },
     buttonRow: {
         flexDirection: 'row',
@@ -490,20 +518,20 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     submitButton: {
-        backgroundColor: '#8DAA6F',
+        backgroundColor: '#05595b',
         paddingVertical: 10,
         paddingHorizontal: 15,
         marginLeft: 5,
         borderRadius: 5,
     },
     resetButton: {
-        backgroundColor: '#8DAA6F',
+        backgroundColor: '#05595b',
         paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 5,
     },
     buttonText: {
-        color: 'black',
+        color: 'white',
         fontSize: 20,
         fontFamily: "GillSans-SemiBold",
     },
