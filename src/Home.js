@@ -74,11 +74,7 @@ export const Home = ({ navigation }) => {
 
 
             <View style={styles.cardsFlex}>
-                {/* <View style={styles.cards}>
-                    <Image source={require("./assets/eggs.jpg")} style={styles.image}></Image>
-                    <Text style={styles.description}>recipe description</Text>
-                    <Text style={styles.rating}>rating</Text>
-                </View> */}
+              
                 <FlatList
                     data={data}
                     renderItem={renderItem}
@@ -93,15 +89,15 @@ export const Home = ({ navigation }) => {
             <View style={styles.buttomNavFlex}>
                 <View style={styles.iconContainer}>
                     <Image style={styles.iconImg} source={require("./assets/home.png")} />
-                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+              
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
-                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+          
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                     <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                    {/* <Text style={styles.ttitle}>Homee</Text> */}
+                
                 </TouchableOpacity>
 
 
@@ -168,17 +164,14 @@ const styles = StyleSheet.create({
 
         flex: 0,
         margin: 10,
-        // width: '100%',
-        // backgroundColor: "#fbc",
-        // alignItems: "center",
-        // justifyContent: "center",
+  
     },
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
         marginRight: 55,
         marginBottom: 15,
-        // marginTop:15,
+      
 
     },
     logoTxt: {
@@ -194,18 +187,13 @@ const styles = StyleSheet.create({
         height: 200,
         backgroundColor: '#D1D8D5',
         borderRadius: 8,
-        // paddingRight: 10,
+       
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 35,
         marginRight: "5%",
         marginLeft: "5%",
-        marginBottom: "5%",
-
-        // marginBottom: 10,
-        // marginTop:20,
-        // marginLeft:20,  
-
+        marginBottom: "5%",    
 
     },
     iconImg: {
@@ -226,7 +214,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontFamily: 'GillSans-SemiBold',
         marginBottom: 5,
-        //  marginRight: "10%",
+      
         width: "90%",
         color: '#062c30',
 
@@ -239,12 +227,7 @@ const styles = StyleSheet.create({
     listContainer: {
         paddingHorizontal: 10,
     }
-    //   signUpTxt:{
-    //     marginTop: 5,
-    //     height: 30,
-    //     marginBottom: 30,
 
-    //   },
 
 
 });
