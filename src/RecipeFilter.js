@@ -68,6 +68,7 @@ const RecipeFilter = ({ navigation, route }) => {
                     ]} onPress={() => toggleSection('ingredients')}>
                         <Text style={[
                             styles.buttonText,
+                            activeSection === 'ingredients' ? styles.activeText : null
 
                         ]}>Ingredients</Text>
 
@@ -80,7 +81,7 @@ const RecipeFilter = ({ navigation, route }) => {
                         onPress={() => toggleSection('instructions')}>
                         <Text style={[
                             styles.buttonText,
-                            activeSection === 'instructions',
+                            activeSection === 'instructions' ? styles.activeText : null
                         ]}>Instructions</Text>
                     </TouchableOpacity>
 
@@ -91,10 +92,14 @@ const RecipeFilter = ({ navigation, route }) => {
                         ]}
                         onPress={() => toggleSection('nutrition')}
                     >
-                        <Text style={styles.buttonText}>Nutrition</Text>
+                         <Text style={[
+                            styles.buttonText,
+                            activeSection === 'nutrition',
+                            activeSection === 'nutrition' ? styles.activeText : null,
+                        ]}>Nutrition</Text>
                     </TouchableOpacity>
                 </View>
-                <ScrollView>
+                <ScrollView style={styles.cardContent}>
                     {activeSection === 'ingredients' ? (
                         <View style={styles.ingredientsContainer}>
                             { cardData.ingredients.map((ingredient, index) => (
@@ -200,6 +205,24 @@ const RecipeFilter = ({ navigation, route }) => {
 
 
 const styles = StyleSheet.create({
+    cardContent: {
+        backgroundColor: '#fff',
+      
+        borderRadius: 10,
+       // padding: 20,
+        margin: 10,
+        shadowColor: '#333',
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        shadowOffset: {
+          width: 1,
+          height: 2,
+        },
+        elevation: 3,
+        borderWidth: 1,
+        borderColor: '#ccc',
+      },
+
 
 
     screen: {
@@ -310,16 +333,23 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     activeButton: {
-        backgroundColor: '#828282',
+        // backgroundColor: '#05595B',
+        backgroundColor: '#fff',
+        borderBottomWidth: 4,
+        borderBottomColor: '#1da756',
+
     },
     activeButtonInstru: {
         backgroundColor: '#828282',
+    },
+    activeText:{
+        color:'#1da756',
     },
     buttonOne: {
         flex: 1,
         alignItems: 'center',
         paddingVertical: 8,
-        backgroundColor: '#D9DDDC',
+        backgroundColor: '#fff',
         marginHorizontal: 8,
         borderRadius: 8,
     },

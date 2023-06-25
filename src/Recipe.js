@@ -112,10 +112,7 @@ const Recipe = ({ props, token }) => {
                 <View style={styles.titleContainer}>
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{route.params.item.description}</Text>
-                        {/* <View style={styles.ratingContainer}>
-                            <Ionicons name="star" size={25} color="#000000" style={styles.starIcon} />
-                            <Text style={styles.ratingText}>{route.params.item.rating}</Text>
-                        </View> */}
+                    
                     </View>
                 </View>
             </View>
