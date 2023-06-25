@@ -55,8 +55,11 @@ export const Home = ({ navigation }) => {
                     <Ionicons name="ios-flame" size={20} color="#062c30" />
                     <Text style={styles.nutritionText}>{totalCalories}</Text>
                     <Ionicons name="md-restaurant" size={20} color="#062c30" />
-                    <Text style={styles.servingText}>{item.serving}</Text>
+                    <Text style={styles.nutritionText}>{item.serving}</Text>
+                    <Ionicons name="md-timer" size={20} color="#062c30" />
+                    <Text style={styles.nutritionText}>{item.time}</Text>
                 </View>
+
 
 
 
