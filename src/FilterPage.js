@@ -101,7 +101,7 @@ const FilterPage = ({ navigation }) => {
             // selectedLevel: selectedLevel
         };
 
-  
+
 
 
         // Make the POST request to the filter endpoint
@@ -118,14 +118,14 @@ const FilterPage = ({ navigation }) => {
                     return response.json();
                 } else {
                     console.error('Error sending data:', response.status);
-                  
+
                 }
             })
             .then(data => {
                 if (data.matchingCards.length === 0) {
                     setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
                 } else {
-                    
+
                     console.log('Matched Ingredients:', data);
                     navigation.navigate('Suggestions', { filteredData: data });
                 }
@@ -185,13 +185,16 @@ const FilterPage = ({ navigation }) => {
                     </View>
                     <View style={styles.levelThree}>
                         <Text style={styles.label}>Total Calories</Text>
-                        <TextInput
-                            style={styles.inputCal}
-                            placeholder="Enter Total Calories"
-                            value={totalCalories}
-                            onChangeText={(value) => setTotalCalories(value)}
-                            keyboardType="numeric"
-                        />
+                        <View style={styles.caloriesContainer}>
+                            <TextInput
+                                style={styles.inputCal}
+                                placeholder="Enter Total Calories"
+                                value={totalCalories}
+                                onChangeText={(value) => setTotalCalories(value)}
+                                keyboardType="numeric"
+                            />
+                            <Text style={styles.perServingText}>per serving</Text>
+                        </View>
                     </View>
 
 
@@ -231,11 +234,11 @@ const FilterPage = ({ navigation }) => {
                                     placeholder="Ingredient Name"
                                     value={ingredient.name}
                                     onChangeText={(value) => handleIngredientChange(index, value)}
-                                />   
-                          
+                                />
+
                             </View>
                         ))}
-                      
+
                         <View style={styles.buttonRow}>
                             <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                                 <Text style={styles.buttonText}>Submit</Text>
@@ -253,15 +256,15 @@ const FilterPage = ({ navigation }) => {
 
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                                 <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
-                             
+
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                                 <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
-                               
+
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                                 <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                               
+
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -284,6 +287,23 @@ const styles = StyleSheet.create({
         color: 'black',
 
     },
+    caloriesContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        backgroundColor: '#FFF',
+        height: 45,
+        width:'80%',
+      },
+      perServingText: {
+        marginLeft:3, 
+        fontFamily: 'GillSans-SemiBold',
+        fontSize:18,
+        
+      },
     selectedCheckboxLabel: {
 
         color: 'white',
@@ -346,7 +366,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
         padding: 15,
-      //  margin:10,
+        //  margin:10,
         marginBottom: 20,
         //width: '100%',
 
@@ -388,9 +408,9 @@ const styles = StyleSheet.create({
     checkbox: {
         flexDirection: 'row',
         alignItems: 'center',
-       marginRight: 13,
+        marginRight: 13,
         marginBottom: 10,
-       padding: 3,
+        padding: 3,
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#9A9A9A',
@@ -450,6 +470,7 @@ const styles = StyleSheet.create({
         // marginLeft:30,
         paddingVertical: 5,
         paddingHorizontal: 10,
+        fontSize:19,
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
@@ -457,17 +478,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         fontFamily: "GillSans-SemiBold",
     },
-    inputCal:{
-        marginRight: 30,
-        // marginLeft:30,
+    inputCal: {
+        flex: 1,
         paddingVertical: 5,
-        paddingHorizontal: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-        height: 45,
-        backgroundColor: '#FFF',
-        fontFamily: "GillSans-SemiBold",
+        fontFamily: 'GillSans-SemiBold',
 
     },
     quantityInput: {
@@ -489,7 +503,7 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 5,
         fontFamily: "GillSans-SemiBold",
-        fontSize:18
+        fontSize: 18
     },
     buttonRow: {
         flexDirection: 'row',
