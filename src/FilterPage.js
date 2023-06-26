@@ -94,7 +94,6 @@ const FilterPage = ({ navigation }) => {
             return;
         }
 
-        // Prepare the data to be sent to the server
         const data = {
             ingredients: ingredients.map((ingredient) => ingredient.name),
             selectedItems: selectedItems,
@@ -102,14 +101,7 @@ const FilterPage = ({ navigation }) => {
             // selectedLevel: selectedLevel
         };
 
-        //           if (selectedItems.length === 0 && selectedLevel === '') {
-        //     const filteredData = {
-        //       matchingCards: [],
-        //       ingredients: data.ingredients, // Include the ingredient names only
-        //     };
-        //     navigation.navigate('Suggestions', { filteredData });
-        //     return;
-        //   }
+  
 
 
         // Make the POST request to the filter endpoint
@@ -126,14 +118,14 @@ const FilterPage = ({ navigation }) => {
                     return response.json();
                 } else {
                     console.error('Error sending data:', response.status);
-                    // Handle any errors that occur during the request
+                  
                 }
             })
             .then(data => {
                 if (data.matchingCards.length === 0) {
                     setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
                 } else {
-                    // Process the matched ingredients received from the server
+                    
                     console.log('Matched Ingredients:', data);
                     navigation.navigate('Suggestions', { filteredData: data });
                 }
@@ -240,18 +232,10 @@ const FilterPage = ({ navigation }) => {
                                     value={ingredient.name}
                                     onChangeText={(value) => handleIngredientChange(index, value)}
                                 />   
-                                {/* <TextInput
-                                    style={[styles.input, styles.quantityInput]}
-                                    placeholder="Quantity (optional)"
-                                    value={ingredient.quantity}
-                                    onChangeText={(value) => handleIngredientChange(index, 'quantity', value)}
-                                /> */}
+                          
                             </View>
                         ))}
-                        {/* <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
-                            <Ionicons name="add" size={24} color="white" />
-                            <Text style={styles.addButtonText}>Add Ingredient</Text>
-                        </TouchableOpacity> */}
+                      
                         <View style={styles.buttonRow}>
                             <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                                 <Text style={styles.buttonText}>Submit</Text>
@@ -269,15 +253,15 @@ const FilterPage = ({ navigation }) => {
 
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                                 <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
-                                {/* <Text style={styles.ttitle}>Homee</Text> */}
+                             
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                                 <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
-                                {/* <Text style={styles.ttitle}>Homee</Text> */}
+                               
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
                                 <Image style={styles.iconImg} source={require("./assets/logout.png")} />
-                                {/* <Text style={styles.ttitle}>Homee</Text> */}
+                               
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -435,11 +419,6 @@ const styles = StyleSheet.create({
         fontFamily: "GillSans-Light",
         fontSize: 18,
     },
-    // title: {
-    //     fontSize:  fontFamily: "GillSans-Light",16,
-    //     fontWeight: 'bold',
-    //     marginBottom: 10,
-    // },
 
 
 
