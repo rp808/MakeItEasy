@@ -67,11 +67,13 @@ export default function App() {
         }
       } />
 
-      <Stack.Screen name="RecipeFilter" component={RecipeFilter} options={
+      <Stack.Screen name="RecipeFilter"  options={
         {
           headerShown: false
         }
-      } />
+      } >{(props) => {
+        return <RecipeFilter token={token} props={props} />
+      }}</Stack.Screen>
     </Stack.Navigator>
 
   </NavigationContainer>

@@ -19,15 +19,46 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Suggestions from "./Sugestions";
 
 
-const RecipeFilter = ({ navigation, route }) => {
+const RecipeFilter = ({props,token}) => {
+    const { navigation, route }=props
+   
     const { cardData } = route.params;
     console.log(cardData);
+    const [ratingsArray, setRatingsArray] = useState([])
 
     const [activeSection, setActiveSection] = useState('ingredients');
 
     const toggleSection = (section) => {
         setActiveSection(section);
     };
+    const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
+    const handleRating = (selectedRating) => {
+        setRating(selectedRating);
+
+        fetch(`http://192.168.40.75:3000/cards/rate/${cardData._id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': "Bearer " + token
+            },
+            body: JSON.stringify({ ratingValue: selectedRating }),
+        })
+            .then((response) => {
+                console.log("response", response)
+                if (response.ok) {
+                    console.log('Rating saved successfully');
+
+                }
+                else {
+                    throw new Error('Failed to save the rating');
+                }
+            })
+            .catch((error) => {
+                console.error('Error saving the rating:', error);
+
+            });
+    };
+
 
     return (
         <View style={styles.screen} >
@@ -190,18 +221,23 @@ const RecipeFilter = ({ navigation, route }) => {
 
             <View style={styles.userRating}>
 
-                {/* <Text style={styles.sectionTitle}>User Rating:</Text> */}
                 <View style={styles.ratingContainer}>
-                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
-                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
-                    <Ionicons name="star" size={30} color="#000000" style={styles.starIcon} />
-                    <Ionicons name="star" size={30} color="#D9DDDC" style={styles.starIcon} />
-                    <Ionicons name="star" size={30} color="#D9DDDC" style={styles.starIcon} />
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <TouchableOpacity
+                            key={star}
+                            onPress={() => handleRating(star)}
+                        >
+                            <Ionicons
+                                name={star <= rating ? 'star' : 'star-outline'}
+                                size={30}
+                                color="#000000"
+                                style={styles.starIcon}
+                            />
+                        </TouchableOpacity>
+                    ))}
                 </View>
 
             </View>
-
-
             <View style={styles.buttomNavFlex}>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                     <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
