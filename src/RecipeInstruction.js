@@ -5,15 +5,12 @@ import {
     Text,
     View,
     Image,
-    TextInput,
-    Button,
+   
     TouchableOpacity,
-    Linking,
-    FlatList,
+   
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 
 const RecipeInstruction = () => {

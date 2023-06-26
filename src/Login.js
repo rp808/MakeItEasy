@@ -2,8 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
-import Home from "./Home";
-import SignUp from "./SignUp";
+
 import {
     StyleSheet,
     Text,
@@ -16,8 +15,7 @@ import {
     KeyboardAvoidingView,
     ImageBackground
 } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 const Login = ({props,setToken}) => {
     const navigation=props.navigation

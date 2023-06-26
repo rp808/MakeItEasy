@@ -8,17 +8,15 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
+ 
   TextInput,
-  Button,
+ 
   TouchableOpacity,
-  Linking,
+ 
   KeyboardAvoidingView,
   ImageBackground
 } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import codegenNativeCommands from "react-native/Libraries/Utilities/codegenNativeCommands";
+
 
 const SignUp = ({ navigation }) => {
   const [fdata, setFdata] = useState({

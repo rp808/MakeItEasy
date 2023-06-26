@@ -1,24 +1,21 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
-import Login from "../src/Login";
-import FilterPage from "./FilterPage";
-import Recipe from "./Recipe";
+
 import { data } from "./data";
 import {
     StyleSheet,
     Text,
     View,
     Image,
-    TextInput,
-    Button,
+   
+  
     TouchableOpacity,
-    Linking,
+ 
     FlatList,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 export const Home = ({ navigation }) => {
     
