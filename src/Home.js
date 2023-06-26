@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
 
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 45,
+        marginTop: 50,
         marginRight: "5%",
         marginLeft: "5%",
         marginBottom: "5%",

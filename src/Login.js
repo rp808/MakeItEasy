@@ -78,9 +78,10 @@ const Login = ({props,setToken}) => {
                     errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
                 }
                 <View style={styles.box}>
-                <MaterialIcons name="email" size={24} color="black" />
+                <MaterialIcons name="email" size={24} color="#05595b" />
                     <TextInput style={styles.textInput}
                         placeholder="Email."
+                        autoCapitalize="none"
                         onPressIn={() => setErrMsg(null)}
                         onChangeText={(text) => setFdata({ ...fdata, email: text })}
                     ></TextInput>
@@ -88,7 +89,7 @@ const Login = ({props,setToken}) => {
 
 
                 <View style={styles.box}>
-                <Fontisto name="key" size={24} color="black" />
+                <Fontisto name="key" size={24} color="#05595b" />
                     <TextInput style={styles.textInput}
                         placeholder="Password."
 
