@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         paddingTop: 35,
-        color: '#062c30',
+        color: '#05595b',
         fontFamily: 'GillSans-SemiBoldItalic',
     },
     cards: {

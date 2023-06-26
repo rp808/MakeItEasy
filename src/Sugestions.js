@@ -32,7 +32,7 @@ const Suggestions = ({ route, navigation }) => {
                         <Image source={{ uri: card.imageSource }} style={styles.image} />
                         <Text style={styles.title}>{card.description}</Text>
                         <View style={styles.nutritionContainer}>
-                        <Ionicons name="ios-flame" size={20} color="black" /> 
+                        <Ionicons name="ios-flame" size={20} color="#05595b" /> 
                             <Text  style={styles.nutritionText}> {card.nutrition.totalCalories}</Text>
                      
                         </View>
@@ -84,6 +84,9 @@ const styles = StyleSheet.create({
       nutritionText: {
         fontSize: 18,
         marginLeft: 5,
+        
+        fontFamily: 'GillSans-SemiBold',
+        color: '#05595b',
       },
     scrollContainer: {
         flex: 1,
@@ -150,9 +153,10 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 10,
     },
     logoTxt: {
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: 'bold',
         fontFamily: 'GillSans-SemiBoldItalic',
+        color:'#05595b',
     },
     header: {
        // marginTop: 10,
@@ -165,9 +169,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        margin: 20,
+        fontSize: 24,   
+        margin: 20,        
+        fontFamily: 'GillSans-SemiBold',
+        color: '#05595b',
     },
     detailsContainer: {
         paddingHorizontal: 10,
