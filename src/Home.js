@@ -62,12 +62,12 @@ export const Home = ({ navigation }) => {
                         <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
                     </View> */}
                     <View style={styles.leftItem}>
-                    <Ionicons name="ios-flame" size={20} color="#062c30" />
+                    <Ionicons name="ios-flame" size={20} color="#05595b" />
                     <Text style={styles.nutritionText}>{totalCalories}</Text>
                     </View>
 
                     <View style={styles.rightItem}>
-                        <Ionicons name="md-timer" size={20} color="#062c30" />
+                        <Ionicons name="md-timer" size={20} color="#05595b" />
                         <Text style={styles.nutritionText}>{item.time}</Text>
                     </View>
                 </View>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
 
         fontFamily: 'GillSans-SemiBold',
-        color: '#062c30',
+        color: '#05595b',
 
     },
     screen: {
@@ -222,7 +222,8 @@ const styles = StyleSheet.create({
 
         width: "40%",
         height: 200,
-        backgroundColor: '#D1D8D5',
+        backgroundColor: '#e1e1e1',
+        // backgroundColor: '#D1D8D5',
         borderRadius: 8,
 
         alignItems: 'center',
@@ -253,7 +254,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
 
         width: "90%",
-        color: '#062c30',
+        color: '#05595b',
 
     },
     rating: {

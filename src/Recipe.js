@@ -226,21 +226,21 @@ const Recipe = ({ props, token }) => {
 
                                 return (
                                     <View key={key}>
-                                        
+
                                         <View style={styles.nutritionRow}>
-                                            
+
                                             <View style={[styles.nutritionBox, boxStyle]}></View>
                                             <View style={styles.nutritionTextContainer}>
-                                                
+
                                                 <Text style={[styles.nutritionText, styles.nutritionName, textStyle]}>
                                                     {name}:
                                                 </Text>
-                                                
+
                                                 <Text style={[styles.nutritionText, styles.nutritionValue, textStyle]}>
                                                     {formattedValue}
                                                 </Text>
                                             </View>
-                                            
+
                                         </View>
                                         <View style={styles.nutritionSeparator}></View>
                                     </View>
@@ -412,12 +412,13 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     ingredientsText: {
-        fontSize: 19,
+        fontSize: 20,
         marginLeft: 16,
         marginBottom: 12,
         paddingBottom: 5,
+        letterSpacing: 1,
         fontFamily: "Gill Sans",
-
+        color: '#05595b',
 
 
 
@@ -555,7 +556,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 22,
-        //color: 'white',
+        color: '#AB9704',
         fontFamily: "Gill Sans",
         letterSpacing: '1',
     },
