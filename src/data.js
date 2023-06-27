@@ -13,7 +13,7 @@ export const data = [
       fatPercentage: 7,
     },
     serving: 5,
-    time: 35
+    time: 15
   },
   {
     id: '2', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/2.jpg',
@@ -30,28 +30,28 @@ export const data = [
       fatPercentage: 7,
     },
     serving: 5,
-    time: 35
+    time: 25
   },
-  {
-    id: '3',
-    imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
-    description: 'Chicken fried rice',
-    ingredients: ['2 tablespoons sesame oil',
-      '2 tablespoons canola or vegetable oil', '3/4 to 1 pound boneless skinless chicken breasts', 'diced into 1/2-inch pieces', '1/2 cups frozen peas and diced carrots blend ', '3 green onions, trimmed and sliced into thin rounds', ' 2 to 3 garlic cloves, finely minced', '3 large eggs, lightly beaten', '4 cups cooked rice (I use white, long-grain or brown may be substituted. To save time use two 8.8-ounce pouches cooked and ready-to-serve rice)', '3 to 4 tablespoons low-sodium soy sauce',
-      'salt and pepper, optional and to taste',],
-    instructions: ['To a large non-stick skillet or wok, add the oils, chicken, and cook over medium-high heat for about 3 to 5 minutes, flipping intermittently so all sides cook evenly.', ' Cooking time will vary based on thickness of chicken breasts and sizes of pieces.', 'Remove chicken with a slotted spoon (allow oils and cooking juices from chicken to remain in skillet) and place chicken on a plate; set aside.', 'Add the peas, carrots, green onions, and cook for about 2 minutes, or until vegetables begin to soften, stir intermittently.', 'Add the garlic and cook for 1 minute, stir intermittently.', 'Push vegetables to one side of the skillet, add the eggs to the other side, and cook to scramble, stirring as necessary.'],
-    ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
-    difficultyLevel: 'advanced',
-    nutrition: {
-      totalCalories: 870,
-      proteinPercentage: 41,
-      carbsPercentage: 52,
-      fatPercentage: 7,
-    },
-    serving: 5,
-    time: 35
-  },
+  // {
+  //   id: '3',
+  //   imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
+  //   description: 'Chicken fried rice',
+  //   ingredients: ['2 tablespoons sesame oil',
+  //     '2 tablespoons canola or vegetable oil', '3/4 to 1 pound boneless skinless chicken breasts', 'diced into 1/2-inch pieces', '1/2 cups frozen peas and diced carrots blend ', '3 green onions, trimmed and sliced into thin rounds', ' 2 to 3 garlic cloves, finely minced', '3 large eggs, lightly beaten', '4 cups cooked rice (I use white, long-grain or brown may be substituted. To save time use two 8.8-ounce pouches cooked and ready-to-serve rice)', '3 to 4 tablespoons low-sodium soy sauce',
+  //     'salt and pepper, optional and to taste',],
+  //   instructions: ['To a large non-stick skillet or wok, add the oils, chicken, and cook over medium-high heat for about 3 to 5 minutes, flipping intermittently so all sides cook evenly.', ' Cooking time will vary based on thickness of chicken breasts and sizes of pieces.', 'Remove chicken with a slotted spoon (allow oils and cooking juices from chicken to remain in skillet) and place chicken on a plate; set aside.', 'Add the peas, carrots, green onions, and cook for about 2 minutes, or until vegetables begin to soften, stir intermittently.', 'Add the garlic and cook for 1 minute, stir intermittently.', 'Push vegetables to one side of the skillet, add the eggs to the other side, and cook to scramble, stirring as necessary.'],
+  //   ratings: [],
+  //   dietaryRestrictions: ['non-vegetarian'],
+  //   difficultyLevel: 'advanced',
+  //   nutrition: {
+  //     totalCalories: 870,
+  //     proteinPercentage: 41,
+  //     carbsPercentage: 52,
+  //     fatPercentage: 7,
+  //   },
+  //   serving: 5,
+  //   time: 55
+  // },
   {
     id: '4', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/4.jpg',
     description: 'Sushi',
@@ -67,7 +67,7 @@ export const data = [
       fatPercentage: 7,
     },
     serving: 5,
-    time: 35
+    time: 40
   },
   {
     id: '5',
@@ -401,6 +401,26 @@ export const data = [
     },
     serving: 4,
     time: 35
+  },
+  {
+    id: '3',
+    imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
+    description: 'Chicken fried rice',
+    ingredients: ['2 tablespoons sesame oil',
+      '2 tablespoons canola or vegetable oil', '3/4 to 1 pound boneless skinless chicken breasts', 'diced into 1/2-inch pieces', '1/2 cups frozen peas and diced carrots blend ', '3 green onions, trimmed and sliced into thin rounds', ' 2 to 3 garlic cloves, finely minced', '3 large eggs, lightly beaten', '4 cups cooked rice (I use white, long-grain or brown may be substituted. To save time use two 8.8-ounce pouches cooked and ready-to-serve rice)', '3 to 4 tablespoons low-sodium soy sauce',
+      'salt and pepper, optional and to taste',],
+    instructions: ['To a large non-stick skillet or wok, add the oils, chicken, and cook over medium-high heat for about 3 to 5 minutes, flipping intermittently so all sides cook evenly.', ' Cooking time will vary based on thickness of chicken breasts and sizes of pieces.', 'Remove chicken with a slotted spoon (allow oils and cooking juices from chicken to remain in skillet) and place chicken on a plate; set aside.', 'Add the peas, carrots, green onions, and cook for about 2 minutes, or until vegetables begin to soften, stir intermittently.', 'Add the garlic and cook for 1 minute, stir intermittently.', 'Push vegetables to one side of the skillet, add the eggs to the other side, and cook to scramble, stirring as necessary.'],
+    ratings: [],
+    dietaryRestrictions: ['non-vegetarian'],
+    difficultyLevel: 'advanced',
+    nutrition: {
+      totalCalories: 870,
+      proteinPercentage: 41,
+      carbsPercentage: 52,
+      fatPercentage: 7,
+    },
+    serving: 5,
+    time: 55
   },
   {
     id: '15',

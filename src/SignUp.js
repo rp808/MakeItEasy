@@ -80,7 +80,7 @@ const SignUp = ({ navigation }) => {
       >
         <View style={styles.boxFlex}>
           <View>
-            <Text style={styles.welcomeTxt}>Hello and welcome</Text>
+            <Text style={styles.welcomeTxt}>MakeItEasy</Text>
           </View>
           {
             errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
@@ -168,9 +168,11 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   welcomeTxt: {
-    fontSize: 32,
+    fontSize: 25,
     fontWeight: 'bold',
-    paddingBottom: 20,
+    paddingTop: 35,
+    color: '#05595b',
+    fontFamily: 'GillSans-SemiBoldItalic',
   },
   signupTxt: {
     fontSize: 20,

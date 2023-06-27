@@ -70,7 +70,7 @@ const Login = ({props,setToken}) => {
 
             <View style={styles.boxFlex}>
                 <View>
-                    <Text style={styles.welcomeTxt}>Welcome Back</Text>
+                    <Text style={styles.welcomeTxt}>MakeItEasy</Text>
                 </View>
                 {
                     errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
@@ -147,9 +147,11 @@ const styles = StyleSheet.create({
         paddingBottom: 30,
     },
     welcomeTxt: {
-        fontSize: 32,
+        fontSize: 25,
         fontWeight: 'bold',
-        paddingBottom: 20,
+        paddingTop: 35,
+        color: '#05595b',
+        fontFamily: 'GillSans-SemiBoldItalic',
     },
     box: {
         flexDirection: 'row',
