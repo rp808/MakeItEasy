@@ -119,6 +119,7 @@ const SignUp = ({ navigation }) => {
             <TextInput style={styles.textInput}
               placeholder="Password"
               autoCapitalize="none"
+              secureTextEntry={true}
               onPressIn={() => setErrMsg(null)}
               onChangeText={(text) => setFdata({ ...fdata, password: text })}
             ></TextInput>

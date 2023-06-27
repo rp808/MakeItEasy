@@ -118,6 +118,7 @@ const FilterPage = ({ navigation }) => {
                 }
             })
             .then(data => {
+             
                 if (data.matchingCards.length === 0) {
                     setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
                 } else {
