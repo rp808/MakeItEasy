@@ -74,7 +74,7 @@ const SignUp = ({ navigation }) => {
     >
       <StatusBar style="auto" />
       <ImageBackground
-        source={require("./assets/lbg.jpg")}
+        source={require("./assets/elena-joland-mjeQon0Mh_Q-unsplash.jpg")}
         style={styles.imageBackground}
         resizeMode="cover"
       >

@@ -19,7 +19,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const FilterPage = ({ navigation }) => {
 
-
+    const [totalCaloriesErrorMsg, setTotalCaloriesErrorMsg] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
     const [errorMsg, setErrorMsg] = useState('');
     // const [selectedLevel, setSelectedLevel] = useState('');
@@ -85,6 +85,7 @@ const FilterPage = ({ navigation }) => {
     };
 
     const handleSubmit = () => {
+        setTotalCaloriesErrorMsg('');
         setErrorMsg('');
         if (ingredients.some((ingredient) => ingredient.name === '')) {
             setErrorMsg('Please enter ingredients');
@@ -128,12 +129,17 @@ const FilterPage = ({ navigation }) => {
                 }
             })
 
-
             .catch(error => {
                 console.error('Error sending data:', error);
-                setErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
+                error.response.json().then((data) => {
+                    setErrorMsg(data.message);
+                }).catch(error => {
+           
+                 console.error('Error sending data:', error);
+                 setTotalCaloriesErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
 
             });
+        });
     };
 
     const handleReset = () => {
@@ -182,6 +188,7 @@ const FilterPage = ({ navigation }) => {
                     </View>
                     <View style={styles.levelThree}>
                         <Text style={styles.label}>Total Calories</Text>
+                        {errorMsg && <Text style={styles.errorMsg}>{errorMsg}</Text>}
                         <View style={styles.caloriesContainer}>
                             <TextInput
                                 style={styles.inputCal}
