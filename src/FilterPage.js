@@ -35,16 +35,7 @@ const FilterPage = ({ navigation }) => {
     };
 
 
-    // const handleLevel = (item) => {
-    //     setSelectedLevel(item);
-    // };
 
-    // const levels = [
-    //     { label: 'Beginner Friendly', value: 'beginner' },
-    //     { label: 'Intermediate', value: 'intermediate' },
-    //     { label: 'Advanced', value: 'advanced' },
-    //     { label: 'Any', value: 'any' },
-    // ];
 
 
     const options = [
@@ -71,6 +62,13 @@ const FilterPage = ({ navigation }) => {
 
         // Add more dietary restrictions here
     ];
+
+    const handleReset = () => {
+        // setIngredients([{ name: '', quantity: '' }]);
+        setIngredients([{ name: '' }]);
+        setSelectedItems([]); 
+        setTotalCalories('');
+    };
 
 
 
@@ -100,7 +98,7 @@ const FilterPage = ({ navigation }) => {
         };
 
 
-
+//10.69.93.172
 
         // Make the POST request to the filter endpoint
         fetch('http://192.168.40.75:3000/filter', {
@@ -142,10 +140,6 @@ const FilterPage = ({ navigation }) => {
         });
     };
 
-    const handleReset = () => {
-        // setIngredients([{ name: '', quantity: '' }]);
-        setIngredients([{ name: '' }]);
-    };
 
 
     return (
@@ -187,8 +181,8 @@ const FilterPage = ({ navigation }) => {
 
                     </View>
                     <View style={styles.levelThree}>
-                        <Text style={styles.label}>Total Calories</Text>
-                        {errorMsg && <Text style={styles.errorMsg}>{errorMsg}</Text>}
+                        <Text style={styles.label}>Nutrition</Text>
+                        {/* {errorMsg && <Text style={styles.errorMsg}>{errorMsg}</Text>} */}
                         <View style={styles.caloriesContainer}>
                             <TextInput
                                 style={styles.inputCal}

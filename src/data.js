@@ -403,7 +403,7 @@ export const data = [
     time: 35
   },
   {
-    id: '11',
+    id: '15',
     imageSource: 'https://storage.googleapis.com/makeiteasyrp808/11a.jpg',
     description: ' Jambalaya',
     ingredients:
@@ -436,13 +436,72 @@ export const data = [
     dietaryRestrictions: ['gluten-free'],
     difficultyLevel: 'advanced',
     nutrition: {
-      totalCalories: 357,
+      totalCalories: 455,
       proteinPercentage: 41,
       carbsPercentage: 52,
       fatPercentage: 7,
     },
     serving: 6,
     time: 120
+  },
+  {
+    id: '16',
+    imageSource: 'https://storage.googleapis.com/makeiteasyrp808/16.jpg',
+    description: 'Fried Rice',
+    ingredients:
+      ['1 cup extra-firm tofu* (8 ounces yields ~1 cup)',
+        '1 cup long- or short-grain brown rice* (rinsed thoroughly in a fine mesh strainer)',
+        '4 cloves garlic (minced)', '1 cup chopped green onion', '1/2 cup peas', '1/2 cup carrots (finely diced)',
+        '3 Tbsp tamari or soy sauce (plus more for veggies + to taste)',
+        '1 Tbsp peanut butter', '2-3 Tbsp organic brown sugar, muscovado sugar, or maple syrup',
+        '1 clove garlic (minced)', '1-2 tsp chili garlic sauce (more or less depending on preferred spice)',
+        '1 tsp toasted sesame oil (optional // or sub peanut or avocado oil)'],
+    instructions: ['Preheat oven to 400 degrees F (204 C) and line a baking sheet with parchment paper (or lightly grease with non-stick spray).',
+      'In the meantime wrap tofu in a clean, absorbent towel and set something heavy on top (such as a cast iron skillet) to press out the liquid.',
+      'Once the oven is preheated, dice tofu into 1/4-inch cubes and arrange on baking sheet. Bake for 26-30 minutes. Youre looking for golden brown edges and a texture thats firm to the touch. The longer it bakes, the firmer and crispier it will become,  tofu remove from the oven around the 26-28 minute mark. I prefer crispy tofu, so I bake mine the full 30 minutes. Set aside.',
+      'While the tofu bakes prepare your rice by bringing 12 cups of water to a boil in a large pot. Once boiling, add rinsed rice and stir. Boil on high uncovered for 30 minutes, then strain for 10 seconds and return to pot removed from the heat. Cover with a lid and let steam for 10 minutes*.',
+      'While rice and tofu are cooking, prepare sauce by adding all ingredients to a medium-size mixing bowl and whisking to combine. Taste and adjust flavor as needed, adding more tamari or soy sauce for saltiness, peanut butter for creaminess, brown sugar for sweetness, or chili garlic sauce for heat.',
+      'Once the tofu is done baking, add directly to the sauce and marinate for 5 minutes, stirring occasionally.',
+      'Heat a large metal or cast iron skillet over medium heat. Once hot, use a slotted spoon to scoop the tofu into the pan leaving most of the sauce behind. Cook for 3-4 minutes, stirring occasionally, until deep golden brown on all sides (see photo). Lower heat if browning too quickly. Remove from pan and set aside.',
+      'To the still hot pan add garlic, green onion, peas and carrots. Sauté for 3-4 minutes, stirring occasionally, and season with 1 Tbsp (15 ml) tamari or soy sauce (amount as original recipe is written // adjust if altering batch size).',
+      'Add cooked rice, tofu, and remaining sauce and stir. Cook over medium-high heat for 3-4 minutes, stirring frequently.',
+      'Serve immediately with extra chili garlic sauce or sriracha for heat (optional). Crushed salted, roasted peanuts or cashews make a lovely additional garnish. Leftovers keep well in the refrigerator for 3-4 days, though best when fresh. Reheat in a skillet over medium heat or in the microwave.'],
+    ratings: [],
+    dietaryRestrictions: ['vegan'],
+    difficultyLevel: 'advanced',
+    nutrition: {
+      totalCalories: 384,
+      proteinPercentage: 33,
+      carbsPercentage: 43,
+      fatPercentage: 24,
+    },
+    serving: 4,
+    time: 60
+  },
+  {
+    id: '17',
+    imageSource: 'https://storage.googleapis.com/makeiteasyrp808/17.jpg',
+    description: 'Spinach Curry',
+    ingredients: ['1 13.5oz. can full-fat coconut milk', '8 oz. fresh spinach', '1 yellow onion', '2 cloves garlic',
+      '1 Tbsp grated fresh ginger', '2 Tbsp olive oil', '2 tsp ground cumin', '1 tsp garam masala', '1/2 tsp turmeric',
+      '1/4 tsp cayenne pepper', '1 large tomato', '1/4 cup water', '3/4 tsp salt (or to taste)'],
+    instructions:
+      ['Add the coconut milk and spinach to a large pot. Stir and cook over medium heat until the coconut milk is warmed through and has wilted the spinach. Remove from the heat as soon as the spinach has wilted to avoid overcooking the spinach.',
+        'Transfer the warm coconut milk and spinach to a blender and pulse until the spinach is in small pieces (you can choose to blend until smooth if you prefer). Set this mixture aside.',
+        'Dice the onion, mince the garlic, and grate the ginger. Add the onion, garlic, and ginger to a large skillet along with the olive oil. Sauté over medium heat until the onions are soft (about 5 minutes).',
+        'Add the cumin, garam masala, turmeric, and cayenne to the skillet. Stir and cook the spices with the onion, garlic, and ginger for about two minutes more.', 'Dice the tomato and add it to the skillet along with about 1/4 cup water. Stir and cook the tomato with the other ingredients, dissolving any browned bits off the bottom of the skillet, until the tomato has broken down (5-8 minutes).', 'Finally, add the coconut and spinach mixture to the skillet and stir to combine. Allow the mixture to heat through, stirring occasionally.',
+        'Taste the creamed spinach and add salt to taste. Start with 1/4 tsp, adding more as needed until the flavors pop (I added 3/4 tsp).'],
+    ratings: [],
+    dietaryRestrictions: ['vegetarian'],
+    difficultyLevel: 'advanced',
+    nutrition: {
+      totalCalories: 139,
+      proteinPercentage: 33,
+      carbsPercentage: 43,
+      fatPercentage: 24,
+    },
+    serving: 4,
+    time: 40
   },
 
   // { id: '11', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg', description: 'Card 3', ingredients: ['ingredient4', 'ingredient5'], instructions: ['instru1', 'instru2', 'instru3'], ratings: [] },
