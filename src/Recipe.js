@@ -16,54 +16,21 @@ import { Ionicons } from '@expo/vector-icons';
 
 const Recipe = ({ props, token }) => {
     const { navigation, route, totalCalories } = props
-    console.log("props", token);
+   
     const [activeSection, setActiveSection] = useState('ingredients');
     const [ratingsArray, setRatingsArray] = useState([])
     const toggleSection = (section) => {
         setActiveSection(section);
     };
     const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
-    console.log("rating", rating)
-    const getRatings = async () => {
-        fetch(`http://192.168.40.75:3000/card/${route.params.item.id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': "Bearer " + token
-            },
+    
 
-        })
-            .then(async (response) => {
-
-                if (response.ok) {
-                    console.log('Get Ratings  successfully');
-                    setRatingsArray(await response.json())
-
-                }
-                else {
-                    throw new Error('Failed to save the rating');
-                }
-            })
-            .catch((error) => {
-                console.error('Error saving the rating:', error);
-
-            });
-    }
-    useEffect(() => {
-        getRatings()
-
-        //  if(ratingsArray.length!=0)
-        //  {
-        //     console.log("vav",ratingsArray[ratingsArray.length-1].ratingValue)
-        //     setRating(ratingsArray[ratingsArray.length-1].ratingValue)
-        //  }
-    }, [])
 
 
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
 
-        fetch(`http://192.168.40.75:3000/cards/rate/${route.params.item.id}`, {
+        fetch(`http://192.168.40.75:3000/cards/rate/${route.params.item._id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -71,20 +38,17 @@ const Recipe = ({ props, token }) => {
             },
             body: JSON.stringify({ ratingValue: selectedRating }),
         })
-            .then((response) => {
-                console.log("response", response)
-                if (response.ok) {
-                    console.log('Rating saved successfully');
-
-                }
-                else {
-                    throw new Error('Failed to save the rating');
-                }
-            })
-            .catch((error) => {
-                console.error('Error saving the rating:', error);
-
-            });
+        .then((response) => {
+            if (response.ok) {
+              console.log('Rating saved successfully');
+            } else {
+              throw new Error('Failed to save the rating');
+            }
+          })
+          .catch((error) => {
+            console.error('Error saving the rating:', error);
+          });
+    
     };
 
     return (
