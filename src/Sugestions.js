@@ -34,6 +34,9 @@ const Suggestions = ({ route, navigation }) => {
                         <View style={styles.nutritionContainer}>
                         <Ionicons name="ios-flame" size={20} color="#05595b" /> 
                             <Text  style={styles.nutritionText}> {card.nutrition.totalCalories}</Text>
+                            <Ionicons name="md-timer" size={20} color="#05595b" />
+                        <Text style={styles.nutritionText}>{card.time}</Text>
+                        <Text style={styles.nutritionText}> Serving:  {card.serving}</Text>
                      
                         </View>
                     </TouchableOpacity>
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
       nutritionText: {
         fontSize: 18,
         marginLeft: 5,
-        
+        marginRight:60,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
       },
