@@ -27,6 +27,8 @@ const RecipeFilter = ({props,token}) => {
         setActiveSection(section);
     };
     const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
+   
+    
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
 
@@ -38,20 +40,16 @@ const RecipeFilter = ({props,token}) => {
             },
             body: JSON.stringify({ ratingValue: selectedRating }),
         })
-            .then((response) => {
-                console.log("response", response)
-                if (response.ok) {
-                    console.log('Rating saved successfully');
-
-                }
-                else {
-                    throw new Error('Failed to save the rating');
-                }
-            })
-            .catch((error) => {
-                console.error('Error saving the rating:', error);
-
-            });
+        .then((response) => {
+            if (response.ok) {
+              console.log('Rating saved successfully');
+            } else {
+              throw new Error('Failed to save the rating');
+            }
+          })
+          .catch((error) => {
+            console.error('Error saving the rating:', error);
+          });
     };
 
 
