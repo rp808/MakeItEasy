@@ -40,7 +40,7 @@ export const Home = ({ navigation }) => {
             console.error('An error occurred while sending data:', error);
         }
     };
-
+    const sortedData = data.sort((a, b) => a.time - b.time);
 
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition.totalCalories;
@@ -90,7 +90,7 @@ export const Home = ({ navigation }) => {
             <View style={styles.cardsFlex}>
 
                 <FlatList
-                    data={data}
+                    data={sortedData}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     numColumns={2}
