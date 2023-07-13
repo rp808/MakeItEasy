@@ -121,19 +121,17 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         width: '100%',
     },
+ 
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center',
-        backgroundColor: '#F6F6F6',
+        backgroundColor: '#fff',
         height: 54,
 
         flex: 0,
         margin: 10,
-        // width: '100%',
-        // backgroundColor: "#fbc",
-        // alignItems: "center",
-        // justifyContent: "center",
+
     },
     iconContainer: {
         alignItems: 'center',
@@ -144,8 +142,10 @@ const styles = StyleSheet.create({
 
     },
     iconImg: {
+
         width: 30,
-        height: 30,
+        height: 35,
+marginTop:10,
         marginBottom: 10,
     },
     image: {

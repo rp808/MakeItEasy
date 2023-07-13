@@ -454,10 +454,7 @@ const styles = StyleSheet.create({
 
         flex: 0,
         margin: 10,
-        // width: '100%',
-        // backgroundColor: "#fbc",
-        // alignItems: "center",
-        // justifyContent: "center",
+
     },
 
     iconContainer: {
@@ -471,8 +468,8 @@ const styles = StyleSheet.create({
     iconImg: {
 
         width: 30,
-        height: 30,
-
+        height: 35,
+marginTop:10,
         marginBottom: 10,
     },
     activeButton: {

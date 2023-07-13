@@ -449,6 +449,7 @@ const styles = StyleSheet.create({
     nutritionText: {
         // ...your existing styles for nutritionText...
     },
+  
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
@@ -458,10 +459,7 @@ const styles = StyleSheet.create({
 
         flex: 0,
         margin: 10,
-        // width: '100%',
-        // backgroundColor: "#fbc",
-        // alignItems: "center",
-        // justifyContent: "center",
+
     },
     iconContainer: {
         alignItems: 'center',
@@ -474,8 +472,8 @@ const styles = StyleSheet.create({
     iconImg: {
 
         width: 30,
-        height: 30,
-
+        height: 35,
+marginTop:10,
         marginBottom: 10,
     },
     activeButton: {

@@ -534,6 +534,7 @@ const styles = StyleSheet.create({
         // height:"100%",
 
     },
+   
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
@@ -541,21 +542,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         height: 54,
 
-        flex: 0.5,
-        //margin: 10,
-        width: "100%",
-        //     flexDirection: 'row',
-        //     justifyContent: "center",
-        //     alignItems: 'center',
-        //    // backgroundColor: '#fff',
-        //     height: 74,
+        flex: 0,
+        margin: 10,
 
-        //     flex: 1,
-        //     margin: 10,
-        //     // width: '100%',
-        //     // backgroundColor: "#fbc",
-        //     // alignItems: "center",
-        //     // justifyContent: "center",
     },
     iconContainer: {
         alignItems: 'center',
@@ -578,8 +567,8 @@ const styles = StyleSheet.create({
     iconImg: {
 
         width: 30,
-        height: 30,
-
+        height: 35,
+marginTop:10,
         marginBottom: 10,
     },
     image: {
