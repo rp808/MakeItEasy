@@ -27,7 +27,9 @@ export const Home = ({ navigation }) => {
 
     const sendDataToServer = async () => {
         try {
-            const response = await fetch('http://192.168.40.75:3000/cards', {
+            const response = await fetch('http://192.168.40.75:3000/cards', 
+            //192.168.40.75
+            {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
