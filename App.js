@@ -10,6 +10,7 @@ import FilterPage from './src/FilterPage';
 import RecipeInstruction from './src/RecipeInstruction';
 import Suggestions from './src/Sugestions';
 import RecipeFilter from './src/RecipeFilter';
+import SaveRecipe from './src/SaveRecipe';
 import { useState } from "react"
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -67,13 +68,20 @@ export default function App() {
         }
       } />
 
-      <Stack.Screen name="RecipeFilter"  options={
+      <Stack.Screen name="RecipeFilter" options={
         {
           headerShown: false
         }
       } >{(props) => {
         return <RecipeFilter token={token} props={props} />
       }}</Stack.Screen>
+
+
+      <Stack.Screen name="SaveRecipe" component={SaveRecipe} options={
+        {
+          headerShown: false
+        }
+      } />
     </Stack.Navigator>
 
   </NavigationContainer>

@@ -111,7 +111,7 @@ export const Home = ({ navigation }) => {
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
                     <Image style={styles.iconImg} source={require("./assets/save.png")} />
 
                 </TouchableOpacity>
