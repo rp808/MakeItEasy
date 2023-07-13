@@ -238,21 +238,24 @@ const Recipe = ({ props, token }) => {
 
 
             <View style={styles.buttomNavFlex}>
-                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
-                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+                    <View style={styles.iconContainer}>
+                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                    <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+                    </View>
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                        <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
-                    <Image style={styles.iconImg} source={require("./assets/logout.png")} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
+                        <Image style={styles.iconImg} source={require("./assets/save.png")} />
 
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
+                        <Image style={styles.iconImg} source={require("./assets/userFilled.png")} />
 
+                    </TouchableOpacity>
 
-            </View>
+                </View>
 
 
 
