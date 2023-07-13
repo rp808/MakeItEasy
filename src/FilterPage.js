@@ -256,7 +256,7 @@ const FilterPage = ({ navigation }) => {
 
                     </View>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                        <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+                        <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
 
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
@@ -264,7 +264,7 @@ const FilterPage = ({ navigation }) => {
 
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
-                        <Image style={styles.iconImg} source={require("./assets/userFilled.png")} />
+                        <Image style={styles.iconImg} source={require("./assets/user.png")} />
 
                     </TouchableOpacity>
 
@@ -529,11 +529,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: "GillSans-SemiBold",
     },
-    btmContainer: {
-        flex: 1,
-        // height:"100%",
 
-    },
    
     buttomNavFlex: {
         flexDirection: 'row',
@@ -541,7 +537,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 54,
-
+        width:'100%',
         flex: 0,
         margin: 10,
 
@@ -549,7 +545,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
-        marginRight: 55,
+        marginRight: 35,
         // marginBottom: 15,
         marginTop: 15,
 
@@ -568,7 +564,7 @@ const styles = StyleSheet.create({
 
         width: 30,
         height: 35,
-marginTop:10,
+        marginTop: 10,
         marginBottom: 10,
     },
     image: {
