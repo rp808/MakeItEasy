@@ -251,7 +251,7 @@ const Recipe = ({ props, token }) => {
 
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
-                        <Image style={styles.iconImg} source={require("./assets/userFilled.png")} />
+                        <Image style={styles.iconImg} source={require("./assets/user.png")} />
 
                     </TouchableOpacity>
 
@@ -456,7 +456,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 54,
-
+        width:'100%',
         flex: 0,
         margin: 10,
 
@@ -464,7 +464,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
-        marginRight: 55,
+        marginRight: 35,
         marginBottom: 15,
         // marginTop:15,
 

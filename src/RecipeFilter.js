@@ -5,18 +5,18 @@ import {
     Text,
     View,
     Image,
-   
+
     TouchableOpacity,
-   
+
     ScrollView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
 
 
-const RecipeFilter = ({props,token}) => {
-    const { navigation, route }=props
-   
+const RecipeFilter = ({ props, token }) => {
+    const { navigation, route } = props
+
     const { cardData } = route.params;
     console.log(cardData);
     const [ratingsArray, setRatingsArray] = useState([])
@@ -27,8 +27,8 @@ const RecipeFilter = ({props,token}) => {
         setActiveSection(section);
     };
     const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
-   
-    
+
+
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
 
@@ -40,16 +40,16 @@ const RecipeFilter = ({props,token}) => {
             },
             body: JSON.stringify({ ratingValue: selectedRating }),
         })
-        .then((response) => {
-            if (response.ok) {
-              console.log('Rating saved successfully');
-            } else {
-              throw new Error('Failed to save the rating');
-            }
-          })
-          .catch((error) => {
-            console.error('Error saving the rating:', error);
-          });
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Rating saved successfully');
+                } else {
+                    throw new Error('Failed to save the rating');
+                }
+            })
+            .catch((error) => {
+                console.error('Error saving the rating:', error);
+            });
     };
 
 
@@ -192,10 +192,10 @@ const RecipeFilter = ({props,token}) => {
                                                 <Text style={[styles.nutritionText, styles.nutritionValue, textStyle]}>
                                                     {formattedValue}
                                                 </Text>
-                                                
-                                                
+
+
                                             </View>
-                                            
+
                                         </View>
                                         {/* <View style={styles.nutritionSeparator}></View> */}
                                     </View>
@@ -232,24 +232,24 @@ const RecipeFilter = ({props,token}) => {
 
             </View>
             <View style={styles.buttomNavFlex}>
-                    <View style={styles.iconContainer}>
-                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
-
-                    </View>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                        <Image style={styles.iconImg} source={require("./assets/filter.png")} />
-
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
-                        <Image style={styles.iconImg} source={require("./assets/save.png")} />
-
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
-                        <Image style={styles.iconImg} source={require("./assets/userFilled.png")} />
-
-                    </TouchableOpacity>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
                 </View>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                    <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
+                    <Image style={styles.iconImg} source={require("./assets/save.png")} />
+
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
+                    <Image style={styles.iconImg} source={require("./assets/user.png")} />
+
+                </TouchableOpacity>
+
+            </View>
 
 
 
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 54,
-
+        width: '100%',
         flex: 0,
         margin: 10,
 
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
-        marginRight: 55,
+        marginRight: 35,
         marginBottom: 15,
         // marginTop:15,
 
@@ -469,7 +469,7 @@ const styles = StyleSheet.create({
 
         width: 30,
         height: 35,
-marginTop:10,
+        marginTop: 10,
         marginBottom: 10,
     },
     activeButton: {
