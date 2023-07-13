@@ -15,7 +15,7 @@ const SaveRecipe = () => {
 
             <View style={styles.header}>
 
-                <Text style={styles.title}>Suggestions</Text>
+                <Text style={styles.title}>Your favourites</Text>
 
             </View>
 
@@ -36,25 +36,25 @@ const SaveRecipe = () => {
                 
             </ScrollView>
 
-            <View style={styles.btmContainer}>
-                <View style={styles.buttomNavFlex}>
-                    <TouchableOpacity
-                        style={styles.iconContainer}
-                        onPress={() => navigation.navigate('Home')}
-                    >
-                        <Image style={styles.iconImg} source={require('./assets/homeNF.png')} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                        <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
-                        {/* <Text style={styles.ttitle}>Homee</Text> */}
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.iconContainer}
-                        onPress={() => navigation.navigate('Login')}
-                    >
-                        <Image style={styles.iconImg} source={require('./assets/logout.png')} />
-                    </TouchableOpacity>
+           
+            <View style={styles.buttomNavFlex}>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+
                 </View>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                    <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
+                    <Image style={styles.iconImg} source={require("./assets/saveFilled.png")} />
+
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
+                    <Image style={styles.iconImg} source={require("./assets/user.png")} />
+
+                </TouchableOpacity>
+
             </View>
         </View>
     );
@@ -119,28 +119,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center',
-        backgroundColor: '#F6F6F6',
-        height: 54,
+        backgroundColor: '#fff',
+        height: 64,
 
         flex: 0,
         margin: 10,
-        // width: '100%',
-        // backgroundColor: "#fbc",
-        // alignItems: "center",
-        // justifyContent: "center",
+
     },
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
-        marginRight: 55,
+        marginRight: 35,
         marginBottom: 15,
-        // marginTop:15,
+
 
     },
+  
     iconImg: {
         width: 30,
-        height: 30,
+        height: 35,
         marginBottom: 10,
+        marginTop:10,
     },
     image: {
         width: '100%',
