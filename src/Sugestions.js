@@ -43,26 +43,25 @@ const Suggestions = ({ route, navigation }) => {
                 ))}
             </ScrollView>
 
-            <View style={styles.btmContainer}>
-                <View style={styles.buttomNavFlex}>
-                    <TouchableOpacity
-                        style={styles.iconContainer}
-                        onPress={() => navigation.navigate('Home')}
-                    >
-                        <Image style={styles.iconImg} source={require('./assets/homeNF.png')} />
-                    </TouchableOpacity>
+            <View style={styles.buttomNavFlex}>
+                    <View style={styles.iconContainer}>
+                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+
+                    </View>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                        <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
-                        {/* <Text style={styles.ttitle}>Homee</Text> */}
+                        <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.iconContainer}
-                        onPress={() => navigation.navigate('Login')}
-                    >
-                        <Image style={styles.iconImg} source={require('./assets/logout.png')} />
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
+                        <Image style={styles.iconImg} source={require("./assets/save.png")} />
+
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
+                        <Image style={styles.iconImg} source={require("./assets/userFilled.png")} />
+
+                    </TouchableOpacity>
+
                 </View>
-            </View>
         </View>
     );
 };
