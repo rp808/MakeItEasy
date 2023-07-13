@@ -112,10 +112,13 @@ export const Home = ({ navigation }) => {
 
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
-                    <Image style={styles.iconImg} source={require("./assets/logout.png")} />
+                    <Image style={styles.iconImg} source={require("./assets/save.png")} />
 
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
+                    <Image style={styles.iconImg} source={require("./assets/user.png")} />
 
+                </TouchableOpacity>
 
             </View>
 
@@ -206,7 +209,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         alignItems: 'center',
         marginLeft: 35,
-        marginRight: 55,
+        marginRight: 35,
         marginBottom: 15,
 
 
@@ -237,7 +240,7 @@ const styles = StyleSheet.create({
     iconImg: {
 
         width: 30,
-        height: 30,
+        height: 35,
 
         marginBottom: 10,
     },
