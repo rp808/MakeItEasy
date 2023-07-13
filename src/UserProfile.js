@@ -32,6 +32,11 @@ const UserProfile = () => {
                         <Text style={styles.logoTxt}>user name : user name</Text>
                     </View>
                 </View>
+                <View style={styles.userDiet}>
+                    <View>
+                        <Text style={styles.logoTxt}>Dietary Restriction : user's choice</Text>
+                    </View>
+                </View>
 
 
 
@@ -80,7 +85,11 @@ const styles = StyleSheet.create({
     },
     userName: {
         alignItems: "start",
-        flex: 8,
+        flex: 2,
+    },
+    userDiet:{
+        alignItems: "start",
+        flex: 6,
     },
 
 
