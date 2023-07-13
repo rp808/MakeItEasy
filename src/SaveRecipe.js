@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const SaveRecipe = () => {
+const SaveRecipe = ({navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -20,28 +20,28 @@ const SaveRecipe = () => {
             </View>
 
             <ScrollView style={styles.scrollContainer}>
-               
-                    <TouchableOpacity style={styles.cardContainer}>
-                        <Image style={styles.image} source={require("./assets/filter.png")} />
-                        <Text style={styles.title}> abcd </Text>
-                        <View style={styles.nutritionContainer}>
-                            <Ionicons name="ios-flame" size={20} color="#05595b" />
-                            <Text style={styles.nutritionText}> abcd</Text>
-                            <Ionicons name="md-timer" size={20} color="#05595b" />
-                            <Text style={styles.nutritionText}>abcd</Text>
-                            <Text style={styles.nutritionText}> Serving:  </Text>
 
-                        </View>
-                    </TouchableOpacity>
-                
+                <TouchableOpacity style={styles.cardContainer}>
+                    <Image style={styles.image} source={require("./assets/filter.png")} />
+                    <Text style={styles.title}> abcd </Text>
+                    <View style={styles.nutritionContainer}>
+                        <Ionicons name="ios-flame" size={20} color="#05595b" />
+                        <Text style={styles.nutritionText}> abcd</Text>
+                        <Ionicons name="md-timer" size={20} color="#05595b" />
+                        <Text style={styles.nutritionText}>abcd</Text>
+                        <Text style={styles.nutritionText}> Serving:  </Text>
+
+                    </View>
+                </TouchableOpacity>
+
             </ScrollView>
 
-           
+
             <View style={styles.buttomNavFlex}>
-                <View style={styles.iconContainer}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                     <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                </View>
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 
@@ -134,12 +134,12 @@ const styles = StyleSheet.create({
 
 
     },
-  
+
     iconImg: {
         width: 30,
         height: 35,
         marginBottom: 10,
-        marginTop:10,
+        marginTop: 10,
     },
     image: {
         width: '100%',

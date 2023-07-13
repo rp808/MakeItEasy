@@ -232,10 +232,10 @@ const RecipeFilter = ({ props, token }) => {
 
             </View>
             <View style={styles.buttomNavFlex}>
-                <View style={styles.iconContainer}>
-                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
+                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                </View>
+                    </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 

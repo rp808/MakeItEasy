@@ -238,10 +238,10 @@ const Recipe = ({ props, token }) => {
 
 
             <View style={styles.buttomNavFlex}>
-                    <View style={styles.iconContainer}>
+            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
                         <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                    </View>
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                         <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 
