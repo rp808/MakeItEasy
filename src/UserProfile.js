@@ -56,7 +56,8 @@ console.log("token",token);
                 </View>
                 <View style={styles.userName}>
                     <View>
-                        <Text style={styles.logoTxt}>User Name: {userData?.firstName} {userData?.lastName}</Text>
+                        <Text style={styles.logoTxt}>First Name: {userData?.firstName} </Text>
+                        <Text style={styles.logoTxt}>Last Name:  {userData?.lastName}</Text>
                     </View>
                 </View>
                 <View style={styles.userDiet}>
