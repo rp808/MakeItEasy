@@ -7,10 +7,10 @@ import {
     Text,
     View,
     Image,
-   
-  
+
+
     TouchableOpacity,
- 
+
     FlatList,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
@@ -18,8 +18,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 export const Home = ({ navigation }) => {
-    
-    
+
+
     useEffect(() => {
         sendDataToServer();
     }, []);
@@ -27,15 +27,15 @@ export const Home = ({ navigation }) => {
 
     const sendDataToServer = async () => {
         try {
-            const response = await fetch('http://192.168.40.75:3000/cards', 
-            //192.168.40.75
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
+            const response = await fetch('http://192.168.40.75:3000/cards',
+                //192.168.40.75
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
 
 
         } catch (error) {
@@ -51,19 +51,11 @@ export const Home = ({ navigation }) => {
                 <Image source={{ uri: item.imageSource }} style={styles.image} />
 
                 <Text style={styles.description}>{item.description}</Text>
-                <View style={styles.nutritionContainerLeft}>
-                <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
 
-                </View>
                 <View style={styles.nutritionContainer}>
-
-                    {/* <View style={styles.leftItem}>
-
-                        <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
-                    </View> */}
                     <View style={styles.leftItem}>
-                    <Ionicons name="ios-flame" size={20} color="#05595b" />
-                    <Text style={styles.nutritionText}>{totalCalories}</Text>
+                        <Ionicons name="ios-flame" size={20} color="#05595b" />
+                        <Text style={styles.nutritionText}>{totalCalories}</Text>
                     </View>
 
                     <View style={styles.rightItem}>
@@ -71,7 +63,15 @@ export const Home = ({ navigation }) => {
                         <Text style={styles.nutritionText}>{item.time}</Text>
                     </View>
                 </View>
-              
+                <View style={styles.nutritionContainerLeft}>
+                    <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
+                    <TouchableOpacity style={styles.saveC} onPress={() => navigation.navigate('SaveRecipe')}>
+                        <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+
+                    </TouchableOpacity>
+
+                </View>
+
 
 
             </TouchableOpacity>
@@ -138,25 +138,25 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
 
     },
-    nutritionContainerLeft:{
+    nutritionContainerLeft: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: -60,
-       marginTop: 10,
- 
+        marginLeft: -30,
+        marginTop: 10,
+
     },
     leftItem: {
         flexDirection: 'row',
-        marginLeft:5,
-        marginRight:5
-      //  alignItems: 'center',
-      },
-      rightItem: {
+        marginLeft: 5,
+        marginRight: 5
+        //  alignItems: 'center',
+    },
+    rightItem: {
         flexDirection: 'row',
-        marginLeft:30,
-        marginRight:5
+        marginLeft: 30,
+        marginRight: 5
         //alignItems: 'center',
-      },
+    },
     nutritionIcon: {
         marginRight: 2,
     },
@@ -214,6 +214,10 @@ const styles = StyleSheet.create({
 
 
     },
+    saveC:{
+        alignItems: 'center',
+        marginLeft: 15,
+    },
     logoTxt: {
         fontSize: 25,
         fontWeight: 'bold',
@@ -236,6 +240,10 @@ const styles = StyleSheet.create({
         marginLeft: "5%",
         marginBottom: "5%",
 
+    },
+    saveImg:{
+        width: 25,
+        height: 25,
     },
     iconImg: {
 
