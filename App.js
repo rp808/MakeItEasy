@@ -38,11 +38,16 @@ export default function App() {
           headerShown: false
         }
       } />
-      <Stack.Screen name="SignUp" component={SignUp} options={
-        {
+      <Stack.Screen
+        name="SignUp"
+        options={{
           headerShown: false
-        }
-      } />
+        }}
+      >
+        {(props) => {
+          return <SignUp setToken={setToken} props={props} />;
+        }}
+      </Stack.Screen>
       <Stack.Screen name="FilterPage" component={FilterPage} options={
         {
           headerShown: false
@@ -84,9 +89,9 @@ export default function App() {
         }
       } />
 
-<Stack.Screen name="UserProfile">
-          {(props) => <UserProfile token={token} {...props} />}
-        </Stack.Screen>
+      <Stack.Screen name="UserProfile">
+        {(props) => <UserProfile token={token} {...props} />}
+      </Stack.Screen>
     </Stack.Navigator>
 
   </NavigationContainer>
