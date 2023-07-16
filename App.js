@@ -84,11 +84,9 @@ export default function App() {
         }
       } />
 
-      <Stack.Screen name="UserProfile" component={UserProfile} options={
-        {
-          headerShown: false
-        }
-      } />
+<Stack.Screen name="UserProfile">
+          {(props) => <UserProfile token={token} {...props} />}
+        </Stack.Screen>
     </Stack.Navigator>
 
   </NavigationContainer>

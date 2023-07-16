@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     StyleSheet,
@@ -15,7 +15,34 @@ import {
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
-const UserProfile = ({navigation}) => {
+const UserProfile = ({navigation , token}) => {
+console.log("token",token);
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        fetchUserProfile();
+      }, []);
+      const fetchUserProfile = async () => {
+        try {
+          const response = await fetch('http://192.168.40.75:3000/profile', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            setUserData(data);
+          } else {
+            console.log('Error:', data.error);
+          }
+        } catch (error) {
+          console.log('Error:', error.message);
+        }
+      };
 
     return (
         (
@@ -29,7 +56,7 @@ const UserProfile = ({navigation}) => {
                 </View>
                 <View style={styles.userName}>
                     <View>
-                        <Text style={styles.logoTxt}>user name : user name</Text>
+                        <Text style={styles.logoTxt}>User Name: {userData?.firstName} {userData?.lastName}</Text>
                     </View>
                 </View>
                 <View style={styles.userDiet}>
