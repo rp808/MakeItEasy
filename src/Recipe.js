@@ -73,8 +73,12 @@ const Recipe = ({ props, token }) => {
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{route.params.item.description}</Text>
                         <View style={styles.timerContainer}>
-                            <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
+                            <Ionicons name="md-timer" size={30} color="#05595b" style={styles.timerIcon} />
                             <Text style={styles.timerValue}>{route.params.item.time} mins</Text>
+                            <TouchableOpacity style={styles.saveC} onPress={() => navigation.navigate('SaveRecipe')}>
+                        <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+
+                    </TouchableOpacity>
                         </View>
 
                     </View>
@@ -280,6 +284,17 @@ const styles = StyleSheet.create({
         marginRight: 20,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
+    },
+    saveC:{
+        marginLeft: 50,
+        marginRight: 20,
+    },
+    saveImg:{
+
+        width: 30,
+        height: 35,
+        // marginTop: 10,
+        // marginBottom: 10,
     },
     nutritionName: {
         flex: 1,
