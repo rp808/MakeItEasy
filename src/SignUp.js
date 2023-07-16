@@ -18,7 +18,8 @@ import {
 } from "react-native";
 
 
-const SignUp = ({ navigation }) => {
+const SignUp = ({ props, setToken  }) => {
+  const navigation=props.navigation
   const [fdata, setFdata] = useState({
     firstName: '',
     lastName: '',
@@ -48,6 +49,7 @@ const SignUp = ({ navigation }) => {
               setErrMsg(data.error);
             }
             else {
+              setToken(data.token);
               navigation.navigate('Home');
             }
           })
