@@ -5,9 +5,9 @@ import {
     Text,
     View,
     Image,
-   
+
     TouchableOpacity,
-    
+
     ScrollView,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
@@ -16,14 +16,14 @@ import { Ionicons } from '@expo/vector-icons';
 
 const Recipe = ({ props, token }) => {
     const { navigation, route, totalCalories } = props
-   
+
     const [activeSection, setActiveSection] = useState('ingredients');
     const [ratingsArray, setRatingsArray] = useState([])
     const toggleSection = (section) => {
         setActiveSection(section);
     };
     const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
-    
+
 
 
 
@@ -38,17 +38,17 @@ const Recipe = ({ props, token }) => {
             },
             body: JSON.stringify({ ratingValue: selectedRating }),
         })
-        .then((response) => {
-            if (response.ok) {
-              console.log('Rating saved successfully');
-            } else {
-              throw new Error('Failed to save the rating');
-            }
-          })
-          .catch((error) => {
-            console.error('Error saving the rating:', error);
-          });
-    
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Rating saved successfully');
+                } else {
+                    throw new Error('Failed to save the rating');
+                }
+            })
+            .catch((error) => {
+                console.error('Error saving the rating:', error);
+            });
+
     };
 
     return (
@@ -238,24 +238,24 @@ const Recipe = ({ props, token }) => {
 
 
             <View style={styles.buttomNavFlex}>
-            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
-                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                        <Image style={styles.iconImg} source={require("./assets/filter.png")} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                    <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
-                        <Image style={styles.iconImg} source={require("./assets/save.png")} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
+                    <Image style={styles.iconImg} source={require("./assets/save.png")} />
 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
-                        <Image style={styles.iconImg} source={require("./assets/user.png")} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
+                    <Image style={styles.iconImg} source={require("./assets/user.png")} />
 
-                    </TouchableOpacity>
+                </TouchableOpacity>
 
-                </View>
+            </View>
 
 
 
@@ -344,18 +344,9 @@ const styles = StyleSheet.create({
 
     cardContent: {
         backgroundColor: '#f5f5f5',
-
-        borderRadius: 10,
-        // padding: 20,
         margin: 10,
-        shadowColor: '#333',
-        shadowOpacity: 0.3,
-        shadowRadius: 2,
-        shadowOffset: {
-            width: 1,
-            height: 2,
-        },
-        elevation: 3,
+        borderRadius: 10,
+
         borderWidth: 1,
         borderColor: '#ccc',
     },
@@ -379,7 +370,7 @@ const styles = StyleSheet.create({
         marginLeft: 16,
         marginBottom: 12,
         paddingBottom: 5,
-        letterSpacing: 1,
+        // letterSpacing: 1,
         fontFamily: "Gill Sans",
         color: '#05595b',
 
@@ -444,19 +435,19 @@ const styles = StyleSheet.create({
 
     },
     defaultText: {
-        // ...your existing styles for defaultText...
+
     },
     nutritionText: {
-        // ...your existing styles for nutritionText...
+      
     },
-  
+
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 54,
-        width:'100%',
+        width: '100%',
         flex: 0,
         margin: 10,
 
@@ -473,7 +464,7 @@ const styles = StyleSheet.create({
 
         width: 30,
         height: 35,
-marginTop:10,
+        marginTop: 10,
         marginBottom: 10,
     },
     activeButton: {
@@ -519,7 +510,7 @@ marginTop:10,
         fontSize: 22,
         color: '#AB9704',
         fontFamily: "Gill Sans",
-        letterSpacing: '1',
+        // letterSpacing: '1',
     },
     image: {
         width: '100%',
@@ -531,17 +522,10 @@ marginTop:10,
         justifyContent: 'space-between',
         // alignItems: 'center',
         marginTop: 6,
-        // paddingHorizontal: 16,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e1e1e1',
         alignItems: 'center',
-        // marginTop: -40,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 4,
+
 
 
     },
@@ -588,23 +572,11 @@ marginTop:10,
         // backgroundColor:'#333',
         alignContent: 'center',
 
-        // marginLeft:'5%',
-        //     width:'90%'
+  
 
 
     },
-    //   sectionTitle: {
-    //     fontSize: 20,
-    //     fontWeight: 'bold',
-    //     marginBottom: 8,
-    //   },
-    // ingredientsText: {
-    //     fontSize: 19,
-    //     marginLeft: 16,
-    //     marginBottom: 12,
-    //     paddingBottom: 10,
-    //     fontFamily: "Gill Sans",
-    // },
+
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',

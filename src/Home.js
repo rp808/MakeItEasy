@@ -43,6 +43,7 @@ export const Home = ({ navigation }) => {
         }
     };
     const sortedData = data.sort((a, b) => a.time - b.time);
+    
 
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition.totalCalories;
