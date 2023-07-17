@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 
-export const Home = ({ navigation }) => {
+export const Home = ({ navigation,token }) => {
 
 
     useEffect(() => {
@@ -43,10 +43,42 @@ export const Home = ({ navigation }) => {
         }
     };
     const sortedData = data.sort((a, b) => a.time - b.time);
+  
+
+    const handleSaveRecipe = (recipeId) => {
+
+   
+
+        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + token,
+          },
+          body: JSON.stringify({ recipeId: recipeId }), 
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log('Recipe saved successfully');
+        
+            } else if (response.status === 400) {
+              throw new Error('Recipe is already saved');
+            } else {
+              throw new Error('Failed to save the recipe');
+            }
+          })
+          .catch((error) => {
+            console.error('Error saving the recipe:', error);
+           
+          });
+      };
+      
     
 
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition.totalCalories;
+        const recipeId = item.id;
+       // console.log("recipe id inhome", item.id);
         return (
             <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item, totalCalories }) }}>
                 <Image source={{ uri: item.imageSource }} style={styles.image} />
@@ -66,7 +98,7 @@ export const Home = ({ navigation }) => {
                 </View>
                 <View style={styles.nutritionContainerLeft}>
                     <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
-                    <TouchableOpacity style={styles.saveC} onPress={() => navigation.navigate('SaveRecipe')}>
+                    <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(recipeId)}>
                         <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
 
                     </TouchableOpacity>

@@ -33,11 +33,10 @@ export default function App() {
           return <Login setToken={setToken} props={props} />
         }}
       </Stack.Screen>
-      <Stack.Screen name="Home" component={Home} options={
-        {
-          headerShown: false
-        }
-      } />
+
+      <Stack.Screen name="Home">
+        {(props) => <Home token={token} {...props} />}
+      </Stack.Screen>
       <Stack.Screen
         name="SignUp"
         options={{
