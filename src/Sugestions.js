@@ -2,8 +2,9 @@ import React from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const Suggestions = ({ route, navigation }) => {
+const Suggestions = ({ route, navigation, token  }) => {
     const { filteredData, selectedIngredients } = route.params;
+    //const { navigation, token } = props
 
 
     if (!filteredData || !filteredData.matchingCards) {
