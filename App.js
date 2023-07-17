@@ -34,7 +34,11 @@ export default function App() {
         }}
       </Stack.Screen>
 
-      <Stack.Screen name="Home">
+      <Stack.Screen name="Home" options={
+        {
+          headerShown: false
+        }
+      }>
         {(props) => <Home token={token} {...props} />}
       </Stack.Screen>
       <Stack.Screen
@@ -52,7 +56,7 @@ export default function App() {
           headerShown: false
         }
       } />
-      <Stack.Screen name="Recipe" options={
+      <Stack.Screen name="Recipe"   options={
         {
           headerShown: false
         }
@@ -83,11 +87,19 @@ export default function App() {
 
 
 
-      <Stack.Screen name="SaveRecipe">
+      <Stack.Screen name="SaveRecipe" options={
+        {
+          headerShown: false
+        }
+      }>
         {(props) => <SaveRecipe token={token} {...props} />}
       </Stack.Screen>
 
-      <Stack.Screen name="UserProfile">
+      <Stack.Screen name="UserProfile" options={
+        {
+          headerShown: false
+        }
+      }>
         {(props) => <UserProfile token={token} {...props} />}
       </Stack.Screen>
     </Stack.Navigator>
