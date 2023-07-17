@@ -52,6 +52,29 @@ const RecipeFilter = ({ props, token }) => {
             });
     };
 
+    const handleSaveRecipe = () => {
+        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + token,
+          },
+          body: JSON.stringify({ recipeId: cardData.id }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log('Recipe saved successfully');
+            } else if (response.status === 400) {
+              throw new Error('Recipe is already saved');
+            } else {
+              throw new Error('Failed to save the recipe');
+            }
+          })
+          .catch((error) => {
+            console.error('Error saving the recipe:', error);
+          });
+      };
+
 
     return (
         <View style={styles.screen} >
@@ -76,6 +99,10 @@ const RecipeFilter = ({ props, token }) => {
                         <View style={styles.timerContainer}>
                             <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
                             <Text style={styles.timerValue}>{cardData.time} mins</Text>
+                            <TouchableOpacity style={styles.saveC} onPress={handleSaveRecipe}>
+                                <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+
+                            </TouchableOpacity>
                         </View>
 
                     </View>
@@ -515,7 +542,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         //color: 'white',
         fontFamily: "Gill Sans",
-        letterSpacing: '1',
+    
     },
     image: {
         width: '100%',
