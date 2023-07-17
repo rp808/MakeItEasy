@@ -83,11 +83,10 @@ export default function App() {
       }}</Stack.Screen>
 
 
-      <Stack.Screen name="SaveRecipe" component={SaveRecipe} options={
-        {
-          headerShown: false
-        }
-      } />
+
+      <Stack.Screen name="SaveRecipe">
+        {(props) => <SaveRecipe token={token} {...props} />}
+      </Stack.Screen>
 
       <Stack.Screen name="UserProfile">
         {(props) => <UserProfile token={token} {...props} />}

@@ -3,7 +3,36 @@ import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const SaveRecipe = ({navigation}) => {
+const SaveRecipe = ({ navigation, token }) => {
+    const [savedRecipes, setSavedRecipes] = useState([]);
+
+    useEffect(() => {
+        fetchSavedRecipes();
+    }, []);
+
+    const fetchSavedRecipes = () => {
+        fetch('http://192.168.40.75:3000/saved-recipes', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to fetch saved recipes');
+                }
+            })
+            .then((data) => {
+                const savedRecipes = data.savedRecipes;
+                setSavedRecipes(savedRecipes);
+            })
+            .catch((error) => {
+                console.error('Error fetching saved recipes:', error);
+            });
+    };
 
     return (
         <View style={styles.container}>
@@ -18,8 +47,31 @@ const SaveRecipe = ({navigation}) => {
                 <Text style={styles.title}>Your favourites</Text>
 
             </View>
-
             <ScrollView style={styles.scrollContainer}>
+                {savedRecipes.map((recipe) => (
+                    <TouchableOpacity key={recipe._id} style={styles.cardContainer}>
+                        <Image style={styles.image} source={{ uri: recipe.imageSource }}  />
+                        <Text style={styles.title}>{recipe.description}</Text>
+                        {/* 
+            <Text>{recipe.instructions}</Text> */}
+
+                        <View style={styles.nutritionContainer}>
+                            <Ionicons name="ios-flame" size={20} color="#05595b" />
+                            <Text style={styles.nutritionText}> {recipe.nutrition.totalCalories}</Text>
+                            <Ionicons name="md-timer" size={20} color="#05595b" />
+                            <Text style={styles.nutritionText}>{recipe.time}</Text>
+                            <Text style={styles.nutritionText}> Serving:  {recipe.serving}  </Text>
+
+                        </View>
+
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
+
+
+
+
+            {/* <ScrollView style={styles.scrollContainer}>
 
                 <TouchableOpacity style={styles.cardContainer}>
                     <Image style={styles.image} source={require("./assets/filter.png")} />
@@ -34,7 +86,7 @@ const SaveRecipe = ({navigation}) => {
                     </View>
                 </TouchableOpacity>
 
-            </ScrollView>
+            </ScrollView> */}
 
 
             <View style={styles.buttomNavFlex}>

@@ -50,15 +50,19 @@ const Recipe = ({ props, token }) => {
             });
 
     };
-    console.log("id", route.params.item.id)
+     console.log("id", route.params.item)
+
+
+
     const handleSaveRecipe = () => {
+        const recipeId = String(route.params.item.id); 
         fetch('http://192.168.40.75:3000/saved-recipes/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 authorization: 'Bearer ' + token,
             },
-            body: JSON.stringify({ recipeId: route.params.item.id }),
+            body: JSON.stringify({ recipeId }),
         })
             .then((response) => {
                 if (response.ok) {
