@@ -295,6 +295,7 @@ const styles = StyleSheet.create({
     },
     timerIcon: {
         marginRight: 5,
+        marginLeft: 15,
     },
     timerValue: {
         fontSize: 24,
@@ -310,6 +311,17 @@ const styles = StyleSheet.create({
     nutritionValue: {
         flex: 1,
         textAlign: 'left',
+    },
+    saveC: {
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    saveImg: {
+
+        width: 30,
+        height: 35,
+        // marginTop: 10,
+        // marginBottom: 10,
     },
     nutritionRow: {
         flexDirection: 'row',
