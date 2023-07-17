@@ -50,6 +50,31 @@ const Recipe = ({ props, token }) => {
             });
 
     };
+    console.log("id", route.params.item.id)
+    const handleSaveRecipe = () => {
+        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
+            body: JSON.stringify({ recipeId: route.params.item.id }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Recipe saved successfully');
+                } else if (response.status === 400) {
+                    throw new Error('Recipe is already saved');
+                } else {
+                    throw new Error('Failed to save the recipe');
+                }
+            })
+            .catch((error) => {
+                console.error('Error saving the recipe:', error);
+            });
+    };
+
+
 
     return (
         <View style={styles.screen} >
@@ -75,10 +100,10 @@ const Recipe = ({ props, token }) => {
                         <View style={styles.timerContainer}>
                             <Ionicons name="md-timer" size={30} color="#05595b" style={styles.timerIcon} />
                             <Text style={styles.timerValue}>{route.params.item.time} mins</Text>
-                            <TouchableOpacity style={styles.saveC} onPress={() => navigation.navigate('SaveRecipe')}>
-                        <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+                            <TouchableOpacity style={styles.saveC} onPress={handleSaveRecipe} >
+                                <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
 
-                    </TouchableOpacity>
+                            </TouchableOpacity>
                         </View>
 
                     </View>
@@ -285,11 +310,11 @@ const styles = StyleSheet.create({
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
     },
-    saveC:{
+    saveC: {
         marginLeft: 50,
         marginRight: 20,
     },
-    saveImg:{
+    saveImg: {
 
         width: 30,
         height: 35,
@@ -453,7 +478,7 @@ const styles = StyleSheet.create({
 
     },
     nutritionText: {
-      
+
     },
 
     buttomNavFlex: {
@@ -587,7 +612,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'#333',
         alignContent: 'center',
 
-  
+
 
 
     },
