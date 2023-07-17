@@ -12,6 +12,31 @@ const Suggestions = ({ route, navigation }) => {
 
     const { matchingCards } = filteredData;
 
+    const handleSaveRecipe = (recipeId) => {
+     
+        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + token,
+          },
+          body: JSON.stringify({ recipeId }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log('Recipe saved successfully');
+            } else if (response.status === 400) {
+              throw new Error('Recipe is already saved');
+            } else {
+              throw new Error('Failed to save the recipe');
+            }
+          })
+          .catch((error) => {
+            console.error('Error saving the recipe:', error);
+          });
+      };
+    
+
     return (
         <View style={styles.container}>
             <View style={styles.appNameFlex}>
@@ -30,13 +55,21 @@ const Suggestions = ({ route, navigation }) => {
                 {matchingCards.map((card) => (
                     <TouchableOpacity key={card._id} style={styles.cardContainer} onPress={() => navigation.navigate('RecipeFilter', { cardData: card })}>
                         <Image source={{ uri: card.imageSource }} style={styles.image} />
+                        <View style={styles.descCard}>
                         <Text style={styles.title}>{card.description}</Text>
+
+                        <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(card.id)}>
+                                <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+
+                            </TouchableOpacity>
+                            </View>
                         <View style={styles.nutritionContainer}>
                             <Ionicons name="ios-flame" size={20} color="#05595b" />
                             <Text style={styles.nutritionText}> {card.nutrition.totalCalories}</Text>
                             <Ionicons name="md-timer" size={20} color="#05595b" />
                             <Text style={styles.nutritionText}>{card.time}</Text>
                             <Text style={styles.nutritionText}> Serving:  {card.serving}</Text>
+       
 
                         </View>
                     </TouchableOpacity>
@@ -175,7 +208,26 @@ const styles = StyleSheet.create({
         margin: 20,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
+   
     },
+    descCard:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 10,
+        elevation: 2,
+        marginBottom: 10,
+    },
+    saveC: {
+        marginLeft: 10,
+        marginRight:20,
+      },
+      saveImg: {
+        width:30,
+        height: 30,
+      },
     detailsContainer: {
         paddingHorizontal: 10,
         paddingBottom: 10,
