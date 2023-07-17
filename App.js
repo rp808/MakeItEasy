@@ -71,11 +71,15 @@ export default function App() {
           headerShown: false
         }
       } />
-      <Stack.Screen name="Suggestions" component={Suggestions} options={
+     
+    <Stack.Screen name="Suggestions" options={
         {
           headerShown: false
         }
-      } />
+      }>
+        {(props) => <Suggestions token={token} {...props} />}
+      </Stack.Screen>
+
 
       <Stack.Screen name="RecipeFilter" options={
         {
