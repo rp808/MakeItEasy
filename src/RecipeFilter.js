@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import {
     StyleSheet,
     Text,
@@ -27,7 +27,7 @@ const RecipeFilter = ({ props, token }) => {
         setActiveSection(section);
     };
     const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
-
+    const [savedRecipes, setSavedRecipes] = useState([]);
 
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
@@ -51,6 +51,34 @@ const RecipeFilter = ({ props, token }) => {
                 console.error('Error saving the rating:', error);
             });
     };
+
+    useEffect(() => {
+        fetchSavedRecipes();
+      }, []);
+    
+      const fetchSavedRecipes = () => {
+        fetch(`${API_BASE_URL}/saved-recipes`, {
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + token,
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Failed to fetch saved recipes');
+            }
+          })
+          .then((data) => {
+            const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
+            setSavedRecipes(savedRecipeIds);
+          })
+          .catch((error) => {
+            console.error('Error fetching saved recipes:', error);
+          });
+      };
+    
 
     const handleSaveRecipe = () => {
         fetch(`${API_BASE_URL}/saved-recipes/add`, {
