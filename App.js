@@ -12,6 +12,7 @@ import Suggestions from './src/Sugestions';
 import RecipeFilter from './src/RecipeFilter';
 import SaveRecipe from './src/SaveRecipe';
 import UserProfile from './src/UserProfile';
+import SaveRecipeDirection from './src/SaveRecipeDirection';
 import { useState } from "react"
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -56,7 +57,7 @@ export default function App() {
           headerShown: false
         }
       } />
-      <Stack.Screen name="Recipe"   options={
+      <Stack.Screen name="Recipe" options={
         {
           headerShown: false
         }
@@ -71,8 +72,8 @@ export default function App() {
           headerShown: false
         }
       } />
-     
-    <Stack.Screen name="Suggestions" options={
+
+      <Stack.Screen name="Suggestions" options={
         {
           headerShown: false
         }
@@ -97,6 +98,15 @@ export default function App() {
         }
       }>
         {(props) => <SaveRecipe token={token} {...props} />}
+      </Stack.Screen>
+
+
+      <Stack.Screen name="SaveRecipeDirection" options={
+        {
+          headerShown: false
+        }
+      }>
+        {(props) => <SaveRecipeDirection token={token} {...props} />}
       </Stack.Screen>
 
       <Stack.Screen name="UserProfile" options={
