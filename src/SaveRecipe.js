@@ -51,7 +51,12 @@ const SaveRecipe = ({ navigation, token }) => {
                 {savedRecipes.map((recipe) => (
                     <TouchableOpacity key={recipe._id} style={styles.cardContainer}>
                         <Image style={styles.image} source={{ uri: recipe.imageSource }}  />
+                        <View style={styles.descCard}>
                         <Text style={styles.title}>{recipe.description}</Text>
+                        <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(card.id)}>
+                                <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+                            </TouchableOpacity>
+                            </View>
                         {/* 
             <Text>{recipe.instructions}</Text> */}
 
@@ -117,6 +122,24 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#F6F6F6',
+    },
+    saveC: {
+        marginLeft: 10,
+        marginRight: 20,
+    },
+    saveImg: {
+        width: 30,
+        height: 30,
+    },
+    descCard: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 10,
+        elevation: 2,
+        marginBottom: 10,
     },
     nutritionContainer: {
         flexDirection: 'row',
