@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -54,54 +54,80 @@ const RecipeFilter = ({ props, token }) => {
 
     useEffect(() => {
         fetchSavedRecipes();
-      }, []);
-    
-      const fetchSavedRecipes = () => {
+    }, []);
+
+    const fetchSavedRecipes = () => {
         fetch(`${API_BASE_URL}/saved-recipes`, {
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token,
-          },
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
         })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error('Failed to fetch saved recipes');
-            }
-          })
-          .then((data) => {
-            const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
-            setSavedRecipes(savedRecipeIds);
-          })
-          .catch((error) => {
-            console.error('Error fetching saved recipes:', error);
-          });
-      };
-    
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to fetch saved recipes');
+                }
+            })
+            .then((data) => {
+                const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
+                setSavedRecipes(savedRecipeIds);
+            })
+            .catch((error) => {
+                console.error('Error fetching saved recipes:', error);
+            });
+    };
+
 
     const handleSaveRecipe = () => {
-        fetch(`${API_BASE_URL}/saved-recipes/add`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token,
-          },
-          body: JSON.stringify({ recipeId: cardData.id }),
-        })
-          .then((response) => {
-            if (response.ok) {
-              console.log('Recipe saved successfully');
-            } else if (response.status === 400) {
-              throw new Error('Recipe is already saved');
-            } else {
-              throw new Error('Failed to save the recipe');
-            }
-          })
-          .catch((error) => {
-            console.error('Error saving the recipe:', error);
-          });
-      };
+        const isSaved = savedRecipes.includes(cardData.id);
+
+        if (isSaved) {
+            // If the recipe is already saved, remove it from the saved list
+            fetch(`${API_BASE_URL}/saved-recipes/remove`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId: cardData.id }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe removed successfully');
+                        setSavedRecipes(savedRecipes.filter((id) => id !== cardData.id));
+                    } else {
+                        throw new Error('Failed to remove the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error removing the recipe:', error);
+                });
+        } else {
+            fetch(`${API_BASE_URL}/saved-recipes/add`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId: cardData.id }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe saved successfully');
+                        setSavedRecipes([...savedRecipes, cardData.id]);
+                    } else if (response.status === 400) {
+                        throw new Error('Recipe is already saved');
+                    } else {
+                        throw new Error('Failed to save the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error saving the recipe:', error);
+                });
+        }
+    };
 
 
     return (
@@ -128,7 +154,11 @@ const RecipeFilter = ({ props, token }) => {
                             <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
                             <Text style={styles.timerValue}>{cardData.time} mins</Text>
                             <TouchableOpacity style={styles.saveC} onPress={handleSaveRecipe}>
-                                <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+                                {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
+                                <Image
+                                    style={styles.saveImg}
+                                    source={savedRecipes.includes(cardData.id) ? require("./assets/saveFilled.png") : require("./assets/saveCard.png")}
+                                />
 
                             </TouchableOpacity>
                         </View>
@@ -287,10 +317,10 @@ const RecipeFilter = ({ props, token }) => {
 
             </View>
             <View style={styles.buttomNavFlex}>
-            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
-                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
+                    <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <Image style={styles.iconImg} source={require("./assets/filter.png")} />
 
@@ -582,7 +612,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         //color: 'white',
         fontFamily: "Gill Sans",
-    
+
     },
     image: {
         width: '100%',
