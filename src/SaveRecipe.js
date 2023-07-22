@@ -102,7 +102,7 @@ const SaveRecipe = ({ navigation, token }) => {
                     <Image style={styles.iconImg} source={require("./assets/saveFilled.png")} />
 
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
                     <Image style={styles.iconImg} source={require("./assets/user.png")} />
 
                 </TouchableOpacity>

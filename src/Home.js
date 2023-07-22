@@ -52,7 +52,7 @@ export const Home = ({ navigation, token }) => {
 
       const fetchData = async () => {
         try {
-          const response = await fetch('${API_BASE_URL}/saved-recipes', {
+          const response = await fetch(`${API_BASE_URL}/saved-recipes`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
