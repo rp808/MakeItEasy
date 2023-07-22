@@ -45,7 +45,31 @@ export const Home = ({ navigation, token }) => {
         }
     };
     const sortedData = data.sort((a, b) => a.time - b.time);
+    useEffect(() => {
+        fetchData();
+      }, []);
 
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://192.168.40.75:3000/saved-recipes', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              authorization: 'Bearer ' + token,
+            },
+          });
+    
+          if (response.ok) {
+            const data = await response.json();
+            const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
+            setSavedRecipes(savedRecipeIds);
+          } else {
+            throw new Error('Failed to fetch saved recipes');
+          }
+        } catch (error) {
+          console.error('Error fetching saved recipes:', error);
+        }
+      };
 
     const handleSaveRecipe = (recipeId) => {
 
