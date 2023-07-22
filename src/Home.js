@@ -24,6 +24,8 @@ export const Home = ({ navigation,token }) => {
         sendDataToServer();
     }, []);
 
+    const [savedRecipes, setSavedRecipes] = useState([]);
+
 
     const sendDataToServer = async () => {
         try {
@@ -60,6 +62,7 @@ export const Home = ({ navigation,token }) => {
           .then((response) => {
             if (response.ok) {
               console.log('Recipe saved successfully');
+              setSavedRecipes([...savedRecipes, recipeId]);
         
             } else if (response.status === 400) {
               throw new Error('Recipe is already saved');
@@ -78,6 +81,7 @@ export const Home = ({ navigation,token }) => {
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition.totalCalories;
         const recipeId = item.id;
+        const isSaved = savedRecipes.includes(recipeId);
        // console.log("recipe id inhome", item.id);
         return (
             <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item, totalCalories }) }}>
@@ -99,7 +103,8 @@ export const Home = ({ navigation,token }) => {
                 <View style={styles.nutritionContainerLeft}>
                     <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
                     <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(recipeId)}>
-                        <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+                        {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
+                        <Image style={styles.saveImg} source={isSaved ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
 
                     </TouchableOpacity>
 
