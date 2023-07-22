@@ -36,25 +36,25 @@ const SaveRecipe = ({ navigation, token }) => {
 
     const handleRemoveRecipe = (recipeId) => {
         fetch(`${API_BASE_URL}/saved-recipes/remove`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token,
-          },
-          body: JSON.stringify({ recipeId }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
+            body: JSON.stringify({ recipeId }),
         })
-          .then((response) => {
-            if (response.ok) {
-              console.log('Recipe removed successfully');
-              setSavedRecipes(savedRecipes.filter((recipe) => recipe.id !== recipeId));
-            } else {
-              throw new Error('Failed to remove the recipe');
-            }
-          })
-          .catch((error) => {
-            console.error('Error removing the recipe:', error);
-          });
-      };
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Recipe removed successfully');
+                    setSavedRecipes(savedRecipes.filter((recipe) => recipe.id !== recipeId));
+                } else {
+                    throw new Error('Failed to remove the recipe');
+                }
+            })
+            .catch((error) => {
+                console.error('Error removing the recipe:', error);
+            });
+    };
 
     return (
         <View style={styles.container}>
@@ -71,11 +71,11 @@ const SaveRecipe = ({ navigation, token }) => {
             </View>
             <ScrollView style={styles.scrollContainer}>
                 {savedRecipes.map((recipe) => (
-                    <TouchableOpacity key={recipe._id} style={styles.cardContainer}>
+                    <TouchableOpacity key={recipe._id} style={styles.cardContainer} onPress={() => navigation.navigate('SaveRecipeDirection', { recipeData: recipe })}>
                         <Image style={styles.image} source={{ uri: recipe.imageSource }} />
                         <View style={styles.descCard}>
                             <Text style={styles.title}>{recipe.description}</Text>
-                            <TouchableOpacity style={styles.saveC}   onPress={() => handleRemoveRecipe(recipe.id)} >
+                            <TouchableOpacity style={styles.saveC} onPress={() => handleRemoveRecipe(recipe.id)} >
                                 <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
                             </TouchableOpacity>
                         </View>
