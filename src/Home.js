@@ -49,9 +49,32 @@ export const Home = ({ navigation,token }) => {
 
     const handleSaveRecipe = (recipeId) => {
 
-   
+        const isSaved = savedRecipes.includes(recipeId);
 
-        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+        if (isSaved) {
+            // If the recipe is already saved, remove it from the saved list
+            fetch('http://192.168.40.75:3000/saved-recipes/remove', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+              },
+              body: JSON.stringify({ recipeId: recipeId }),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  console.log('Recipe removed successfully');
+                  setSavedRecipes(savedRecipes.filter((id) => id !== recipeId));
+                } else {
+                  throw new Error('Failed to remove the recipe');
+                }
+              })
+              .catch((error) => {
+                console.error('Error removing the recipe:', error);
+              });
+          } 
+else{
+       fetch('http://192.168.40.75:3000/saved-recipes/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,6 +97,9 @@ export const Home = ({ navigation,token }) => {
             console.error('Error saving the recipe:', error);
            
           });
+
+
+        }
       };
       
     
