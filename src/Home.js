@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 
-export const Home = ({ navigation,token }) => {
+export const Home = ({ navigation, token }) => {
 
 
     useEffect(() => {
@@ -45,7 +45,7 @@ export const Home = ({ navigation,token }) => {
         }
     };
     const sortedData = data.sort((a, b) => a.time - b.time);
-  
+
 
     const handleSaveRecipe = (recipeId) => {
 
@@ -54,61 +54,61 @@ export const Home = ({ navigation,token }) => {
         if (isSaved) {
             // If the recipe is already saved, remove it from the saved list
             fetch('http://192.168.40.75:3000/saved-recipes/remove', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                authorization: 'Bearer ' + token,
-              },
-              body: JSON.stringify({ recipeId: recipeId }),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId: recipeId }),
             })
-              .then((response) => {
-                if (response.ok) {
-                  console.log('Recipe removed successfully');
-                  setSavedRecipes(savedRecipes.filter((id) => id !== recipeId));
-                } else {
-                  throw new Error('Failed to remove the recipe');
-                }
-              })
-              .catch((error) => {
-                console.error('Error removing the recipe:', error);
-              });
-          } 
-else{
-       fetch('http://192.168.40.75:3000/saved-recipes/add', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token,
-          },
-          body: JSON.stringify({ recipeId: recipeId }), 
-        })
-          .then((response) => {
-            if (response.ok) {
-              console.log('Recipe saved successfully');
-              setSavedRecipes([...savedRecipes, recipeId]);
-        
-            } else if (response.status === 400) {
-              throw new Error('Recipe is already saved');
-            } else {
-              throw new Error('Failed to save the recipe');
-            }
-          })
-          .catch((error) => {
-            console.error('Error saving the recipe:', error);
-           
-          });
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe removed successfully');
+                        setSavedRecipes(savedRecipes.filter((id) => id !== recipeId));
+                    } else {
+                        throw new Error('Failed to remove the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error removing the recipe:', error);
+                });
+        }
+        else {
+            fetch('http://192.168.40.75:3000/saved-recipes/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId: recipeId }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe saved successfully');
+                        setSavedRecipes([...savedRecipes, recipeId]);
+
+                    } else if (response.status === 400) {
+                        throw new Error('Recipe is already saved');
+                    } else {
+                        throw new Error('Failed to save the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error saving the recipe:', error);
+
+                });
 
 
         }
-      };
-      
-    
+    };
+
+
 
     const renderItem = ({ item }) => {
         const totalCalories = item.nutrition.totalCalories;
         const recipeId = item.id;
         const isSaved = savedRecipes.includes(recipeId);
-       // console.log("recipe id inhome", item.id);
+        // console.log("recipe id inhome", item.id);
         return (
             <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item, totalCalories }) }}>
                 <Image source={{ uri: item.imageSource }} style={styles.image} />
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
 
 
     },
-    saveC:{
+    saveC: {
         alignItems: 'center',
         marginLeft: 15,
     },
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
 
     },
-    saveImg:{
+    saveImg: {
         width: 25,
         height: 25,
     },
