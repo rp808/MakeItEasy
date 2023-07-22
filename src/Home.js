@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
-
+import { useIsFocused } from '@react-navigation/native';
 import { data } from "./data";
 import {
     StyleSheet,
@@ -46,9 +46,10 @@ export const Home = ({ navigation, token }) => {
         }
     };
     const sortedData = data.sort((a, b) => a.time - b.time);
+    const isFocused = useIsFocused();
     useEffect(() => {
         fetchData();
-      }, []);
+      }, [isFocused]);
 
       const fetchData = async () => {
         try {
