@@ -20,7 +20,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
 
-        fetch(`${API_BASE_URL}/cards/rate/${cardData._id}`, {
+        fetch(`${API_BASE_URL}/cards/rate/${recipeData._id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
