@@ -1,42 +1,97 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
-const Suggestions = ({ route, navigation, token  }) => {
+
+
+const Suggestions = ({ route, navigation, token }) => {
     const { filteredData, selectedIngredients } = route.params;
     //const { navigation, token } = props
-
+    const [savedRecipes, setSavedRecipes] = useState([]);
 
     if (!filteredData || !filteredData.matchingCards) {
-        return null; // Or display a loading indicator, error message, or fallback UI
+        return null;
     }
 
     const { matchingCards } = filteredData;
 
-    const handleSaveRecipe = (recipeId) => {
-     
-        fetch(`${API_BASE_URL}/saved-recipes/add`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token,
-          },
-          body: JSON.stringify({ recipeId }),
+
+    useEffect(() => {
+        fetchSavedRecipes();
+    }, []);
+
+    const fetchSavedRecipes = () => {
+        fetch(`${API_BASE_URL}/saved-recipes`, {
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
         })
-          .then((response) => {
-            if (response.ok) {
-              console.log('Recipe saved successfully');
-            } else if (response.status === 400) {
-              throw new Error('Recipe is already saved');
-            } else {
-              throw new Error('Failed to save the recipe');
-            }
-          })
-          .catch((error) => {
-            console.error('Error saving the recipe:', error);
-          });
-      };
-    
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to fetch saved recipes');
+                }
+            })
+            .then((data) => {
+                const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
+                setSavedRecipes(savedRecipeIds);
+            })
+            .catch((error) => {
+                console.error('Error fetching saved recipes:', error);
+            });
+    };
+
+    const handleSaveRecipe = (recipeId) => {
+        const isSaved = savedRecipes.includes(recipeId);
+
+        if (isSaved) {
+
+            fetch(`${API_BASE_URL}/saved-recipes/remove`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe removed successfully');
+                        setSavedRecipes(savedRecipes.filter((id) => id !== recipeId));
+                    } else {
+                        throw new Error('Failed to remove the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error removing the recipe:', error);
+                });
+        } else {
+            fetch(`${API_BASE_URL}/saved-recipes/add`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe saved successfully');
+                        setSavedRecipes([...savedRecipes, recipeId]);
+                    } else if (response.status === 400) {
+                        throw new Error('Recipe is already saved');
+                    } else {
+                        throw new Error('Failed to save the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error saving the recipe:', error);
+                });
+        }
+    };
+
 
     return (
         <View style={styles.container}>
@@ -57,20 +112,21 @@ const Suggestions = ({ route, navigation, token  }) => {
                     <TouchableOpacity key={card._id} style={styles.cardContainer} onPress={() => navigation.navigate('RecipeFilter', { cardData: card })}>
                         <Image source={{ uri: card.imageSource }} style={styles.image} />
                         <View style={styles.descCard}>
-                        <Text style={styles.title}>{card.description}</Text>
+                            <Text style={styles.title}>{card.description}</Text>
 
-                        <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(card.id)}>
-                                <Image style={styles.saveImg} source={require("./assets/saveCard.png")} />
+                            <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(card.id)}>
+                                {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
+                                <Image style={styles.saveImg} source={savedRecipes.includes(card.id) ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
 
                             </TouchableOpacity>
-                            </View>
+                        </View>
                         <View style={styles.nutritionContainer}>
                             <Ionicons name="ios-flame" size={20} color="#05595b" />
                             <Text style={styles.nutritionText}> {card.nutrition.totalCalories}</Text>
                             <Ionicons name="md-timer" size={20} color="#05595b" />
                             <Text style={styles.nutritionText}>{card.time}</Text>
                             <Text style={styles.nutritionText}> Serving:  {card.serving}</Text>
-       
+
 
                         </View>
                     </TouchableOpacity>
@@ -209,9 +265,9 @@ const styles = StyleSheet.create({
         margin: 20,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
-   
+
     },
-    descCard:{
+    descCard: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -223,12 +279,12 @@ const styles = StyleSheet.create({
     },
     saveC: {
         marginLeft: 10,
-        marginRight:20,
-      },
-      saveImg: {
-        width:30,
+        marginRight: 20,
+    },
+    saveImg: {
+        width: 30,
         height: 30,
-      },
+    },
     detailsContainer: {
         paddingHorizontal: 10,
         paddingBottom: 10,
