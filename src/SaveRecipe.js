@@ -10,6 +10,14 @@ const SaveRecipe = ({ navigation, token }) => {
         fetchSavedRecipes();
     }, []);
 
+    useEffect(() => {
+        // Refresh saved recipes list when the SaveRecipeDirection screen is focused again
+        const unsubscribe = navigation.addListener('focus', () => {
+          fetchSavedRecipes();
+        });
+    
+        return unsubscribe;
+      }, [navigation]);
     const fetchSavedRecipes = () => {
         fetch(`${API_BASE_URL}/saved-recipes`, {
             method: 'GET',

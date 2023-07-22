@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
 
-const SaveRecipeDirection = ({ route, token }) => {
+const SaveRecipeDirection = ({ route, token, navigation }) => {
     const { recipeData } = route.params;
     const [ratingsArray, setRatingsArray] = useState([])
 
@@ -38,6 +39,31 @@ const SaveRecipeDirection = ({ route, token }) => {
                 console.error('Error saving the rating:', error);
             });
     };
+
+
+    const handleRemoveRecipe = () => {
+        fetch(`${API_BASE_URL}/saved-recipes/remove`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
+            body: JSON.stringify({ recipeId: recipeData.id }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Recipe removed successfully');
+                    // Recipe removed successfully, navigate back to the SaveRecipe page
+                    navigation.goBack();
+                } else {
+                    throw new Error('Failed to remove the recipe');
+                }
+            })
+            .catch((error) => {
+                console.error('Error removing the recipe:', error);
+            });
+    };
+
     return (
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
@@ -61,9 +87,9 @@ const SaveRecipeDirection = ({ route, token }) => {
                         <View style={styles.timerContainer}>
                             <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
                             <Text style={styles.timerValue}>{recipeData.time} mins</Text>
-                            <TouchableOpacity style={styles.saveC} >
+                            <TouchableOpacity style={styles.saveC} onPress={handleRemoveRecipe}>
                                 <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
-                               
+
 
                             </TouchableOpacity>
                         </View>
