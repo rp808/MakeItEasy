@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
-
+import API_BASE_URL from '../config';
 import {
     StyleSheet,
     Text,
@@ -31,7 +31,7 @@ const Login = ({props,setToken}) => {
             return;
         }
         else {
-            fetch("http://192.168.40.75:3000/signin", {
+            fetch(`${API_BASE_URL}/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

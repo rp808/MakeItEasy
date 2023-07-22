@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import API_BASE_URL from '../config';
 const Suggestions = ({ route, navigation, token  }) => {
     const { filteredData, selectedIngredients } = route.params;
     //const { navigation, token } = props
@@ -15,7 +15,7 @@ const Suggestions = ({ route, navigation, token  }) => {
 
     const handleSaveRecipe = (recipeId) => {
      
-        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+        fetch(`${API_BASE_URL}/saved-recipes/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

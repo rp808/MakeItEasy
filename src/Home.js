@@ -14,6 +14,7 @@ import {
     FlatList,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import API_BASE_URL from '../config';
 
 
 
@@ -29,7 +30,7 @@ export const Home = ({ navigation, token }) => {
 
     const sendDataToServer = async () => {
         try {
-            const response = await fetch('http://192.168.40.75:3000/cards',
+            const response = await fetch(`${API_BASE_URL}/cards`,
                 //192.168.40.75
                 {
                     method: 'POST',
@@ -51,7 +52,7 @@ export const Home = ({ navigation, token }) => {
 
       const fetchData = async () => {
         try {
-          const response = await fetch('http://192.168.40.75:3000/saved-recipes', {
+          const response = await fetch('${API_BASE_URL}/saved-recipes', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ export const Home = ({ navigation, token }) => {
 
         if (isSaved) {
             // If the recipe is already saved, remove it from the saved list
-            fetch('http://192.168.40.75:3000/saved-recipes/remove', {
+            fetch(`${API_BASE_URL}/saved-recipes/remove`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +99,7 @@ export const Home = ({ navigation, token }) => {
                 });
         }
         else {
-            fetch('http://192.168.40.75:3000/saved-recipes/add', {
+            fetch(`${API_BASE_URL}/saved-recipes/add`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

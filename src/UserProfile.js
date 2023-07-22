@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from 'react';
-
+import API_BASE_URL from '../config';
 import {
     StyleSheet,
     Text,
@@ -24,7 +24,7 @@ console.log("token",token);
       }, []);
       const fetchUserProfile = async () => {
         try {
-          const response = await fetch('http://192.168.40.75:3000/profile', {
+          const response = await fetch(`${API_BASE_URL}/profile`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,

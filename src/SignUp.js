@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
-
+import API_BASE_URL from '../config';
 import {
   StyleSheet,
   Text,
@@ -35,7 +35,7 @@ const SignUp = ({ props, setToken  }) => {
       return;
     }
     else {
-      fetch("http://192.168.40.75:3000/signup", {
+      fetch(`${API_BASE_URL}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
-
+import API_BASE_URL from '../config';
 
 const FilterPage = ({ navigation }) => {
 
@@ -101,7 +101,7 @@ const FilterPage = ({ navigation }) => {
 //10.69.93.172
 
         // Make the POST request to the filter endpoint
-        fetch('http://192.168.40.75:3000/filter', {
+        fetch(`${API_BASE_URL}/filter`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

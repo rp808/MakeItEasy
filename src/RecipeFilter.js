@@ -11,7 +11,7 @@ import {
     ScrollView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-
+import API_BASE_URL from '../config';
 
 
 const RecipeFilter = ({ props, token }) => {
@@ -32,7 +32,7 @@ const RecipeFilter = ({ props, token }) => {
     const handleRating = (selectedRating) => {
         setRating(selectedRating);
 
-        fetch(`http://192.168.40.75:3000/cards/rate/${cardData._id}`, {
+        fetch(`${API_BASE_URL}/cards/rate/${cardData._id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const RecipeFilter = ({ props, token }) => {
     };
 
     const handleSaveRecipe = () => {
-        fetch('http://192.168.40.75:3000/saved-recipes/add', {
+        fetch(`${API_BASE_URL}/saved-recipes/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

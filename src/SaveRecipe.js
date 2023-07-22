@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import API_BASE_URL from '../config';
 const SaveRecipe = ({ navigation, token }) => {
     const [savedRecipes, setSavedRecipes] = useState([]);
 
@@ -11,7 +11,7 @@ const SaveRecipe = ({ navigation, token }) => {
     }, []);
 
     const fetchSavedRecipes = () => {
-        fetch('http://192.168.40.75:3000/saved-recipes', {
+        fetch(`${API_BASE_URL}/saved-recipes`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
