@@ -16,7 +16,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 
 const UserProfile = ({navigation , token}) => {
-console.log("token",token);
+//console.log("token",token);
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
