@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 
 import {
     StyleSheet,
@@ -25,7 +25,7 @@ const FilterPage = ({ props , token}) => {
     // const [selectedLevel, setSelectedLevel] = useState('');
     const [ingredients, setIngredients] = useState([{ name: '' }]);
     const [totalCalories, setTotalCalories] = useState('');
-
+    const [userDietaryRestriction, setUserDietaryRestriction] = useState('');
     const handleSelection = (item) => {
         if (selectedItems.includes(item)) {
             setSelectedItems(selectedItems.filter((selectedItem) => selectedItem !== item));
@@ -35,9 +35,35 @@ const FilterPage = ({ props , token}) => {
     };
 
 
+    useEffect(() => {
+      
+        fetchUserDietaryRestriction();
+      }, [])
 
+      const fetchUserDietaryRestriction = async () => {
+        try {
+          const response = await fetch(`${API_BASE_URL}/profile`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
 
-
+            setUserDietaryRestriction(data.dietaryRestriction);
+            
+            setSelectedItems([data.dietaryRestriction]);
+          } else {
+            console.log('Error:', data.error);
+          }
+        } catch (error) {
+          console.log('Error:', error.message);
+        }
+      };
     const options = [
         {
             label: 'Vegetarian',
@@ -60,7 +86,7 @@ const FilterPage = ({ props , token}) => {
             value: 'all',
         },
 
-        // Add more dietary restrictions here
+   
     ];
 
     const handleReset = () => {
@@ -98,9 +124,9 @@ const FilterPage = ({ props , token}) => {
         };
 
 
-//10.69.93.172
 
-        // Make the POST request to the filter endpoint
+
+        
         fetch(`${API_BASE_URL}/filter`, {
             method: 'POST',
             headers: {
