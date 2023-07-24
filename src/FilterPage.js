@@ -17,8 +17,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import API_BASE_URL from '../config';
 
-const FilterPage = ({ navigation }) => {
-
+const FilterPage = ({ props , token}) => {
+    const { navigation, route } = props
     const [totalCaloriesErrorMsg, setTotalCaloriesErrorMsg] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
     const [errorMsg, setErrorMsg] = useState('');

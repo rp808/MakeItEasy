@@ -52,11 +52,24 @@ export default function App() {
           return <SignUp setToken={setToken} props={props} />;
         }}
       </Stack.Screen>
-      <Stack.Screen name="FilterPage" component={FilterPage} options={
+
+      
+      {/* <Stack.Screen name="FilterPage" component={FilterPage} options={
         {
           headerShown: false
         }
-      } />
+      } /> */}
+      <Stack.Screen name="FilterPage" options={
+        {
+          headerShown: false
+        }
+      } >
+
+        {(props) => {
+          return <FilterPage token={token} props={props} />
+        }}
+      </Stack.Screen>
+
       <Stack.Screen name="Recipe" options={
         {
           headerShown: false
@@ -67,6 +80,9 @@ export default function App() {
           return <Recipe token={token} props={props} />
         }}
       </Stack.Screen>
+
+
+
       <Stack.Screen name="RecipeInstruction" component={RecipeInstruction} options={
         {
           headerShown: false
