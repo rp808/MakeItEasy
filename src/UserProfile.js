@@ -18,7 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 const UserProfile = ({ navigation, token }) => {
     //console.log("token",token);
     const [userData, setUserData] = useState(null);
-    const [selectedItems, setSelectedItems] = useState([]);
+    const [selectedItem, setSelectedItem] = useState([]);
     const dietaryRestrictionsOptions = [
         {
             label: 'Vegetarian',
@@ -43,13 +43,8 @@ const UserProfile = ({ navigation, token }) => {
 
     ];
 
-    const handleSelection = (item) => {
-        if (selectedItems.includes(item)) {
-            setSelectedItems(selectedItems.filter((selectedItem) => selectedItem !== item));
-        } else {
-            setSelectedItems([...selectedItems, item]);
-        }
-    };
+ 
+
     useEffect(() => {
         fetchUserProfile();
     }, []);
@@ -67,6 +62,7 @@ const UserProfile = ({ navigation, token }) => {
 
             if (response.ok) {
                 setUserData(data);
+                setSelectedItem([data.dietaryRestriction]);
             } else {
                 console.log('Error:', data.error);
             }
@@ -74,6 +70,40 @@ const UserProfile = ({ navigation, token }) => {
             console.log('Error:', error.message);
         }
     };
+
+    const saveDietaryRestriction = async () => {
+        try {
+          const data = {
+            dietaryRestriction: selectedItem,
+          };
+    
+          const response = await fetch(`${API_BASE_URL}/profile`, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+    
+          const responseData = await response.json();
+    
+          if (response.ok) {
+            console.log('User profile updated successfully');
+            setUserData({ ...userData, dietaryRestriction: selectedItem });
+          } else {
+            console.log('Error:', responseData.error);
+          }
+        } catch (error) {
+          console.log('Error:', error.message);
+        }
+      };
+    
+      const handleSelection = (item) => {
+        setSelectedItem(item);
+      };
+    
+    
 
     return (
         (
@@ -93,21 +123,21 @@ const UserProfile = ({ navigation, token }) => {
                 </View>
                 <View style={styles.userDiet}>
                     <View>
-                        <Text style={styles.logoTxt}>Dietary Restriction : user's choice</Text>
+                        <Text style={styles.label}>Dietary Restriction : {userData?.dietaryRestriction || 'Not set'}</Text>
                         <View style={styles.checkboxContainer}>
                             {dietaryRestrictionsOptions.map((option) => (
                                 <TouchableOpacity
                                     key={option.value}
                                     style={[
                                         styles.checkbox,
-                                        selectedItems.includes(option.value) && styles.checkboxSelected,
+                                        selectedItem.includes(option.value) && styles.checkboxSelected,
                                     ]}
                                     onPress={() => handleSelection(option.value)}
                                 >
                                     <Text
                                         style={[
                                             styles.checkboxLabel,
-                                            selectedItems.includes(option.value) ? styles.selectedCheckboxLabel : null,
+                                            selectedItem.includes(option.value) ? styles.selectedCheckboxLabel : null,
                                         ]}
                                     >
                                         {option.label}
@@ -115,6 +145,9 @@ const UserProfile = ({ navigation, token }) => {
                                 </TouchableOpacity>
                             ))}
                         </View>
+                        <TouchableOpacity style={styles.saveButton} onPress={saveDietaryRestriction}>
+                            <Text style={styles.saveButtonText}>Save</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
