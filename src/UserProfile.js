@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     checkbox: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: 13,
+        marginRight: 10,
         marginBottom: 10,
         padding: 3,
         borderRadius: 5,
