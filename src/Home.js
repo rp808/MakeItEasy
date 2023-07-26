@@ -26,7 +26,28 @@ export const Home = ({ navigation, token }) => {
     }, []);
 
     const [savedRecipes, setSavedRecipes] = useState([]);
+    const [userDietaryRestriction, setUserDietaryRestriction] = useState(null);
+    const fetchUserDietaryRestriction = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/profile`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+            });
 
+            if (response.ok) {
+                const data = await response.json();
+                return data.dietaryRestriction;
+            } else {
+                throw new Error('Failed to fetch user dietary restriction');
+            }
+        } catch (error) {
+            console.error('Error fetching user dietary restriction:', error);
+            return null;
+        }
+    };
 
     const sendDataToServer = async () => {
         try {
@@ -49,29 +70,45 @@ export const Home = ({ navigation, token }) => {
     const isFocused = useIsFocused();
     useEffect(() => {
         fetchData();
-      }, [isFocused]);
+        fetchUserDietaryRestriction().then((restriction) => {
+            setUserDietaryRestriction(restriction);
+        });
+    }, [isFocused]);
 
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`${API_BASE_URL}/saved-recipes`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              authorization: 'Bearer ' + token,
-            },
-          });
-    
-          if (response.ok) {
-            const data = await response.json();
-            const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
-            setSavedRecipes(savedRecipeIds);
-          } else {
-            throw new Error('Failed to fetch saved recipes');
-          }
-        } catch (error) {
-          console.error('Error fetching saved recipes:', error);
+    const filterRecipesByDiet = (recipes) => {
+        if (!userDietaryRestriction || userDietaryRestriction === 'all') {
+            // If the user's dietary restriction is not set or 'all', show all recipes
+            return recipes;
+        } else {
+            // Filter recipes based on the user's dietary restriction
+            return recipes.filter((recipe) => {
+                return recipe.dietaryRestrictions.includes(userDietaryRestriction);
+            });
         }
-      };
+    };
+    const filteredData = filterRecipesByDiet(sortedData);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/saved-recipes`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
+                setSavedRecipes(savedRecipeIds);
+            } else {
+                throw new Error('Failed to fetch saved recipes');
+            }
+        } catch (error) {
+            console.error('Error fetching saved recipes:', error);
+        }
+    };
 
     const handleSaveRecipe = (recipeId) => {
 
@@ -182,7 +219,7 @@ export const Home = ({ navigation, token }) => {
             <View style={styles.cardsFlex}>
 
                 <FlatList
-                    data={sortedData}
+                    data={filteredData}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     numColumns={2}
