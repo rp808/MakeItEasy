@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     },
     userName: {
         flex: 2,
-        width: '90%',
+        width: '95%',
         borderRadius: 10,
         padding: 20,
         marginVertical: 10,
@@ -214,8 +214,13 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     userDiet: {
-        alignItems: "start",
         flex: 6,
+        width: '95%',
+        borderRadius: 10,
+        padding: 5,
+        marginVertical: 10,
+        backgroundColor: '#FFF',
+        elevation: 3,
     },
 
 
@@ -306,7 +311,25 @@ const styles = StyleSheet.create({
         fontFamily: "GillSans-Light",
         fontSize: 18,
     },
-
+    saveButton: {
+        width:'50%',
+        marginTop: 20,
+        marginLeft:'25%',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        backgroundColor:"#e2d784",
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+      
+        elevation: 5,
+      },
+      saveButtonText: {
+        color: 'black',
+        marginLeft: 5,
+        fontFamily: "GillSans-SemiBold",
+        fontSize: 23
+      },
 
 
 
