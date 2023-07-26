@@ -116,10 +116,10 @@ const UserProfile = ({ navigation, token }) => {
                     </View>
                 </View>
                 <View style={styles.userName}>
-                    <View>
+                   
                         <Text style={styles.logoTxt}>First Name: {userData?.firstName} </Text>
                         <Text style={styles.logoTxt}>Last Name:  {userData?.lastName}</Text>
-                    </View>
+                  
                 </View>
                 <View style={styles.userDiet}>
                     <View>
@@ -185,7 +185,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-
+    cardContainer: {
+        flex: 2,
+        width: '90%',
+        borderRadius: 10,
+        padding: 20,
+        marginVertical: 10,
+        backgroundColor: '#FFF',
+        elevation: 3,
+      },
 
 
     appNameFlex: {
@@ -197,8 +205,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     userName: {
-        alignItems: "start",
         flex: 2,
+        width: '90%',
+        borderRadius: 10,
+        padding: 20,
+        marginVertical: 10,
+        backgroundColor: '#FFF',
+        elevation: 3,
     },
     userDiet: {
         alignItems: "start",
