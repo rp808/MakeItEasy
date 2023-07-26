@@ -34,7 +34,7 @@ const UserProfile = ({ navigation, token }) => {
         },
         {
             label: 'Non-Veg',
-            value: 'non-vegetarian',
+            value: 'non',
         },
         {
             label: 'All',

@@ -79,7 +79,7 @@ const FilterPage = ({ props , token}) => {
         },
         {
             label: 'Non-Veg',
-            value: 'non-vegetarian',
+            value: 'non',
         },
         {
             label: 'All',

@@ -58,7 +58,7 @@ export const data = [
     ingredients: ['6 sheets sushi seaweed aka nori', '1 batch prepared sushi rice', '1/2 lb sashimi-grade raw salmon or desired raw fish of choice', '4 oz cream cheese sliced into strips', '1 avocado sliced', 'soy sauce for serving'],
     instructions: ['Smooth gently with a rice paddle.', 'Layer salmon, cream cheese, and avocado on the rice, and roll it up tightly.', 'Slice with a sharp knife, and enjoy right away with soy sauce.'],
     ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
+    dietaryRestrictions: ['non'],
     difficultyLevel: 'advanced',
     nutrition: {
       totalCalories: 670,
@@ -85,7 +85,7 @@ export const data = [
       'Bake for 10-15 minutes or until cheese is melted and bubbly and chicken is cooked through (165 degrees F).',
       'Garnish with fresh chopped basil. Serve over hot cooked spaghetti noodles, with extra sauce, if desired.'],
     ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
+    dietaryRestrictions: ['non'],
     difficultyLevel: 'advanced',
     nutrition: {
       totalCalories: 378,
@@ -120,7 +120,7 @@ export const data = [
         'Crush the bag of chips, open the bag, and toss crushed chips into a large bowl. Add lettuce, cheese, and tomatoes.',
         'Pour meat mixture into the bowl; mix well. Top with salsa and sour cream.'],
     ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
+    dietaryRestrictions: ['non'],
     difficultyLevel: 'advanced',
     nutrition: {
       totalCalories: 846,
@@ -149,7 +149,7 @@ export const data = [
       'Combine garlic paste and shrimp in a large bowl and toss until shrimp are evenly coated.',
       'Lightly oil the grill grate. Grill shrimp until opaque, 2 to 3 minutes.'],
     ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
+    dietaryRestrictions: ['non'],
     difficultyLevel: 'advanced',
     nutrition: {
       totalCalories: 164,
@@ -391,7 +391,7 @@ export const data = [
       'Divide cooked rice into 4 large serving bowls; top with spinach mixture, a few pieces of beef, and cucumber mixture. Place 1 egg atop each serving.',
       'Drizzle each bowl with 1 teaspoon sesame oil, a sprinkle of sesame seeds, and a small amount of gochujang paste if desired.'],
     ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
+    dietaryRestrictions: ['non'],
     difficultyLevel: 'advanced',
     nutrition: {
       totalCalories: 569,
@@ -411,7 +411,7 @@ export const data = [
       'salt and pepper, optional and to taste',],
     instructions: ['To a large non-stick skillet or wok, add the oils, chicken, and cook over medium-high heat for about 3 to 5 minutes, flipping intermittently so all sides cook evenly.', ' Cooking time will vary based on thickness of chicken breasts and sizes of pieces.', 'Remove chicken with a slotted spoon (allow oils and cooking juices from chicken to remain in skillet) and place chicken on a plate; set aside.', 'Add the peas, carrots, green onions, and cook for about 2 minutes, or until vegetables begin to soften, stir intermittently.', 'Add the garlic and cook for 1 minute, stir intermittently.', 'Push vegetables to one side of the skillet, add the eggs to the other side, and cook to scramble, stirring as necessary.'],
     ratings: [],
-    dietaryRestrictions: ['non-vegetarian'],
+    dietaryRestrictions: ['non'],
     difficultyLevel: 'advanced',
     nutrition: {
       totalCalories: 870,
