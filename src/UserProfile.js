@@ -148,7 +148,9 @@ const UserProfile = ({ navigation, token }) => {
                         <TouchableOpacity style={styles.saveButton} onPress={saveDietaryRestriction}>
                             <Text style={styles.saveButtonText}>Save</Text>
                         </TouchableOpacity>
-                        
+                        <TouchableOpacity style={styles.saveButton} onPress={() => navigation.navigate('RecipeUpload')} >
+                            <Text style={styles.saveButtonText}>REcipe Upload</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
