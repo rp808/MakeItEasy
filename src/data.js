@@ -822,7 +822,7 @@ export const data = [
     time: 60
   },
   {
-    id: '27', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
+    id: '27', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/27.jpg',
     description: 'Enchiladas',
     ingredients: [
       "1 tsp olive oil",
@@ -965,40 +965,86 @@ export const data = [
     serving: 4,
     time: 25
   },
-  // {
-  //   id: '31', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
-  //   description: 'Card 3',
-  //   ingredients: ['ingredient4', 'ingredient5'],
-  //   instructions: ['instru1', 'instru2', 'instru3'],
-  //   ratings: [],
-  //   dietaryRestrictions: ['vegetarian'],
-  //   difficultyLevel: 'advanced',
-  //   nutrition: {
-  //     totalCalories: 139,
-  //     proteinPercentage: 33,
-  //     carbsPercentage: 43,
-  //     fatPercentage: 24,
-  //   },
-  //   serving: 4,
-  //   time: 40
-  // },
-  // {
-  //   id: '32', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
-  //   description: 'Card 3',
-  //   ingredients: ['ingredient4', 'ingredient5'],
-  //   instructions: ['instru1', 'instru2', 'instru3'],
-  //   ratings: [],
-  //   dietaryRestrictions: ['vegetarian'],
-  //   difficultyLevel: 'advanced',
-  //   nutrition: {
-  //     totalCalories: 139,
-  //     proteinPercentage: 33,
-  //     carbsPercentage: 43,
-  //     fatPercentage: 24,
-  //   },
-  //   serving: 4,
-  //   time: 40
-  // },
+  {
+    id: '31', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/31.jpg',
+    description: 'Chili Garlic Shrimp',
+    ingredients: [
+      '2 tablespoons chili garlic sauce',
+      '2 tablespoons hoisin sauce',
+      '1/3 cup shrimp stock (see Cook\'s Note)',
+      '1 tablespoon tomato paste',
+      '1 tablespoon mirin',
+      '1/4 teaspoon sesame oil',
+      '2 teaspoons minced fresh ginger',
+      '1 clove garlic, minced',
+      '2 tablespoons chopped shallot',
+      '2 tablespoons chopped cilantro, plus more for garnish',
+      '3 tablespoons vegetable oil',
+      '1 clove garlic, sliced',
+      '1 (1/8-inch-thick) slice fresh ginger',
+      '1 pound raw shrimp, 21-25 shrimp per pound, shelled and deveined'
+    ],
+    instructions: [
+      "Combine chili-garlic sauce, hoisin sauce, shrimp stock, tomato paste, mirin, sesame oil, 2 teaspoons minced fresh ginger, 1 clove minced garlic, shallot, and cilantro in a blender or small food processor.",
+      "Pulse several times to chop, then purée, 30 to 45 seconds. Set sauce aside, or refrigerate until needed.",
+      "Heat oil in a large skillet or wok over medium high heat. When oil is hot, add garlic and ginger slices.",
+      "Cook until browned, watching closely to avoid burning, about 2 minutes. Carefully remove garlic and ginger from the oil and discard.",
+      "To the seasoned oil, carefully add shrimp and cook until it just begins to turn pink and curl head to tail, about 2 minutes.",
+      "Turn shrimp and add prepared sauce. Cook, stirring, until shrimp are bright pink on the outside and the meat is opaque, 2 to 3 minutes. An instant-read thermometer inserted into the center should read 145 degrees F (63 degrees C).",
+      "Remove shrimp from the skillet and keep warm. Continue cooking and stirring sauce until thickened and reduced to about 3/4 cup.",
+      "Pour thickened sauce over shrimp, and toss to cover."
+    ],
+    ratings: [],
+    dietaryRestrictions: ['non'],
+    difficultyLevel: 'advanced',
+    nutrition: {
+      totalCalories: 231,
+      proteinPercentage: 20.65,
+      carbsPercentage: 29.22,
+      fatPercentage: 50.54,
+    },
+    serving: 4,
+    time: 25
+  },
+  {
+    id: '32', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/32.jpg',
+    description: 'Beef Curry Stew',
+    ingredients: [
+      "2 pounds cubed beef stew meat",
+      "salt and ground black pepper to taste",
+      "2 jalapeno peppers, chopped",
+      "4 cloves garlic, minced",
+      "1 tablespoon minced fresh ginger root",
+      "4 tablespoons curry powder",
+      "2 cups beef broth",
+      "1 (28 ounce) can fire-roasted diced tomatoes",
+      "1 pound Yukon Gold potatoes",
+      "3 carrots, sliced",
+      "1 large onion, sliced"
+    ],
+    instructions: [
+      "Turn on a multi-functional pressure cooker (such as Instant Pot®) and select Saute function.",
+      "Pour in olive oil and heat until sizzling; add meat and season with salt and pepper. Cook until browned, 5 to 7 minutes per side.",
+      "Transfer meat to a plate, reserving juices in the pot. Add jalapenos, garlic, and ginger to the pot.",
+      "Cook and stir until tender, about 2 minutes. Season with curry powder.",
+      "Pour 1/2 of the beef broth into the pot; scrape brown bits from the bottom of the pot using a wooden spoon.",
+      "Return meat to the pot with remaining beef broth, tomatoes, potatoes, carrots, and onion. Close and lock the lid.",
+      "Select high pressure according to manufacturer's instructions and set timer for 35 minutes. Allow 10 to 15 minutes for pressure to build.",
+      "Release pressure using the natural-release method according to manufacturer's instructions for 10 minutes.",
+      "Release remaining pressure carefully using the quick-release method according to manufacturer's instructions, about 5 minutes more. Unlock and remove the lid."
+    ],
+    ratings: [],
+    dietaryRestrictions: ['non'],
+    difficultyLevel: 'advanced',
+    nutrition: {
+      totalCalories: 356,
+      proteinPercentage: 33,
+      carbsPercentage: 43,
+      fatPercentage: 24,
+    },
+    serving: 4,
+    time: 85
+  },
   // {
   //   id: '33', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
   //   description: 'Card 3',
