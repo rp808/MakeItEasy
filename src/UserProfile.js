@@ -148,6 +148,7 @@ const UserProfile = ({ navigation, token }) => {
                         <TouchableOpacity style={styles.saveButton} onPress={saveDietaryRestriction}>
                             <Text style={styles.saveButtonText}>Save</Text>
                         </TouchableOpacity>
+                        
                     </View>
                 </View>
 
