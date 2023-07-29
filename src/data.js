@@ -782,7 +782,7 @@ export const data = [
   },
   {
     id: '26', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/26.jpg',
-    description: 'Card 3',
+    description: 'Lasgna',
     ingredients: [
       '3 red peppers, cut into large chunks',
       '2 aubergines, cut into ½ cm thick slices',
@@ -933,7 +933,7 @@ export const data = [
     time: 25
   },
   {
-    id: '30', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/3.jpg',
+    id: '30', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/30a.jpg',
     description: 'Coconut & Squash Dhansak',
     ingredients: ['1 tbsp vegetable oil',
     '500g butternut squash (about 1 small squash), peeled and chopped into bite-sized chunks (or buy a pack of ready-prepared to save time), see tip, below left',

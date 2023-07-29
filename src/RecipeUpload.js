@@ -14,38 +14,26 @@ import {
     KeyboardAvoidingView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 const RecipeUpload = ({ props, token }) => {
     const { navigation, route } = props;
+  
+
+
+    
+
+
+
+
+
     return (
         <View style={styles.screen}>
-            <View style={styles.recipeImg}>
-
-                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Home')}>
-                    <View style={styles.backButton} >
-                        <Ionicons name="arrow-back" size={24} color="#000000" />
-                    </View>
-                </TouchableOpacity>
-                <Image style={styles.image} source={require("./assets/eggs.jpg")} />
+        
 
 
-            </View>
-
-
-            <View style={styles.titleRating}>
-
-                <View style={styles.titleContainer}>
-                    <View style={styles.backgroundContainer}>
-                        <Text style={styles.recipeTitle}>abcd</Text>
-                        <View style={styles.timerContainer}>
-                            <Ionicons name="md-timer" size={30} color="#05595b" style={styles.timerIcon} />
-                            <Text style={styles.timerValue}>20 mins</Text>
-
-                        </View>
-
-                    </View>
-                </View>
-            </View>
+        <Text style={styles.recipeTitle}>abcd</Text>
+           
         </View>
     )
 };
