@@ -1,8 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity, Share } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
+
+
 const SaveRecipe = ({ navigation, token }) => {
     const [savedRecipes, setSavedRecipes] = useState([]);
 
@@ -18,6 +22,8 @@ const SaveRecipe = ({ navigation, token }) => {
     
         return unsubscribe;
       }, [navigation]);
+
+
     const fetchSavedRecipes = () => {
         fetch(`${API_BASE_URL}/saved-recipes`, {
             method: 'GET',
@@ -64,6 +70,29 @@ const SaveRecipe = ({ navigation, token }) => {
             });
     };
 
+    const handleShareRecipe = async (recipe) => {
+        console.log(recipe.description);
+        try {
+            const message = `Check out this delicious recipe: ${recipe.description}`;
+    
+            // Create a temporary file to share
+            const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
+            await FileSystem.writeAsStringAsync(fileUri, message);
+    
+            const result = await Sharing.shareAsync(fileUri); // Share the temporary file URI
+            if (result.action === Sharing.sharedAction) {
+                console.log('Shared successfully');
+            } else {
+                console.log('Share was dismissed or not supported');
+            }
+    
+            // Optionally, you can delete the temporary file after sharing
+            await FileSystem.deleteAsync(fileUri);
+        } catch (error) {
+            console.error('Error while sharing:', error);
+        }
+      };
+
     return (
         <View style={styles.container}>
             <View style={styles.appNameFlex}>
@@ -85,6 +114,9 @@ const SaveRecipe = ({ navigation, token }) => {
                             <Text style={styles.title}>{recipe.description}</Text>
                             <TouchableOpacity style={styles.saveC} onPress={() => handleRemoveRecipe(recipe.id)} >
                                 <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.saveC} onPress={() => handleShareRecipe(recipe)} >
+                               <Text>Share</Text>
                             </TouchableOpacity>
                         </View>
                         {/* 
