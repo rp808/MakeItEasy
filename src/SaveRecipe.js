@@ -17,11 +17,11 @@ const SaveRecipe = ({ navigation, token }) => {
     useEffect(() => {
         // Refresh saved recipes list when the SaveRecipeDirection screen is focused again
         const unsubscribe = navigation.addListener('focus', () => {
-          fetchSavedRecipes();
+            fetchSavedRecipes();
         });
-    
+
         return unsubscribe;
-      }, [navigation]);
+    }, [navigation]);
 
 
     const fetchSavedRecipes = () => {
@@ -73,25 +73,48 @@ const SaveRecipe = ({ navigation, token }) => {
     const handleShareRecipe = async (recipe) => {
         console.log(recipe.description);
         try {
-            const message = `Check out this delicious recipe: ${recipe.description}`;
-    
+            const message = `Check out this delicious recipe: ${recipe.instructions}
+            
+
+            
+            Ingredients:
+            ${recipe.ingredients.join("\n")}
+            
+            Instructions:
+            ${recipe.instructions.join("\n")}
+            
+            Nutrition:
+            Total Calories: ${recipe.nutrition.totalCalories}
+            // Add other nutrition data as needed
+            
+            Image Source: ${recipe.imageSource}
+            `;
+
             // Create a temporary file to share
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
             await FileSystem.writeAsStringAsync(fileUri, message);
-    
+
             const result = await Sharing.shareAsync(fileUri); // Share the temporary file URI
-            if (result.action === Sharing.sharedAction) {
-                console.log('Shared successfully');
-            } else {
-                console.log('Share was dismissed or not supported');
+            if (result !== null) {
+                if (result.action === Sharing.sharedAction) {
+                    console.log('Shared successfully');
+                } else if (result.action === Sharing.dismissedAction) {
+                    console.log('Share was dismissed or not supported');
+                }
+                else {
+                    console.log('Share was not completed');
+                }
             }
-    
+             else {
+                console.log('Share action is null');
+            }
+
             // Optionally, you can delete the temporary file after sharing
             await FileSystem.deleteAsync(fileUri);
         } catch (error) {
             console.error('Error while sharing:', error);
         }
-      };
+    };
 
     return (
         <View style={styles.container}>
@@ -116,7 +139,7 @@ const SaveRecipe = ({ navigation, token }) => {
                                 <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.saveC} onPress={() => handleShareRecipe(recipe)} >
-                               <Text>Share</Text>
+                                <Text>Share</Text>
                             </TouchableOpacity>
                         </View>
                         {/* 
