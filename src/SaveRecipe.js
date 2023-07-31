@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity, Share } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons , MaterialIcons  } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
@@ -142,8 +142,8 @@ const SaveRecipe = ({ navigation, token }) => {
 
                                         <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={styles.saveC} onPress={() => handleShareRecipe(recipe)} >
-                                        <Text>Share</Text>
+                                    <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(recipe)} >
+                                    <Image style={styles.saveImg} source={require("./assets/share.png")} />
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -196,11 +196,16 @@ const styles = StyleSheet.create({
     },
     saveC: {
         marginLeft: 5,
+        marginRight: 25,
+    },
+    shareC: {
+        marginLeft: 5,
         marginRight: 5,
     },
     saveImg: {
         width: 30,
         height: 30,
+        margin:5,
     },
     descCard: {
         padding: 10,
