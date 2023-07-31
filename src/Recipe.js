@@ -19,7 +19,7 @@ const Recipe = ({ props, token }) => {
 
     const [activeSection, setActiveSection] = useState('ingredients');
     const [ratingsArray, setRatingsArray] = useState([])
-   
+
     const [rating, setRating] = useState(ratingsArray.length != 0 ? ratingsArray[ratingsArray.length - 1].ratingValue : 0);
     const [isRecipeSaved, setIsRecipeSaved] = useState(false);
 
@@ -48,88 +48,88 @@ const Recipe = ({ props, token }) => {
             });
 
     };
-   //  console.log("id", route.params.item)
+    //  console.log("id", route.params.item)
 
-   useEffect(() => {
-    checkIfRecipeIsSaved();
-  }, []);
+    useEffect(() => {
+        checkIfRecipeIsSaved();
+    }, []);
 
-  const checkIfRecipeIsSaved = () => {
-    const recipeId = String(route.params.item.id);
-    fetch(`${API_BASE_URL}/saved-recipes`, {
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: 'Bearer ' + token,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
+    const checkIfRecipeIsSaved = () => {
+        const recipeId = String(route.params.item.id);
+        fetch(`${API_BASE_URL}/saved-recipes`, {
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token,
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to fetch saved recipes');
+                }
+            })
+            .then((data) => {
+                const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
+                setIsRecipeSaved(savedRecipeIds.includes(recipeId));
+            })
+            .catch((error) => {
+                console.error('Error fetching saved recipes:', error);
+            });
+    };
+    const toggleSection = (section) => {
+        setActiveSection(section);
+    };
+
+    const handleSaveRecipe = () => {
+        const recipeId = String(route.params.item.id);
+        const isSaved = isRecipeSaved;
+
+        if (isSaved) {
+            // If the recipe is already saved, remove it from the saved list
+            fetch(`${API_BASE_URL}/saved-recipes/remove`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe removed successfully');
+                        setIsRecipeSaved(false);
+                    } else {
+                        throw new Error('Failed to remove the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error removing the recipe:', error);
+                });
         } else {
-          throw new Error('Failed to fetch saved recipes');
+            fetch(`${API_BASE_URL}/saved-recipes/add`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: 'Bearer ' + token,
+                },
+                body: JSON.stringify({ recipeId }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Recipe saved successfully');
+                        setIsRecipeSaved(true);
+                    } else if (response.status === 400) {
+                        throw new Error('Recipe is already saved');
+                    } else {
+                        throw new Error('Failed to save the recipe');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error saving the recipe:', error);
+                });
         }
-      })
-      .then((data) => {
-        const savedRecipeIds = data.savedRecipes.map((recipe) => recipe.id);
-        setIsRecipeSaved(savedRecipeIds.includes(recipeId));
-      })
-      .catch((error) => {
-        console.error('Error fetching saved recipes:', error);
-      });
-  };
-  const toggleSection = (section) => {
-    setActiveSection(section);
-  };
-
-  const handleSaveRecipe = () => {
-    const recipeId = String(route.params.item.id);
-    const isSaved = isRecipeSaved;
-
-    if (isSaved) {
-      // If the recipe is already saved, remove it from the saved list
-      fetch(`${API_BASE_URL}/saved-recipes/remove`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          authorization: 'Bearer ' + token,
-        },
-        body: JSON.stringify({ recipeId }),
-      })
-        .then((response) => {
-          if (response.ok) {
-            console.log('Recipe removed successfully');
-            setIsRecipeSaved(false);
-          } else {
-            throw new Error('Failed to remove the recipe');
-          }
-        })
-        .catch((error) => {
-          console.error('Error removing the recipe:', error);
-        });
-    } else {
-      fetch(`${API_BASE_URL}/saved-recipes/add`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          authorization: 'Bearer ' + token,
-        },
-        body: JSON.stringify({ recipeId }),
-      })
-        .then((response) => {
-          if (response.ok) {
-            console.log('Recipe saved successfully');
-            setIsRecipeSaved(true);
-          } else if (response.status === 400) {
-            throw new Error('Recipe is already saved');
-          } else {
-            throw new Error('Failed to save the recipe');
-          }
-        })
-        .catch((error) => {
-          console.error('Error saving the recipe:', error);
-        });
-    }
-  };
+    };
 
 
 
@@ -155,8 +155,7 @@ const Recipe = ({ props, token }) => {
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{route.params.item.description}</Text>
                         <View style={styles.timerContainer}>
-                            <Ionicons name="md-timer" size={30} color="#05595b" style={styles.timerIcon} />
-                            <Text style={styles.timerValue}>{route.params.item.time} mins</Text>
+
                             <TouchableOpacity style={styles.saveC} onPress={handleSaveRecipe} >
                                 {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
                                 <Image style={styles.saveImg} source={isRecipeSaved ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
@@ -306,6 +305,8 @@ const Recipe = ({ props, token }) => {
             <View style={styles.userRating}>
 
                 <View style={styles.ratingContainer}>
+                    <Ionicons name="md-timer" size={30} color="#05595b" style={styles.timerIcon} />
+                    <Text style={styles.timerValue}>{route.params.item.time} mins</Text>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <TouchableOpacity
                             key={star}
@@ -364,7 +365,7 @@ const styles = StyleSheet.create({
     timerValue: {
         fontSize: 24,
         marginLeft: 4,
-        marginRight: 20,
+        marginRight: 70,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
     },
