@@ -151,8 +151,7 @@ const RecipeFilter = ({ props, token }) => {
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{cardData.description}</Text>
                         <View style={styles.timerContainer}>
-                            <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
-                            <Text style={styles.timerValue}>{cardData.time} mins</Text>
+
                             <TouchableOpacity style={styles.saveC} onPress={handleSaveRecipe}>
                                 {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
                                 <Image
@@ -300,6 +299,8 @@ const RecipeFilter = ({ props, token }) => {
             <View style={styles.userRating}>
 
                 <View style={styles.ratingContainer}>
+                    <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
+                    <Text style={styles.timerValue}>{cardData.time} mins</Text>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <TouchableOpacity
                             key={star}
@@ -353,12 +354,12 @@ const styles = StyleSheet.create({
     },
     timerIcon: {
         marginRight: 5,
-        marginLeft: 15,
+    
     },
     timerValue: {
         fontSize: 24,
         marginLeft: 4,
-        marginRight: 20,
+        marginRight: 40,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
     },
