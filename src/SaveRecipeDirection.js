@@ -85,8 +85,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
                     <View style={styles.backgroundContainer}>
                         <Text style={styles.recipeTitle}>{recipeData.description}</Text>
                         <View style={styles.timerContainer}>
-                            <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
-                            <Text style={styles.timerValue}>{recipeData.time} mins</Text>
+
                             <TouchableOpacity style={styles.saveC} onPress={handleRemoveRecipe}>
                                 <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
 
@@ -231,6 +230,8 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
             <View style={styles.userRating}>
 
                 <View style={styles.ratingContainer}>
+                    <Ionicons name="md-timer" size={35} color="#05595b" style={styles.timerIcon} />
+                    <Text style={styles.timerValue}>{recipeData.time} mins</Text>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <TouchableOpacity
                             key={star}
@@ -288,7 +289,7 @@ const styles = StyleSheet.create({
     timerValue: {
         fontSize: 24,
         marginLeft: 4,
-        marginRight: 20,
+        marginRight: 40,
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
     },
@@ -373,13 +374,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         // padding: 20,
         margin: 10,
-        shadowColor: '#333',
-        shadowOpacity: 0.3,
-        shadowRadius: 2,
-        shadowOffset: {
-            width: 1,
-            height: 2,
-        },
+
         elevation: 3,
         borderWidth: 1,
         borderColor: '#ccc',
@@ -557,13 +552,7 @@ const styles = StyleSheet.create({
         // paddingHorizontal: 16,
         alignItems: 'center',
         // marginTop: -40,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
+
         elevation: 4,
 
 
