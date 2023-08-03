@@ -505,6 +505,8 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         paddingBottom: 5,
         fontFamily: "Gill Sans",
+      
+        color: '#05595b',
 
         //  marginBottom: 5, // Add margin bottom to create space between each ingredient
     },
