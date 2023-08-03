@@ -153,7 +153,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
                         <View style={styles.ingredientsContainer}>
                             {recipeData.instructions.map((instruction, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    - {instruction}
+                                     <Text style={styles.boldNumber}>Step {index + 1}: </Text> {instruction}
                                 </Text>
                             ))}
                         </View>
@@ -294,6 +294,10 @@ const styles = StyleSheet.create({
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
     },
+    boldNumber: {
+        fontFamily: 'GillSans-Bold', 
+        // fontWeight: 'bold',        
+      },
     nutritionName: {
         flex: 1,
         // textAlign: 'right',

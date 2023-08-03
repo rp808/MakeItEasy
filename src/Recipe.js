@@ -227,7 +227,7 @@ const Recipe = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {route.params.item.instructions.map((instruction, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    - {instruction}
+                                    <Text style={styles.boldNumber}>Step {index + 1}: </Text>  {instruction}
                                 </Text>
                             ))}
                         </View>
@@ -363,6 +363,10 @@ const styles = StyleSheet.create({
     timerIcon: {
         marginRight: 5,
     },
+    boldNumber: {
+        fontFamily: 'GillSans-Bold', 
+        // fontWeight: 'bold',        
+      },
     timerValue: {
         fontSize: 24,
         marginLeft: 4,

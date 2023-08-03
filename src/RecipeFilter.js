@@ -221,7 +221,7 @@ const RecipeFilter = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {cardData.instructions.map((instruction, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    - {instruction}
+                                     <Text style={styles.boldNumber}>Step {index + 1}: </Text> {instruction}
                                 </Text>
                             ))}
                         </View>
@@ -352,6 +352,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // marginTop: 5,
     },
+    boldNumber: {
+        fontFamily: 'GillSans-Bold', 
+        // fontWeight: 'bold',        
+      },
     timerIcon: {
         marginRight: 5,
     
