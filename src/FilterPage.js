@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     StyleSheet,
@@ -7,9 +7,9 @@ import {
     View,
     Image,
     TextInput,
-    
+
     TouchableOpacity,
-  
+
     ImageBackground,
     KeyboardAvoidingView
 } from "react-native";
@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import API_BASE_URL from '../config';
 
-const FilterPage = ({ props , token}) => {
+const FilterPage = ({ props, token }) => {
     const { navigation, route } = props
     const [totalCaloriesErrorMsg, setTotalCaloriesErrorMsg] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
@@ -36,34 +36,34 @@ const FilterPage = ({ props , token}) => {
 
 
     useEffect(() => {
-      
+
         fetchUserDietaryRestriction();
-      }, [])
+    }, [])
 
-      const fetchUserDietaryRestriction = async () => {
+    const fetchUserDietaryRestriction = async () => {
         try {
-          const response = await fetch(`${API_BASE_URL}/profile`, {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          });
-    
-          const data = await response.json();
-    
-          if (response.ok) {
+            const response = await fetch(`${API_BASE_URL}/profile`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
 
-            setUserDietaryRestriction(data.dietaryRestriction);
-            
-            setSelectedItems([data.dietaryRestriction]);
-          } else {
-            console.log('Error:', data.error);
-          }
+            const data = await response.json();
+
+            if (response.ok) {
+
+                setUserDietaryRestriction(data.dietaryRestriction);
+
+                setSelectedItems([data.dietaryRestriction]);
+            } else {
+                console.log('Error:', data.error);
+            }
         } catch (error) {
-          console.log('Error:', error.message);
+            console.log('Error:', error.message);
         }
-      };
+    };
     const options = [
         {
             label: 'Vegetarian',
@@ -86,13 +86,13 @@ const FilterPage = ({ props , token}) => {
             value: 'all',
         },
 
-   
+
     ];
 
     const handleReset = () => {
         // setIngredients([{ name: '', quantity: '' }]);
         setIngredients([{ name: '' }]);
-        setSelectedItems([]); 
+        setSelectedItems([]);
         setTotalCalories('');
     };
 
@@ -126,7 +126,7 @@ const FilterPage = ({ props , token}) => {
 
 
 
-        
+
         fetch(`${API_BASE_URL}/filter`, {
             method: 'POST',
             headers: {
@@ -144,7 +144,7 @@ const FilterPage = ({ props , token}) => {
                 }
             })
             .then(data => {
-             
+
                 if (data.matchingCards.length === 0) {
                     setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
                 } else {
@@ -159,12 +159,12 @@ const FilterPage = ({ props , token}) => {
                 error.response.json().then((data) => {
                     setErrorMsg(data.message);
                 }).catch(error => {
-           
-                 console.error('Error sending data:', error);
-                 setTotalCaloriesErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
 
+                    console.error('Error sending data:', error);
+                    setTotalCaloriesErrorMsg('hard to find recipe , kindly recheck the enetered ingredient');
+
+                });
             });
-        });
     };
 
 
@@ -209,7 +209,11 @@ const FilterPage = ({ props , token}) => {
                     </View>
                     <View style={styles.levelThree}>
                         <Text style={styles.label}>Nutrition</Text>
-                        {/* {errorMsg && <Text style={styles.errorMsg}>{errorMsg}</Text>} */}
+                        {totalCalories !== '' && (
+                            <Text style={styles.suggestedRecipeMsg}>
+                                Suggested recipe calories range: {parseInt(totalCalories) - 100} to {parseInt(totalCalories) + 100}
+                            </Text>
+                        )}
                         <View style={styles.caloriesContainer}>
                             <TextInput
                                 style={styles.inputCal}
@@ -220,6 +224,7 @@ const FilterPage = ({ props , token}) => {
                             />
                             <Text style={styles.perServingText}>per serving</Text>
                         </View>
+
                     </View>
 
 
@@ -277,24 +282,24 @@ const FilterPage = ({ props , token}) => {
                     </KeyboardAvoidingView>
 
                     <View style={styles.buttomNavFlex}>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
-                        <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
+                            <Image style={styles.iconImg} source={require("./assets/homeNF.png")} />
 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
-                        <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('FilterPage')}>
+                            <Image style={styles.iconImg} source={require("./assets/filterFilled.png")} />
 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
-                        <Image style={styles.iconImg} source={require("./assets/save.png")} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('SaveRecipe')}>
+                            <Image style={styles.iconImg} source={require("./assets/save.png")} />
 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
-                        <Image style={styles.iconImg} source={require("./assets/user.png")} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('UserProfile')}>
+                            <Image style={styles.iconImg} source={require("./assets/user.png")} />
 
-                    </TouchableOpacity>
+                        </TouchableOpacity>
 
-                </View>
+                    </View>
 
 
 
@@ -323,14 +328,19 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         backgroundColor: '#FFF',
         height: 45,
-        width:'80%',
-      },
-      perServingText: {
-        marginLeft:3, 
+        width: '80%',
+    },
+    suggestedRecipeMsg: {
+        fontSize: 16,
+        color: '#888',
+        textAlign: 'center',
+    },
+    perServingText: {
+        marginLeft: 3,
         fontFamily: 'GillSans-SemiBold',
-        fontSize:18,
-        
-      },
+        fontSize: 18,
+
+    },
     selectedCheckboxLabel: {
 
         color: 'white',
@@ -384,7 +394,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "rgba(255, 255, 255,0.9)",
         borderRadius: 8,
-    
+
         elevation: 5,
         padding: 15,
         //  margin:10,
@@ -398,7 +408,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
-   
+
         elevation: 5,
         flex: 1,
     },
@@ -412,7 +422,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 22,
         fontFamily: "GillSans-SemiBold",
-        marginBottom: 10,
+        // marginBottom: 10,
     },
     checkboxContainer: {
         flexDirection: 'row',
@@ -440,7 +450,7 @@ const styles = StyleSheet.create({
         transform: [{ scale: 1.1 }], // Scale up the selected checkbox
         borderWidth: 0,
         borderColor: '#000',
-      
+
         elevation: 5,
     },
     checkboxLabel: {
@@ -457,7 +467,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
-       
+
         elevation: 5,
     },
     ingredientRow: {
@@ -473,7 +483,7 @@ const styles = StyleSheet.create({
         // marginLeft:30,
         paddingVertical: 5,
         paddingHorizontal: 10,
-        fontSize:19,
+        fontSize: 19,
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
@@ -532,14 +542,14 @@ const styles = StyleSheet.create({
         fontFamily: "GillSans-SemiBold",
     },
 
-   
+
     buttomNavFlex: {
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 54,
-        width:'100%',
+        width: '100%',
         flex: 0,
         margin: 10,
 
