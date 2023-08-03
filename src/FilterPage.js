@@ -384,13 +384,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "rgba(255, 255, 255,0.9)",
         borderRadius: 8,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+    
         elevation: 5,
         padding: 15,
         //  margin:10,
@@ -404,13 +398,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+   
         elevation: 5,
         flex: 1,
     },
@@ -452,13 +440,7 @@ const styles = StyleSheet.create({
         transform: [{ scale: 1.1 }], // Scale up the selected checkbox
         borderWidth: 0,
         borderColor: '#000',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+      
         elevation: 5,
     },
     checkboxLabel: {
@@ -475,13 +457,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 20,
         marginBottom: 20,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+       
         elevation: 5,
     },
     ingredientRow: {
