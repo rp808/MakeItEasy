@@ -149,7 +149,7 @@ const FilterPage = ({ props , token}) => {
                     setErrorMsg('No matching recipes found.kindly recheck the enetered ingredient.');
                 } else {
 
-                    console.log('Matched Ingredients:', data);
+                    // console.log('Matched Ingredients:', data);
                     navigation.navigate('Suggestions', { filteredData: data });
                 }
             })
