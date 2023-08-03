@@ -26,7 +26,7 @@ const Recipe = ({ props, token }) => {
 
 
     const handleRating = (selectedRating) => {
-        console.log(route.params.item.id);
+        // console.log(route.params.item.id);
         setRating(selectedRating);
 
         fetch(`${API_BASE_URL}/cards/rate/${route.params.item._id}`, {

@@ -18,7 +18,7 @@ const RecipeFilter = ({ props, token }) => {
     const { navigation, route } = props
 
     const { cardData } = route.params;
-    console.log(cardData);
+    // console.log(cardData);
     const [ratingsArray, setRatingsArray] = useState([])
 
     const [activeSection, setActiveSection] = useState('ingredients');
@@ -448,13 +448,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         // padding: 20,
         margin: 10,
-        shadowColor: '#333',
-        shadowOpacity: 0.3,
-        shadowRadius: 2,
-        shadowOffset: {
-            width: 1,
-            height: 2,
-        },
+    
         elevation: 3,
         borderWidth: 1,
         borderColor: '#ccc',
@@ -634,13 +628,7 @@ const styles = StyleSheet.create({
         // paddingHorizontal: 16,
         alignItems: 'center',
         // marginTop: -40,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
+       
         elevation: 4,
 
 

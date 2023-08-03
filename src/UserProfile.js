@@ -300,13 +300,7 @@ const styles = StyleSheet.create({
         transform: [{ scale: 1.1 }], // Scale up the selected checkbox
         borderWidth: 0,
         borderColor: '#000',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+
         elevation: 5,
     },
     checkboxLabel: {
