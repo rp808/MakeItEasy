@@ -18,6 +18,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
     const [savedRecipes, setSavedRecipes] = useState([]);
 
     const handleRating = (selectedRating) => {
+        
         setRating(selectedRating);
 
         fetch(`${API_BASE_URL}/cards/rate/${recipeData._id}`, {
@@ -144,7 +145,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
                         <View style={styles.ingredientsContainer}>
                             {recipeData.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    - {ingredient}
+                                     {'\u2022'} {ingredient}
                                 </Text>
                             ))}
                         </View>

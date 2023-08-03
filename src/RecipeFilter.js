@@ -213,7 +213,7 @@ const RecipeFilter = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {cardData.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    - {ingredient}
+                                     {'\u2022'} {ingredient}
                                 </Text>
                             ))}
                         </View>

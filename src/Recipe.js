@@ -26,6 +26,7 @@ const Recipe = ({ props, token }) => {
 
 
     const handleRating = (selectedRating) => {
+        console.log(route.params.item.id);
         setRating(selectedRating);
 
         fetch(`${API_BASE_URL}/cards/rate/${route.params.item._id}`, {
@@ -218,7 +219,7 @@ const Recipe = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {route.params.item.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                    - {ingredient}
+                                     {'\u2022'} {ingredient}
                                 </Text>
                             ))}
                         </View>
