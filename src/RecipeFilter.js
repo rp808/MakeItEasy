@@ -135,7 +135,7 @@ const RecipeFilter = ({ props, token }) => {
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Suggestions')}>
+                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('FilterPage')}>
                     <View style={styles.backButton} >
                         <Ionicons name="arrow-back" size={24} color="#000000" />
                     </View>
@@ -464,6 +464,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     backButtonContainer: {
+        marginLeft:15,
+        marginTop:30,
         position: 'absolute',
         top: 16,
         left: 16,
@@ -505,6 +507,8 @@ const styles = StyleSheet.create({
         //  marginBottom: 5, // Add margin bottom to create space between each ingredient
     },
     backButton: {
+        marginLeft:15,
+        marginTop:30,
         backgroundColor: '#FFFFFF',
         padding: 8,
         borderRadius: 16,

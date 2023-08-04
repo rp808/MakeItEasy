@@ -464,6 +464,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     backButtonContainer: {
+        marginLeft:15,
+        marginTop:30,
         position: 'absolute',
         top: 16,
         left: 16,

@@ -70,7 +70,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('Suggestions')}>
+                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('SaveRecipe')}>
                     <View style={styles.backButton} >
                         <Ionicons name="arrow-back" size={24} color="#000000" />
                     </View>
@@ -395,6 +395,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     backButtonContainer: {
+        marginLeft:15,
+        marginTop:30,
         position: 'absolute',
         top: 16,
         left: 16,
