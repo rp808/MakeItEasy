@@ -135,11 +135,6 @@ const RecipeFilter = ({ props, token }) => {
             {/* <Text>Hello</Text> */}
 
             <View style={styles.recipeImg}>
-                <TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('FilterPage')}>
-                    <View style={styles.backButton} >
-                        <Ionicons name="arrow-back" size={24} color="#000000" />
-                    </View>
-                </TouchableOpacity>
                 <Image style={styles.image} source={{ uri: cardData.imageSource }} />
 
 

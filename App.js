@@ -110,11 +110,7 @@ export default function App() {
       </Stack.Screen>
 
 
-      <Stack.Screen name="RecipeFilter" options={
-        {
-          headerShown: false
-        }
-      } >{(props) => {
+      <Stack.Screen name="RecipeFilter" >{(props) => {
         return <RecipeFilter token={token} props={props} />
       }}</Stack.Screen>
 
