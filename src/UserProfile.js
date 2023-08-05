@@ -117,7 +117,7 @@ const UserProfile = ({ navigation, token }) => {
                 </View>
                 <View style={styles.userName}>
                     <Text style={styles.greetingText}>Hey {userData?.firstName},</Text>
-                    <Text style={styles.subText}>Choose your all-time favorite diet if you have any:</Text>
+                    <Text style={styles.subText}>Choose your Dietary Preference if you have any:</Text>
                     {/* <Text style={styles.userInfo}>First Name: {userData?.firstName}</Text>
                     <Text style={styles.userInfo}>Last Name: {userData?.lastName}</Text> */}
                 </View>

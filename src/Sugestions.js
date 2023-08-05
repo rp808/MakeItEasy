@@ -113,12 +113,16 @@ const Suggestions = ({ route, navigation, token }) => {
                         <Image source={{ uri: card.imageSource }} style={styles.image} />
                         <View style={styles.descCard}>
                             <Text style={styles.title}>{card.description}</Text>
+                            <View style={styles.saveShareContainer}>
+                                <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(card.id)}>
+                                    {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
+                                    <Image style={styles.saveImg} source={savedRecipes.includes(card.id) ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
 
-                            <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(card.id)}>
-                                {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
-                                <Image style={styles.saveImg} source={savedRecipes.includes(card.id) ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
-
-                            </TouchableOpacity>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.shareC}  >
+                                    <Image style={styles.saveImg} source={require("./assets/share.png")} />
+                                </TouchableOpacity>
+                            </View>
                         </View>
                         <View style={styles.nutritionContainer}>
                             <Ionicons name="ios-flame" size={20} color="#05595b" />
@@ -162,6 +166,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F6F6F6',
     },
+    saveShareContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -191,7 +199,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: '#FFFFFF',
         borderRadius: 10,
-     
+
         elevation: 5,
         width: '90%',
         alignSelf: 'center',
@@ -275,8 +283,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     saveC: {
-        marginLeft: 10,
-        marginRight: 20,
+        marginLeft: 5,
+        marginRight: 25,
+    },
+    shareC: {
+        marginLeft: 5,
+        marginRight: 5,
     },
     saveImg: {
         width: 30,
