@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 5,
+        marginLeft:-10,
         marginTop: 10,
         justifyContent: 'space-between',
 
@@ -344,7 +344,8 @@ const styles = StyleSheet.create({
     },
     saveC: {
         alignItems: 'center',
-        marginLeft: 15,
+        marginLeft: 23,
+      
     },
     logoTxt: {
         fontSize: 25,
