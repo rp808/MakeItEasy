@@ -180,27 +180,18 @@ export const Home = ({ navigation, token }) => {
 
                 <View style={styles.nutritionContainer}>
                     <View style={styles.leftItem}>
-                        <Ionicons name="md-timer" size={20} color="#05595b" />
-                        <Text style={styles.nutritionText}>{item.time}</Text>
-
-                        {/* <Ionicons name="ios-flame" size={20} color="#05595b" />
-                        <Text style={styles.nutritionText}>{totalCalories}</Text> */}
+                        <Ionicons name="ios-flame" size={20} color="#05595b" />
+                        <Text style={styles.nutritionText}>{totalCalories}</Text>
                     </View>
 
                     <View style={styles.rightItem}>
-                        <Text style={styles.nutritionText}> Serving:  {item.serving}</Text>
-                        {/* <TouchableOpacity style={styles.nutritionText}  >
-                            <Image style={styles.saveImg} source={require("./assets/share.png")} />
-                        </TouchableOpacity> */}
-                        {/* <Ionicons name="md-timer" size={20} color="#05595b" />
-                        <Text style={styles.nutritionText}>{item.time}</Text> */}
+
+                        <Ionicons name="md-timer" size={20} color="#05595b" />
+                        <Text style={styles.nutritionText}>{item.time}</Text>
                     </View>
                 </View>
                 <View style={styles.nutritionContainerLeft}>
-                    <TouchableOpacity style={styles.nutritionText}  >
-                        <Image style={styles.saveImg} source={require("./assets/share.png")} />
-                        
-                    </TouchableOpacity>
+                    <Text style={styles.nutritionText}> Serving: {item.serving}</Text>
                     <TouchableOpacity style={styles.saveC} onPress={() => handleSaveRecipe(recipeId)}>
                         {/* <Image style={styles.saveImg} source={require("./assets/saveCard.png")} /> */}
                         <Image style={styles.saveImg} source={isSaved ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
@@ -270,7 +261,7 @@ const styles = StyleSheet.create({
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 10,
+        marginLeft: 5,
         marginTop: 10,
         justifyContent: 'space-between',
 
@@ -285,12 +276,12 @@ const styles = StyleSheet.create({
     leftItem: {
         flexDirection: 'row',
         marginLeft: 5,
-        // marginRight: 5
+        marginRight: 5
         //  alignItems: 'center',
     },
     rightItem: {
         flexDirection: 'row',
-        marginLeft: 5,
+        marginLeft: 30,
         marginRight: 5,
         //alignItems: 'center',
     },
@@ -411,9 +402,9 @@ const styles = StyleSheet.create({
         marginRight: "50%",
     },
     listContainer: {
-         paddingHorizontal: 1,
-        paddingLeft:2.5,
-        paddingRight:2.5,
+        paddingHorizontal: 1,
+        paddingLeft: 2.5,
+        paddingRight: 2.5,
     }
 
 
