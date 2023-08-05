@@ -12,8 +12,8 @@ import {
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
-
-
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 export const Home = ({ navigation, token }) => {
 
@@ -162,6 +162,40 @@ export const Home = ({ navigation, token }) => {
         }
     };
 
+    const handleShareRecipe = async (recipe) => {
+        try {
+            const message = `Check out this delicious recipe: ${recipe.description}\n\n`
+                + `Ingredients:\n${recipe.ingredients.join("\n")}\n\n`
+                + `Instructions:\n${recipe.instructions.map((instr, index) => `${index + 1}. ${instr}`).join("\n")}\n\n`
+                + `Nutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n`
+                + `Image Source: ${recipe.imageSource}`;
+    
+          
+            const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
+            await FileSystem.writeAsStringAsync(fileUri, message);
+    
+            const result = await Sharing.shareAsync(fileUri); 
+            
+            if (result !== null) {
+                if (result.action === Sharing.sharedAction) {
+                    console.log('Shared successfully');
+                } else if (result.action === Sharing.dismissedAction) {
+                    console.log('Share was dismissed or not supported');
+                } else {
+                    console.log('Share was not completed');
+                }
+            } else {
+                console.log('Share action is null');
+            }
+    
+           
+            await FileSystem.deleteAsync(fileUri);
+        } catch (error) {
+            console.error('Error while sharing:', error);
+        }
+    };
+
+
 
 
     const renderItem = ({ item }) => {
@@ -176,7 +210,7 @@ export const Home = ({ navigation, token }) => {
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.description}>{item.description}</Text>
                     </View>
-                    <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(card)}>
+                    <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(item)}>
                         <Image style={styles.saveImg} source={require("./assets/share.png")} />
                     </TouchableOpacity>
                 </View>

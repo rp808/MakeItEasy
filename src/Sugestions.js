@@ -102,11 +102,11 @@ const Suggestions = ({ route, navigation, token }) => {
                 + `Nutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n`
                 + `Image Source: ${recipe.imageSource}`;
     
-            // Create a temporary file to share
+           
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
             await FileSystem.writeAsStringAsync(fileUri, message);
     
-            const result = await Sharing.shareAsync(fileUri); // Share the temporary file URI
+            const result = await Sharing.shareAsync(fileUri);
             
             if (result !== null) {
                 if (result.action === Sharing.sharedAction) {
@@ -119,8 +119,7 @@ const Suggestions = ({ route, navigation, token }) => {
             } else {
                 console.log('Share action is null');
             }
-    
-            // Optionally, you can delete the temporary file after sharing
+
             await FileSystem.deleteAsync(fileUri);
         } catch (error) {
             console.error('Error while sharing:', error);

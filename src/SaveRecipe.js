@@ -90,11 +90,11 @@ const SaveRecipe = ({ navigation, token }) => {
             Image Source: ${recipe.imageSource}
             `;
 
-            // Create a temporary file to share
+            
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
             await FileSystem.writeAsStringAsync(fileUri, message);
 
-            const result = await Sharing.shareAsync(fileUri); // Share the temporary file URI
+            const result = await Sharing.shareAsync(fileUri);
             if (result !== null) {
                 if (result.action === Sharing.sharedAction) {
                     console.log('Shared successfully');
@@ -109,7 +109,6 @@ const SaveRecipe = ({ navigation, token }) => {
                 console.log('Share action is null');
             }
 
-            // Optionally, you can delete the temporary file after sharing
             await FileSystem.deleteAsync(fileUri);
         } catch (error) {
             console.error('Error while sharing:', error);
