@@ -134,7 +134,7 @@ const RecipeFilter = ({ props, token }) => {
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
 
-            <View style={styles.recipeImg}>
+            <View style={styles.recipeImg}> 
                 <Image style={styles.image} source={{ uri: cardData.imageSource }} />
 
 

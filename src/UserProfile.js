@@ -43,7 +43,7 @@ const UserProfile = ({ navigation, token }) => {
 
     ];
 
- 
+
 
     useEffect(() => {
         fetchUserProfile();
@@ -73,37 +73,37 @@ const UserProfile = ({ navigation, token }) => {
 
     const saveDietaryRestriction = async () => {
         try {
-          const data = {
-            dietaryRestriction: selectedItem,
-          };
-    
-          const response = await fetch(`${API_BASE_URL}/profile`, {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          });
-    
-          const responseData = await response.json();
-    
-          if (response.ok) {
-            console.log('User profile updated successfully');
-            setUserData({ ...userData, dietaryRestriction: selectedItem });
-          } else {
-            console.log('Error:', responseData.error);
-          }
+            const data = {
+                dietaryRestriction: selectedItem,
+            };
+
+            const response = await fetch(`${API_BASE_URL}/profile`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const responseData = await response.json();
+
+            if (response.ok) {
+                console.log('User profile updated successfully');
+                setUserData({ ...userData, dietaryRestriction: selectedItem });
+            } else {
+                console.log('Error:', responseData.error);
+            }
         } catch (error) {
-          console.log('Error:', error.message);
+            console.log('Error:', error.message);
         }
-      };
-    
-      const handleSelection = (item) => {
+    };
+
+    const handleSelection = (item) => {
         setSelectedItem(item);
-      };
-    
-    
+    };
+
+
 
     return (
         (
@@ -116,10 +116,10 @@ const UserProfile = ({ navigation, token }) => {
                     </View>
                 </View>
                 <View style={styles.userName}>
-                   
-                        <Text style={styles.logoTxt}>First Name: {userData?.firstName} </Text>
-                        <Text style={styles.logoTxt}>Last Name:  {userData?.lastName}</Text>
-                  
+                    <Text style={styles.greetingText}>Hey {userData?.firstName},</Text>
+                    <Text style={styles.subText}>Choose your all-time favorite diet if you have any:</Text>
+                    {/* <Text style={styles.userInfo}>First Name: {userData?.firstName}</Text>
+                    <Text style={styles.userInfo}>Last Name: {userData?.lastName}</Text> */}
                 </View>
                 <View style={styles.userDiet}>
                     <View>
@@ -148,9 +148,9 @@ const UserProfile = ({ navigation, token }) => {
                         <TouchableOpacity style={styles.saveButton} onPress={saveDietaryRestriction}>
                             <Text style={styles.saveButtonText}>Save</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.saveButton} onPress={() => navigation.navigate('RecipeUpload')} >
+                        {/* <TouchableOpacity style={styles.saveButton} onPress={() => navigation.navigate('RecipeUpload')} >
                             <Text style={styles.saveButtonText}>REcipe Upload</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
 
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: '#FFF',
         elevation: 3,
-      },
+    },
 
 
     appNameFlex: {
@@ -208,13 +208,29 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     userName: {
-        flex: 2,
+        flex: 1,
         width: '95%',
         borderRadius: 10,
         padding: 20,
         marginVertical: 10,
         backgroundColor: '#FFF',
+        alignItems: 'center',
         elevation: 3,
+    },
+    greetingText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#05595b',
+        marginBottom: 10,
+    },
+    subText: {
+        fontSize: 16,
+        color: '#777',
+        marginBottom: 10,
+    },
+    userInfo: {
+        fontSize: 18,
+        color: '#05595b',
     },
     userDiet: {
         flex: 6,
@@ -309,24 +325,24 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     saveButton: {
-        width:'50%',
+        width: '50%',
         marginTop: 20,
-        marginLeft:'25%',
+        marginLeft: '25%',
         paddingVertical: 10,
         paddingHorizontal: 20,
-        backgroundColor:"#e2d784",
+        backgroundColor: "#e2d784",
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-      
+
         elevation: 5,
-      },
-      saveButtonText: {
+    },
+    saveButtonText: {
         color: 'black',
         marginLeft: 5,
         fontFamily: "GillSans-SemiBold",
         fontSize: 23
-      },
+    },
 
 
 
