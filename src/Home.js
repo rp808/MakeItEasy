@@ -7,10 +7,7 @@ import {
     Text,
     View,
     Image,
-
-
     TouchableOpacity,
-
     FlatList,
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
@@ -175,9 +172,14 @@ export const Home = ({ navigation, token }) => {
         return (
             <TouchableOpacity style={styles.cards} onPress={() => { navigation.navigate("Recipe", { item, totalCalories }) }}>
                 <Image source={{ uri: item.imageSource }} style={styles.image} />
-
-                <Text style={styles.description}>{item.description}</Text>
-
+                <View style={styles.descCard}>
+                    <View style={styles.descriptionContainer}>
+                        <Text style={styles.description}>{item.description}</Text>
+                    </View>
+                    <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(card)}>
+                        <Image style={styles.saveImg} source={require("./assets/share.png")} />
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.nutritionContainer}>
                     <View style={styles.leftItem}>
                         <Ionicons name="ios-flame" size={20} color="#05595b" />
@@ -261,10 +263,26 @@ const styles = StyleSheet.create({
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft:-10,
+        marginLeft: -10,
         marginTop: 10,
         justifyContent: 'space-between',
 
+    },
+    descriptionContainer: {
+        flex: 1, 
+        marginRight: 5, 
+        marginLeft:5,
+       
+    },
+    shareC: {
+        marginLeft: 5,
+        marginRight: 10,
+    },
+    descCard: {
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+  
     },
     nutritionContainerLeft: {
         flexDirection: 'row',
@@ -345,7 +363,7 @@ const styles = StyleSheet.create({
     saveC: {
         alignItems: 'center',
         marginLeft: 23,
-      
+
     },
     logoTxt: {
         fontSize: 25,
