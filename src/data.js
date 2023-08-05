@@ -596,7 +596,7 @@ export const data = [
   },
   {
     id: '20', imageSource: 'https://storage.googleapis.com/makeiteasyrp808/20.jpg',
-    description: 'Card 3',
+    description: 'Harissa Chicken',
     ingredients: ['4 chicken legs', '4 tbsp harissa paste (rose harissa is nice)', '1 garlic bulb, broken into cloves', '1 lemon, cut into wedges', '400g cherry tomatoes on the vine', '350g new potatoes, halved if large', '50g Kalamata olives, chopped', '2 tbsp olive oil', 'green salad, to serve (optional)'],
     instructions: [
       "Heat oven to 190C/170C fan/gas 5. Score deep lines all over the chicken legs, then rub in the harissa.",
