@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 
 const Suggestions = ({ route, navigation, token }) => {
@@ -92,6 +94,41 @@ const Suggestions = ({ route, navigation, token }) => {
         }
     };
 
+    const handleShareRecipe = async (recipe) => {
+        try {
+            const message = `Check out this delicious recipe: ${recipe.description}\n\n`
+                + `Ingredients:\n${recipe.ingredients.join("\n")}\n\n`
+                + `Instructions:\n${recipe.instructions.map((instr, index) => `${index + 1}. ${instr}`).join("\n")}\n\n`
+                + `Nutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n`
+                + `Image Source: ${recipe.imageSource}`;
+    
+            // Create a temporary file to share
+            const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
+            await FileSystem.writeAsStringAsync(fileUri, message);
+    
+            const result = await Sharing.shareAsync(fileUri); // Share the temporary file URI
+            
+            if (result !== null) {
+                if (result.action === Sharing.sharedAction) {
+                    console.log('Shared successfully');
+                } else if (result.action === Sharing.dismissedAction) {
+                    console.log('Share was dismissed or not supported');
+                } else {
+                    console.log('Share was not completed');
+                }
+            } else {
+                console.log('Share action is null');
+            }
+    
+            // Optionally, you can delete the temporary file after sharing
+            await FileSystem.deleteAsync(fileUri);
+        } catch (error) {
+            console.error('Error while sharing:', error);
+        }
+    };
+    
+    
+
 
     return (
         <View style={styles.container}>
@@ -119,7 +156,7 @@ const Suggestions = ({ route, navigation, token }) => {
                                     <Image style={styles.saveImg} source={savedRecipes.includes(card.id) ? require('./assets/saveFilled.png') : require('./assets/saveCard.png')} />
 
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.shareC}  >
+                                <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(card)} >
                                     <Image style={styles.saveImg} source={require("./assets/share.png")} />
                                 </TouchableOpacity>
                             </View>
