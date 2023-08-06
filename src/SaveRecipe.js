@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity, Share } from 'react-native';
-import { Ionicons , MaterialIcons  } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
@@ -90,7 +90,7 @@ const SaveRecipe = ({ navigation, token }) => {
             Image Source: ${recipe.imageSource}
             `;
 
-            
+
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
             await FileSystem.writeAsStringAsync(fileUri, message);
 
@@ -128,40 +128,47 @@ const SaveRecipe = ({ navigation, token }) => {
                 <Text style={styles.title}>Your favourites</Text>
 
             </View>
-            <ScrollView style={styles.scrollContainer}>
-                {savedRecipes.map((recipe) => (
-                    <TouchableOpacity key={recipe._id} style={styles.cardContainer} onPress={() => navigation.navigate('SaveRecipeDirection', { recipeData: recipe })}>
-                        <Image style={styles.image} source={{ uri: recipe.imageSource }} />
-                        <View style={styles.descCard}>
-                            <View style={styles.recipeInfoContainer}>
-                                <Text style={styles.title}>{recipe.description}</Text>
 
-                                <View style={styles.saveShareContainer}>
-                                    <TouchableOpacity style={styles.saveC} onPress={() => handleRemoveRecipe(recipe.id)} >
+            {savedRecipes.length === 0 ? (
+                <View style={styles.noRecipesContainer}>
+                    <Text style={styles.noRecipesText}>Hey, you haven't saved any recipes yet.</Text>
+                </View>
+            ) : (
+                <ScrollView style={styles.scrollContainer}>
+                    {savedRecipes.map((recipe) => (
+                        <TouchableOpacity key={recipe._id} style={styles.cardContainer} onPress={() => navigation.navigate('SaveRecipeDirection', { recipeData: recipe })}>
+                            <Image style={styles.image} source={{ uri: recipe.imageSource }} />
+                            <View style={styles.descCard}>
+                                <View style={styles.recipeInfoContainer}>
+                                    <Text style={styles.title}>{recipe.description}</Text>
 
-                                        <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(recipe)} >
-                                    <Image style={styles.saveImg} source={require("./assets/share.png")} />
-                                    </TouchableOpacity>
+                                    <View style={styles.saveShareContainer}>
+                                        <TouchableOpacity style={styles.saveC} onPress={() => handleRemoveRecipe(recipe.id)} >
+
+                                            <Image style={styles.saveImg} source={require("./assets/saveFilled.png")} />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity style={styles.shareC} onPress={() => handleShareRecipe(recipe)} >
+                                            <Image style={styles.saveImg} source={require("./assets/share.png")} />
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
-                        {/* 
+                            {/* 
             <Text>{recipe.instructions}</Text> */}
 
-                        <View style={styles.nutritionContainer}>
-                            <Ionicons name="ios-flame" size={20} color="#05595b" />
-                            <Text style={styles.nutritionText}> {recipe.nutrition.totalCalories}</Text>
-                            <Ionicons name="md-timer" size={20} color="#05595b" />
-                            <Text style={styles.nutritionText}>{recipe.time}</Text>
-                            <Text style={styles.nutritionText}> Serving:  {recipe.serving}  </Text>
+                            <View style={styles.nutritionContainer}>
+                                <Ionicons name="ios-flame" size={20} color="#05595b" />
+                                <Text style={styles.nutritionText}> {recipe.nutrition.totalCalories}</Text>
+                                <Ionicons name="md-timer" size={20} color="#05595b" />
+                                <Text style={styles.nutritionText}>{recipe.time}</Text>
+                                <Text style={styles.nutritionText}> Serving:  {recipe.serving}  </Text>
 
-                        </View>
+                            </View>
 
-                    </TouchableOpacity>
-                ))}
-            </ScrollView>
+                        </TouchableOpacity>
+                    ))}
+                </ScrollView>
+            )}
 
 
             <View style={styles.buttomNavFlex}>
@@ -204,7 +211,16 @@ const styles = StyleSheet.create({
     saveImg: {
         width: 30,
         height: 30,
-        margin:5,
+        margin: 5,
+    },
+    noRecipesContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    noRecipesText: {
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     descCard: {
         padding: 10,
@@ -217,11 +233,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-      },
-      saveShareContainer: {
+    },
+    saveShareContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-      },
+    },
     nutritionContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -251,7 +267,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: '#FFFFFF',
         borderRadius: 10,
-       
+
         elevation: 5,
         width: '90%',
         alignSelf: 'center',
@@ -322,7 +338,7 @@ const styles = StyleSheet.create({
         fontFamily: 'GillSans-SemiBold',
         color: '#05595b',
         flexShrink: 1,
-    
+
     },
     detailsContainer: {
         paddingHorizontal: 10,
