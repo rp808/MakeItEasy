@@ -169,13 +169,13 @@ export const Home = ({ navigation, token }) => {
                 + `Instructions:\n${recipe.instructions.map((instr, index) => `${index + 1}. ${instr}`).join("\n")}\n\n`
                 + `Nutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n`
                 + `Image Source: ${recipe.imageSource}`;
-    
-          
+
+
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
             await FileSystem.writeAsStringAsync(fileUri, message);
-    
-            const result = await Sharing.shareAsync(fileUri); 
-            
+
+            const result = await Sharing.shareAsync(fileUri);
+
             if (result !== null) {
                 if (result.action === Sharing.sharedAction) {
                     console.log('Shared successfully');
@@ -187,8 +187,8 @@ export const Home = ({ navigation, token }) => {
             } else {
                 console.log('Share action is null');
             }
-    
-           
+
+
             await FileSystem.deleteAsync(fileUri);
         } catch (error) {
             console.error('Error while sharing:', error);
@@ -303,20 +303,20 @@ const styles = StyleSheet.create({
 
     },
     descriptionContainer: {
-        flex: 1, 
-        marginRight: 5, 
-        marginLeft:5,
-       
+        flex: 1,
+        marginRight: 5,
+        marginLeft: 5,
+
     },
     shareC: {
         marginLeft: 5,
         marginRight: 10,
     },
     descCard: {
-        flexDirection: 'row', 
-        alignItems: 'center', 
-        justifyContent: 'space-between', 
-  
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+
     },
     nutritionContainerLeft: {
         flexDirection: 'row',
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     },
     cardsFlex: {
         flex: 10,
-
+    
         width: '100%',
         backgroundColor: "#fff",
         alignItems: "center",
@@ -410,6 +410,7 @@ const styles = StyleSheet.create({
 
         width: "45%",
         height: 200,
+        
         backgroundColor: '#e1e1e1',
         // backgroundColor: '#D1D8D5',
         borderRadius: 8,
@@ -434,9 +435,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     image: {
-        marginTop: -80,
+        marginTop: -50,
         width: 120,
         height: 120,
+        borderWidth: 1, // Border width in pixels
+        borderColor: '#708090', 
         borderRadius: 60,
         marginBottom: 10,
     },
