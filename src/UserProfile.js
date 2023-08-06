@@ -153,8 +153,12 @@ const UserProfile = ({ navigation, token }) => {
                         </TouchableOpacity> */}
                     </View>
                 </View>
-
-
+                <View style={styles.yourSavesButton}>
+                    <Text style={styles.saveButtonText}>Your Saved recipes:</Text>
+                    <TouchableOpacity style={styles.saveRE} onPress={() => navigation.navigate('SaveRecipe')}>
+                        <Text style={styles.yourSavesButtonText}>Saved Recipes</Text>
+                    </TouchableOpacity>
+                </View>
 
                 <View style={styles.buttomNavFlex}>
                     <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Home')}>
@@ -198,7 +202,21 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
 
-
+    yourSavesButton: {
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        padding: 10,
+        marginTop: 20,
+        alignSelf: 'center',
+        flex: 2,
+        width: '90%',
+    },
+    yourSavesButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 20,
+        fontFamily: 'GillSans-SemiBold',
+    },
     appNameFlex: {
         flex: 1,
         width: '100%',
@@ -325,7 +343,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     saveButton: {
-        width: '50%',
+        width: '40%',
         marginTop: 20,
         marginLeft: '25%',
         paddingVertical: 10,
@@ -337,6 +355,21 @@ const styles = StyleSheet.create({
 
         elevation: 5,
     },
+    saveRE:{
+        width: '70%',
+        marginTop: 20,
+        marginLeft: '15%',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        backgroundColor: "#05595b",
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        elevation: 5,
+
+    },
+    
     saveButtonText: {
         color: 'black',
         marginLeft: 5,
