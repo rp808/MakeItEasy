@@ -17,8 +17,8 @@ import {
 } from "react-native";
 
 
-const Login = ({props,setToken}) => {
-    const navigation=props.navigation
+const Login = ({ props, setToken }) => {
+    const navigation = props.navigation
     const [fdata, setFdata] = useState({
         email: '',
         password: ''
@@ -56,58 +56,58 @@ const Login = ({props,setToken}) => {
         console.log(fdata);
     };
     return (
-        
+
         <KeyboardAvoidingView
-        style={styles.screen}
-        behavior="padding"
-      >
+            style={styles.screen}
+            behavior="padding"
+        >
             <StatusBar style="auto" />
             <ImageBackground
-                    source={require("./assets/elena-joland-mjeQon0Mh_Q-unsplash.jpg")}
-                    style={styles.imageBackground}
-                    resizeMode="cover"
-                >
+                source={require("./assets/elena-joland-mjeQon0Mh_Q-unsplash.jpg")}
+                style={styles.imageBackground}
+                resizeMode="cover"
+            >
 
-            <View style={styles.boxFlex}>
-                <View>
-                    <Text style={styles.welcomeTxt}>MakeItEasy</Text>
+                <View style={styles.boxFlex}>
+                    <View>
+                        <Text style={styles.welcomeTxt}>MakeItEasy</Text>
+                    </View>
+                    {
+                        errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
+                    }
+                    <View style={styles.box}>
+                        <MaterialIcons name="email" size={24} color="#05595b" />
+                        <TextInput style={styles.textInput}
+                            placeholder="Email."
+                            autoCapitalize="none"
+                            keyboardType="email-address"
+                            onPressIn={() => setErrMsg(null)}
+                            onChangeText={(text) => setFdata({ ...fdata, email: text })}
+                        ></TextInput>
+                    </View>
+
+
+                    <View style={styles.box}>
+                        <Fontisto name="key" size={24} color="#05595b" />
+                        <TextInput style={styles.textInput}
+                            placeholder="Password."
+
+                            secureTextEntry={true}
+                            onChangeText={(text) => setFdata({ ...fdata, password: text })}
+                            onPressIn={() => setErrMsg(null)}
+                        ></TextInput>
+                    </View>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => SendToBackend()}>
+                        <Text style={styles.buttonText}>LOGIN</Text>
+                    </TouchableOpacity>
                 </View>
-                {
-                    errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
-                }
-                <View style={styles.box}>
-                <MaterialIcons name="email" size={24} color="#05595b" />
-                    <TextInput style={styles.textInput}
-                        placeholder="Email."
-                        autoCapitalize="none"
-                           keyboardType="email-address"
-                        onPressIn={() => setErrMsg(null)}
-                        onChangeText={(text) => setFdata({ ...fdata, email: text })}
-                    ></TextInput>
+
+                <View style={styles.bottomFlex}>
+                    <View style={styles.hairline} />
+                    <TouchableOpacity style={styles.signUpTxt} onPress={() => navigation.navigate('SignUp')}>
+                        <Text >"Don't have an account?" Sign Up</Text>
+                    </TouchableOpacity>
                 </View>
-
-
-                <View style={styles.box}>
-                <Fontisto name="key" size={24} color="#05595b" />
-                    <TextInput style={styles.textInput}
-                        placeholder="Password."
-
-                        secureTextEntry={true}
-                        onChangeText={(text) => setFdata({ ...fdata, password: text })}
-                        onPressIn={() => setErrMsg(null)}
-                    ></TextInput>
-                </View>
-                <TouchableOpacity style={styles.loginBtn} onPress={() => SendToBackend()}>
-                    <Text style={styles.buttonText}>LOGIN</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.bottomFlex}>
-                <View style={styles.hairline} />
-                <TouchableOpacity style={styles.signUpTxt} onPress={() => navigation.navigate('SignUp')}>
-                    <Text >"Don't have an account?" Sign Up</Text>
-                </TouchableOpacity>
-            </View>
             </ImageBackground>
         </KeyboardAvoidingView>
 
@@ -135,14 +135,14 @@ const styles = StyleSheet.create({
     boxFlex: {
         flex: 4,
         width: '100%',
-      // backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "flex-end",
     },
     bottomFlex: {
         flex: 2,
         width: '100%',
-       // backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "flex-end",
         paddingBottom: 30,
@@ -172,20 +172,20 @@ const styles = StyleSheet.create({
         // height: 45,
         // width: '80%',
         // marginBottom: 20,
-        
+
 
     },
     textInput: {
         fontSize: 18,
         marginLeft: 10,
         width: '80%',
-        
+
         // height: 50,
         // flex: 1,
         // padding: 10,
         // marginLeft: 20,
         // width: "80%",
-    
+
     },
     loginBtn: {
         width: "50%",
@@ -195,14 +195,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 30,
         backgroundColor: "#05595b",
-        
-    
+
+
     },
     buttonText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color:"white",
-        letterSpacing:2,
+        color: "white",
+        letterSpacing: 2,
     },
     hairline: {
         marginTop: 40,
