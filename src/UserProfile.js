@@ -14,6 +14,7 @@ import {
     KeyboardAvoidingView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const UserProfile = ({ navigation, token }) => {
     //console.log("token",token);
@@ -110,11 +111,16 @@ const UserProfile = ({ navigation, token }) => {
             <View style={styles.screen}>
 
                 <StatusBar style="auto" />
-                <View style={styles.appNameFlex}>
-                    <View>
-                        <Text style={styles.logoTxt}>MakeItEasy</Text>
-                    </View>
-                </View>
+              
+            <View style={styles.appNameFlex}>
+                
+                <Text style={styles.logoTxt}>MakeItEasy</Text>
+                <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Login')} >
+                    <AntDesign name="logout" size={24} color="#05595b" />
+                </TouchableOpacity>
+           
+
+        </View>
                 <View style={styles.userName}>
                     <Text style={styles.greetingText}>Hey {userData?.firstName},</Text>
                     <Text style={styles.subText}>Choose your Dietary Preference if you have any:</Text>
@@ -192,6 +198,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    logoutButton: {
+        padding: 5,
+        borderRadius: 5,
+        marginTop:45,
+        marginRight:30,
+    },
     cardContainer: {
         flex: 2,
         width: '90%',
@@ -218,12 +230,14 @@ const styles = StyleSheet.create({
         fontFamily: 'GillSans-SemiBold',
     },
     appNameFlex: {
-        flex: 1,
+        flex: 1.2,
+        flexDirection: 'row',
         width: '100%',
-        // backgroundColor: "#fff",
+        // backgroundColor: '#e1e1e1',
         paddingLeft: 15,
         alignItems: "start",
-        justifyContent: "center",
+        justifyContent: "space-between",
+        margin:10,
     },
     userName: {
         flex: 1,
@@ -282,9 +296,11 @@ const styles = StyleSheet.create({
 
     },
     logoTxt: {
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: 'bold',
         paddingTop: 35,
+        marginTop:10,
+        color: '#05595b',
         fontFamily: 'GillSans-SemiBoldItalic',
     },
     iconImg: {
