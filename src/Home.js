@@ -14,6 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 import API_BASE_URL from '../config';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
+import { AntDesign } from '@expo/vector-icons';
 
 export const Home = ({ navigation, token }) => {
 
@@ -246,9 +247,12 @@ export const Home = ({ navigation, token }) => {
             <StatusBar style="auto" />
 
             <View style={styles.appNameFlex}>
-                <View >
+                
                     <Text style={styles.logoTxt}>MakeItEasy</Text>
-                </View>
+                    <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Login')} >
+                        <AntDesign name="logout" size={24} color="#05595b" />
+                    </TouchableOpacity>
+               
 
             </View>
 
@@ -359,15 +363,22 @@ const styles = StyleSheet.create({
     },
     appNameFlex: {
         flex: 1.2,
+        flexDirection: 'row',
         width: '100%',
-        backgroundColor: "#fff",
+        backgroundColor: '#e1e1e1',
         paddingLeft: 15,
         alignItems: "start",
-        justifyContent: "center",
+        justifyContent: "space-between",
+    },
+    logoutButton: {
+        padding: 5,
+        borderRadius: 5,
+        marginTop:45,
+        marginRight:30,
     },
     cardsFlex: {
         flex: 10,
-    
+
         width: '100%',
         backgroundColor: "#fff",
         alignItems: "center",
@@ -403,6 +414,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         paddingTop: 35,
+        marginTop:10,
         color: '#05595b',
         fontFamily: 'GillSans-SemiBoldItalic',
     },
@@ -410,7 +422,7 @@ const styles = StyleSheet.create({
 
         width: "45%",
         height: 200,
-        
+
         backgroundColor: '#e1e1e1',
         // backgroundColor: '#D1D8D5',
         borderRadius: 8,
@@ -439,7 +451,7 @@ const styles = StyleSheet.create({
         width: 120,
         height: 120,
         borderWidth: 1, // Border width in pixels
-        borderColor: '#708090', 
+        borderColor: '#708090',
         borderRadius: 60,
         marginBottom: 10,
     },
