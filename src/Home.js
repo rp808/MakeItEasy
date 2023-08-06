@@ -365,7 +365,7 @@ const styles = StyleSheet.create({
         flex: 1.2,
         flexDirection: 'row',
         width: '100%',
-        backgroundColor: '#e1e1e1',
+        backgroundColor: '#ffffff',
         paddingLeft: 15,
         alignItems: "start",
         justifyContent: "space-between",
@@ -421,7 +421,7 @@ const styles = StyleSheet.create({
     cards: {
 
         width: "45%",
-        height: 200,
+        height: 223,
 
         backgroundColor: '#e1e1e1',
         // backgroundColor: '#D1D8D5',
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
         width: 120,
         height: 120,
         borderWidth: 1, // Border width in pixels
-        borderColor: '#708090',
+        borderColor: '#e1e1e1',
         borderRadius: 60,
         marginBottom: 10,
     },
