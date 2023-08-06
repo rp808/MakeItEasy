@@ -80,6 +80,7 @@ const Login = ({props,setToken}) => {
                     <TextInput style={styles.textInput}
                         placeholder="Email."
                         autoCapitalize="none"
+                           keyboardType="email-address"
                         onPressIn={() => setErrMsg(null)}
                         onChangeText={(text) => setFdata({ ...fdata, email: text })}
                     ></TextInput>
