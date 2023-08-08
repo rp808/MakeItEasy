@@ -550,8 +550,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         height: 54,
         width: '100%',
-        flex: 0,
-        margin: 10,
+        flex: 0.5,
+        marginTop: 10,
+        paddingBottom:30,
+        
 
     },
     iconContainer: {
