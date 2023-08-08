@@ -101,13 +101,13 @@ const Suggestions = ({ route, navigation, token }) => {
                 + `Instructions:\n${recipe.instructions.map((instr, index) => `${index + 1}. ${instr}`).join("\n")}\n\n`
                 + `Nutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n`
                 + `Image Source: ${recipe.imageSource}`;
-    
-           
+
+
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
             await FileSystem.writeAsStringAsync(fileUri, message);
-    
+
             const result = await Sharing.shareAsync(fileUri);
-            
+
             if (result !== null) {
                 if (result.action === Sharing.sharedAction) {
                     console.log('Shared successfully');
@@ -125,8 +125,8 @@ const Suggestions = ({ route, navigation, token }) => {
             console.error('Error while sharing:', error);
         }
     };
-    
-    
+
+
 
 
     return (

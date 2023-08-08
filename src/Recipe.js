@@ -26,7 +26,7 @@ const Recipe = ({ props, token }) => {
 
 
     const handleRating = (selectedRating) => {
-         console.log(route.params.item.id);
+        console.log(route.params.item.id);
         setRating(selectedRating);
 
         fetch(`${API_BASE_URL}/cards/rate/${route.params.item._id}`, {
@@ -219,7 +219,7 @@ const Recipe = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {route.params.item.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                     {'\u2022'} {ingredient}
+                                    {'\u2022'} {ingredient}
                                 </Text>
                             ))}
                         </View>
@@ -364,9 +364,9 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     boldNumber: {
-        fontFamily: 'GillSans-Bold', 
+        fontFamily: 'GillSans-Bold',
         // fontWeight: 'bold',        
-      },
+    },
     timerValue: {
         fontSize: 24,
         marginLeft: 4,
@@ -464,8 +464,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     backButtonContainer: {
-        marginLeft:15,
-        marginTop:30,
+        marginLeft: 15,
+        marginTop: 30,
         position: 'absolute',
         top: 16,
         left: 16,

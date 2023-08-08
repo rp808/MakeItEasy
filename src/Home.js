@@ -247,12 +247,12 @@ export const Home = ({ navigation, token }) => {
             <StatusBar style="auto" />
 
             <View style={styles.appNameFlex}>
-                
-                    <Text style={styles.logoTxt}>MakeItEasy</Text>
-                    <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Login')} >
-                        <AntDesign name="logout" size={24} color="#05595b" />
-                    </TouchableOpacity>
-               
+
+                <Text style={styles.logoTxt}>MakeItEasy</Text>
+                <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Login')} >
+                    <AntDesign name="logout" size={24} color="#05595b" />
+                </TouchableOpacity>
+
 
             </View>
 
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
     },
     shareC: {
         marginLeft: 5,
-        marginRight: 10,
+        marginRight: 20,
     },
     descCard: {
         flexDirection: 'row',
@@ -373,8 +373,8 @@ const styles = StyleSheet.create({
     logoutButton: {
         padding: 5,
         borderRadius: 5,
-        marginTop:45,
-        marginRight:30,
+        marginTop: 45,
+        marginRight: 30,
     },
     cardsFlex: {
         flex: 10,
@@ -414,7 +414,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         paddingTop: 35,
-        marginTop:10,
+        marginTop: 10,
         color: '#05595b',
         fontFamily: 'GillSans-SemiBoldItalic',
     },

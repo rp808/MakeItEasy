@@ -8,18 +8,18 @@ import {
   StyleSheet,
   Text,
   View,
- 
+
   TextInput,
- 
+
   TouchableOpacity,
- 
+
   KeyboardAvoidingView,
   ImageBackground
 } from "react-native";
 
 
-const SignUp = ({ props, setToken  }) => {
-  const navigation=props.navigation
+const SignUp = ({ props, setToken }) => {
+  const navigation = props.navigation
   const [fdata, setFdata] = useState({
     firstName: '',
     lastName: '',
@@ -88,7 +88,7 @@ const SignUp = ({ props, setToken  }) => {
             errMsg ? <Text style={{ color: 'red' }}>{errMsg}</Text> : null
           }
           <View style={styles.box}>
-          <Fontisto name="person" size={24} color="#05595b" />
+            <Fontisto name="person" size={24} color="#05595b" />
             <TextInput style={styles.textInput}
               placeholder="First Name"
               autoCapitalize="none"
@@ -97,7 +97,7 @@ const SignUp = ({ props, setToken  }) => {
             ></TextInput>
           </View>
           <View style={styles.box}>
-          <Fontisto name="person" size={24} color="#05595b" />
+            <Fontisto name="person" size={24} color="#05595b" />
             <TextInput style={styles.textInput}
               placeholder="Last Name"
               autoCapitalize="none"
@@ -118,7 +118,7 @@ const SignUp = ({ props, setToken  }) => {
 
 
           <View style={styles.box}>
-          <Fontisto name="key" size={24} color="#05595b" />
+            <Fontisto name="key" size={24} color="#05595b" />
             <TextInput style={styles.textInput}
               placeholder="Password"
               autoCapitalize="none"

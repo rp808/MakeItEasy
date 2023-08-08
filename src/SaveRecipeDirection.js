@@ -18,7 +18,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
     const [savedRecipes, setSavedRecipes] = useState([]);
 
     const handleRating = (selectedRating) => {
-        
+
         setRating(selectedRating);
 
         fetch(`${API_BASE_URL}/cards/rate/${recipeData._id}`, {
@@ -145,7 +145,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
                         <View style={styles.ingredientsContainer}>
                             {recipeData.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                     {'\u2022'} {ingredient}
+                                    {'\u2022'} {ingredient}
                                 </Text>
                             ))}
                         </View>
@@ -153,7 +153,7 @@ const SaveRecipeDirection = ({ route, token, navigation }) => {
                         <View style={styles.ingredientsContainer}>
                             {recipeData.instructions.map((instruction, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                     <Text style={styles.boldNumber}>Step {index + 1}: </Text> {instruction}
+                                    <Text style={styles.boldNumber}>Step {index + 1}: </Text> {instruction}
                                 </Text>
                             ))}
                         </View>
@@ -295,9 +295,9 @@ const styles = StyleSheet.create({
         color: '#05595b',
     },
     boldNumber: {
-        fontFamily: 'GillSans-Bold', 
+        fontFamily: 'GillSans-Bold',
         // fontWeight: 'bold',        
-      },
+    },
     nutritionName: {
         flex: 1,
         // textAlign: 'right',
@@ -395,8 +395,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     backButtonContainer: {
-        marginLeft:15,
-        marginTop:30,
+        marginLeft: 15,
+        marginTop: 30,
         position: 'absolute',
         top: 16,
         left: 16,

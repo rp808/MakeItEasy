@@ -13,7 +13,7 @@ import RecipeFilter from './src/RecipeFilter';
 import SaveRecipe from './src/SaveRecipe';
 import UserProfile from './src/UserProfile';
 import SaveRecipeDirection from './src/SaveRecipeDirection';
-import RecipeUpload from './src/RecipeUpload';
+
 import { useState } from "react"
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -54,7 +54,7 @@ export default function App() {
         }}
       </Stack.Screen>
 
-      
+
       {/* <Stack.Screen name="FilterPage" component={FilterPage} options={
         {
           headerShown: false
@@ -82,16 +82,7 @@ export default function App() {
         }}
       </Stack.Screen>
 
-      <Stack.Screen name="RecipeUpload" options={
-        {
-          headerShown: false
-        }
-      } >
 
-        {(props) => {
-          return <RecipeUpload token={token} props={props} />
-        }}
-      </Stack.Screen>
 
 
 

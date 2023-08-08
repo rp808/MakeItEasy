@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 0,
         margin: 10,
-        padding:10
+        padding: 10
 
     },
     iconContainer: {

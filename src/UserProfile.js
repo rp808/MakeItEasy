@@ -111,16 +111,16 @@ const UserProfile = ({ navigation, token }) => {
             <View style={styles.screen}>
 
                 <StatusBar style="auto" />
-              
-            <View style={styles.appNameFlex}>
-                
-                <Text style={styles.logoTxt}>MakeItEasy</Text>
-                <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Login')} >
-                    <AntDesign name="logout" size={24} color="#05595b" />
-                </TouchableOpacity>
-           
 
-        </View>
+                <View style={styles.appNameFlex}>
+
+                    <Text style={styles.logoTxt}>MakeItEasy</Text>
+                    <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Login')} >
+                        <AntDesign name="logout" size={24} color="#05595b" />
+                    </TouchableOpacity>
+
+
+                </View>
                 <View style={styles.userName}>
                     <Text style={styles.greetingText}>Hey {userData?.firstName},</Text>
                     <Text style={styles.subText}>Choose your Dietary Preference if you have any:</Text>
@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
     logoutButton: {
         padding: 5,
         borderRadius: 5,
-        marginTop:45,
-        marginRight:30,
+        marginTop: 45,
+        marginRight: 30,
     },
     cardContainer: {
         flex: 2,
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         alignItems: "start",
         justifyContent: "space-between",
-        margin:10,
+        margin: 10,
     },
     userName: {
         flex: 1,
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         paddingTop: 35,
-        marginTop:10,
+        marginTop: 10,
         color: '#05595b',
         fontFamily: 'GillSans-SemiBoldItalic',
     },
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
 
         elevation: 5,
     },
-    saveRE:{
+    saveRE: {
         width: '70%',
         marginTop: 20,
         marginLeft: '15%',
@@ -385,7 +385,7 @@ const styles = StyleSheet.create({
         elevation: 5,
 
     },
-    
+
     saveButtonText: {
         color: 'black',
         marginLeft: 5,

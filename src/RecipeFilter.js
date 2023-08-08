@@ -134,7 +134,7 @@ const RecipeFilter = ({ props, token }) => {
         <View style={styles.screen} >
             {/* <Text>Hello</Text> */}
 
-            <View style={styles.recipeImg}> 
+            <View style={styles.recipeImg}>
                 <Image style={styles.image} source={{ uri: cardData.imageSource }} />
 
 
@@ -208,7 +208,7 @@ const RecipeFilter = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {cardData.ingredients.map((ingredient, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                     {'\u2022'} {ingredient}
+                                    {'\u2022'} {ingredient}
                                 </Text>
                             ))}
                         </View>
@@ -216,7 +216,7 @@ const RecipeFilter = ({ props, token }) => {
                         <View style={styles.ingredientsContainer}>
                             {cardData.instructions.map((instruction, index) => (
                                 <Text key={index} style={styles.ingredientsText}>
-                                     <Text style={styles.boldNumber}>Step {index + 1}: </Text> {instruction}
+                                    <Text style={styles.boldNumber}>Step {index + 1}: </Text> {instruction}
                                 </Text>
                             ))}
                         </View>
@@ -348,12 +348,12 @@ const styles = StyleSheet.create({
         // marginTop: 5,
     },
     boldNumber: {
-        fontFamily: 'GillSans-Bold', 
+        fontFamily: 'GillSans-Bold',
         // fontWeight: 'bold',        
-      },
+    },
     timerIcon: {
         marginRight: 5,
-    
+
     },
     timerValue: {
         fontSize: 24,
@@ -443,7 +443,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         // padding: 20,
         margin: 10,
-    
+
         elevation: 3,
         borderWidth: 1,
         borderColor: '#ccc',
@@ -459,8 +459,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     backButtonContainer: {
-        marginLeft:15,
-        marginTop:30,
+        marginLeft: 15,
+        marginTop: 30,
         position: 'absolute',
         top: 16,
         left: 16,
@@ -496,14 +496,14 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         paddingBottom: 5,
         fontFamily: "Gill Sans",
-      
+
         color: '#05595b',
 
         //  marginBottom: 5, // Add margin bottom to create space between each ingredient
     },
     backButton: {
-        marginLeft:15,
-        marginTop:30,
+        marginLeft: 15,
+        marginTop: 30,
         backgroundColor: '#FFFFFF',
         padding: 8,
         borderRadius: 16,
@@ -627,7 +627,7 @@ const styles = StyleSheet.create({
         // paddingHorizontal: 16,
         alignItems: 'center',
         // marginTop: -40,
-       
+
         elevation: 4,
 
 

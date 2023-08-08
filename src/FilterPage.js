@@ -552,8 +552,8 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 0.5,
         marginTop: 10,
-        paddingBottom:30,
-        
+        paddingBottom: 30,
+
 
     },
     iconContainer: {
