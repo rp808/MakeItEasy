@@ -97,7 +97,7 @@ const Suggestions = ({ route, navigation, token }) => {
     const handleShareRecipe = async (recipe) => {
         try {
             const message = `Check out this delicious recipe: ${recipe.description}\n\n`
-                + `Ingredients:\n${recipe.ingredients.join("\n")}\n\n`
+                + `Ingredients:\n${recipe.ingredients.map((ingredient) => `• ${ingredient}`).join("\n")}\n\n`
                 + `Instructions:\n${recipe.instructions.map((instr, index) => `${index + 1}. ${instr}`).join("\n")}\n\n`
                 + `Nutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n`
                 + `Image Source: ${recipe.imageSource}`;
