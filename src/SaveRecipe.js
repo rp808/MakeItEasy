@@ -73,22 +73,10 @@ const SaveRecipe = ({ navigation, token }) => {
     const handleShareRecipe = async (recipe) => {
         console.log(recipe.description);
         try {
-            const message = `Check out this delicious recipe: ${recipe.instructions}
+            const ingredientsList = recipe.ingredients.map((ingredient, index) => `${index + 1}. ${ingredient}`).join("\n");
+            const instructionsList = recipe.instructions.map((instruction, index) => `${index + 1}. ${instruction}`).join("\n");
             
-
-            
-            Ingredients:
-            ${recipe.ingredients.join("\n")}
-            
-            Instructions:
-            ${recipe.instructions.join("\n")}
-            
-            Nutrition:
-            Total Calories: ${recipe.nutrition.totalCalories}
-            // Add other nutrition data as needed
-            
-            Image Source: ${recipe.imageSource}
-            `;
+            const message = `Check out this delicious recipe: ${recipe.description}\n\nIngredients:\n${ingredientsList}\n\nInstructions:\n${instructionsList}\n\nNutrition:\nTotal Calories: ${recipe.nutrition.totalCalories}\n\nImage Source: ${recipe.imageSource}`;
 
 
             const fileUri = `${FileSystem.cacheDirectory}recipe.txt`;
