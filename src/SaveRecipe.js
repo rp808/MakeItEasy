@@ -290,9 +290,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         height: 64,
-
+        width: '100%',
         flex: 0,
         margin: 10,
+        padding:10
 
     },
     iconContainer: {
