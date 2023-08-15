@@ -270,11 +270,11 @@ const FilterPage = ({ props, token }) => {
                         ))}
 
                         <View style={styles.buttonRow}>
-                            <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-                                <Text style={styles.buttonText}>Submit</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
+                            <TouchableOpacity style={styles.submitButton} onPress={handleReset}>
                                 <Text style={styles.buttonText}>Reset</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.resetButton}  onPress={handleSubmit}>
+                                <Text style={styles.buttonText}>Submit</Text>
                             </TouchableOpacity>
                         </View>
 
