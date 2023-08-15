@@ -7,9 +7,7 @@ import {
     View,
     Image,
     TextInput,
-
     TouchableOpacity,
-
     ImageBackground,
     KeyboardAvoidingView,
     ScrollView
