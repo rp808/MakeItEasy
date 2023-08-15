@@ -11,7 +11,8 @@ import {
     TouchableOpacity,
 
     ImageBackground,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    ScrollView
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
@@ -249,6 +250,7 @@ const FilterPage = ({ props, token }) => {
                     </View> */}
 
                     <KeyboardAvoidingView style={styles.avail} behavior="padding">
+                        <ScrollView >
                         <View style={styles.headerRow}>
                             <Text style={styles.label}>Available Ingredients</Text>
                             <TouchableOpacity style={styles.addButton} onPress={addIngredientRow}>
@@ -279,6 +281,7 @@ const FilterPage = ({ props, token }) => {
                         </View>
 
 
+                        </ScrollView>
                     </KeyboardAvoidingView>
 
                     <View style={styles.buttomNavFlex}>
@@ -508,8 +511,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderRadius: 5,
         // marginBottom: 10,
-        // width: "40%",
-        marginLeft: 20,
+         width: "45%",
+        marginLeft: 10,
+        marginRight:40,
         height: 40,
     },
     addButtonText: {
