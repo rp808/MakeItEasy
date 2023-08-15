@@ -21,7 +21,7 @@ export const data = [
     ingredients: [' bell pepper', '1 tbsp. vegetable oil', '4 large eggs', 'Chopped parsley, for garnish'],
     instructions: ['Slice bell pepper (or 4 in different colors) horizontally to make four 1/2-inch-thick rings and remove inner white flesh and seeds.', 'In 12-inch nonstick skillet, heat vegetable oil on medium. Cook peppers 2 minutes. Turn peppers over; crack 1 egg into center of each ring. Cook, covered, until eggs have reached desired doneness. Season with 1/4 teaspoon each salt and pepper.', 'To serve, garnish with chopped parsle'],
     ratings: [],
-    dietaryRestrictions: ['vegetarian', 'vegan'],
+    dietaryRestrictions: ['non-vegetarian'],
     difficultyLevel: 'beginner',
     nutrition: {
       totalCalories: 220,
