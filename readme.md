@@ -32,6 +32,15 @@ MakeItEasy is a culinary app designed to address real-life challenges faced by i
 - Enhanced recipe viewing experience.
 
 
+Figma Design :
+
+![Figma design](https://raw.githubusercontent.com/rp808/MakeItEasy/master/MakeItEasy.jpeg)
+
+
+
+
+Mobile app Screen shots:
+
 
 ![MakeItEasy Login](https://raw.githubusercontent.com/rp808/MakeItEasy/master/MakeItEasy_login.jpeg)
 
