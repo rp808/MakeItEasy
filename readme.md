@@ -31,5 +31,5 @@ MakeItEasy is a culinary app designed to address real-life challenges faced by i
 - Ingredient substitution assistance.
 - Enhanced recipe viewing experience.
 
-![MakeItEasy Calories](https://raw.githubusercontent.com/rp808/MakeItEasy/main/MakeItEasy_calories.jpeg)
+![MakeItEasy Calories](https://raw.githubusercontent.com/rp808/MakeItEasy/master/MakeItEasy_calories.jpeg)
 
