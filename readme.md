@@ -32,14 +32,14 @@ MakeItEasy is a culinary app designed to address real-life challenges faced by i
 - Enhanced recipe viewing experience.
 
 
-Figma Design :
+## Figma Design :
 
 ![Figma design](https://raw.githubusercontent.com/rp808/MakeItEasy/master/MakeItEasy.jpg)
 
 
 
 
-Mobile app Screen shots:
+## Mobile app Screen shots:
 
 
 ![MakeItEasy Login](https://raw.githubusercontent.com/rp808/MakeItEasy/master/MakeItEasy_login.jpeg)
